@@ -1,7 +1,7 @@
 # TerminalCV Hugo Site - Edit this file to personalize your CV
-# For GitHub Pages: https://YOUR_USERNAME.github.io/REPO_NAME/
+# For GitHub Pages: https://kolajy.github.io/personal_site/
 # (The GitHub Actions workflow sets this automatically on deploy.)
-baseURL: "https://yourusername.github.io/terminalcv-site/"
+baseURL: "https://kolajy.github.io/personal_site/"
 theme: "terminalcv"
 title: "My Terminal CV"
 
