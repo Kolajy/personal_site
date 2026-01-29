@@ -67,15 +67,34 @@ Edit **`config.yml`** in the project root. All content (name, bio, work, educati
    git push -u origin main
    ```
    **If Git says "password not supported":** GitHub no longer accepts account passwords. Use a [Personal Access Token](https://github.com/settings/tokens) as the password when prompted, or use SSH: `git remote set-url origin git@github.com:Kolajy/personal_site.git` then `git push -u origin main`.
-3. **Enable GitHub Pages:** Repo → **Settings** → **Pages** → under "Build and deployment":
-   - Set **Source** to **Deploy from a branch**
-   - Set **Branch** to **gh-pages** (create the branch if needed — the workflow will push to it)
-   - Set **Folder** to **/ (root)** → Save
+3. **Enable GitHub Pages:** Repo → **Settings** → **Pages**:
+   - **Build and deployment:** Source = **Deploy from a branch**, Branch = **gh-pages**, Folder = **/ (root)** → Save. (Using **main** here will show the README instead of your site.)
+   - **Custom domain (optional):** Enter your domain (e.g. `www.jaylok.com`) and save; then add the CNAME or A record at your DNS provider as GitHub shows.
 4. The workflow (`.github/workflows/gh-pages.yml`) runs on every push to `main`: it builds Hugo and pushes the site to the `gh-pages` branch. That branch is what Pages serves. Your site will be at:
    - **Project site:** `https://kolajy.github.io/personal_site/`
    - **User/org site** (if repo name is `YOUR_USERNAME.github.io`): `https://YOUR_USERNAME.github.io/`
 
 No need to add the theme as a submodule — the workflow fetches it if missing. To use a submodule instead, run `git submodule add https://github.com/coolapso/hugo-theme-terminalcv.git themes/terminalcv` before pushing.
+
+### Troubleshooting: "404 There isn't a GitHub Pages site here"
+
+1. **Enable Pages and set the branch:** Repo → **Settings** → **Pages** → **Build and deployment** → Source: **Deploy from a branch** → Branch: **gh-pages** → Folder: **/ (root)** → Save.
+2. **Create the gh-pages branch:** The workflow creates it when it runs. Push to `main` to trigger it:
+   ```powershell
+   git push -u origin main
+   ```
+3. **Check the workflow:** Repo → **Actions** → open the latest "GitHub Pages" run. It must **succeed** (green). If it fails, open the run and fix the error; the "Deploy to GitHub Pages" step must complete so that `gh-pages` gets the built site.
+4. **Wait a minute** after the workflow succeeds, then open your site (e.g. `https://kolajy.github.io/personal_site/` or your custom domain).
+
+### Troubleshooting: "Domain does not resolve" (NotServedByPagesError)
+
+1. **Use only one domain in GitHub:** In **Settings → Pages → Custom domain**, enter **either** `www.jaylok.com` **or** `jaylok.com` (not both). Try `www.jaylok.com` first.
+2. **DNS at your registrar** (where you bought jaylok.com):
+   - **www:** Add a **CNAME** record: name = `www`, target = `kolajy.github.io` (no `https://`, no path).
+   - **Apex (jaylok.com):** Add **four A records**: name = `@`, value = `185.199.108.153` (and same for `.109`, `.110`, `.111`).
+3. **Check DNS:** Use [whatsmydns.net](https://www.whatsmydns.net) — search for `www.jaylok.com` (should show CNAME to kolajy.github.io) and `jaylok.com` (should show the four GitHub IPs). If not, fix records and wait for propagation (up to 24–48 hours).
+4. **Re-check in GitHub:** After DNS looks correct, remove the custom domain in Settings → Pages, save, wait 2–3 minutes, then add it again and save.
+5. **CNAME file:** This repo includes `static/CNAME` with `www.jaylok.com` so the deployed site has it; push to `main` so the workflow redeploys.
 
 ## Theme
 
