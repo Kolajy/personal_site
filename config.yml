@@ -7,7 +7,7 @@ title: "Jay's Space"
 params:
   version: "2.0.0"
   description: "Jay's Personal Site"
-  blog: true
+  blog:  false
   prompt:
     core:
       text: "hi@there"
@@ -28,11 +28,20 @@ params:
     extra:
       text: ": "
       color: "orange"
-  listLS: true
+  listLS: false 
   exitMessage: "[Session completed, the browser window can be safely closed]"
-  source: true
+  source: false
   greeting: |
+
+      [ EXPECTATION ]    [ REALITY ]
+          _______            _____
+          |       |          /     \
+          |  0/1  |         (  ?!!  )
+          |_______|          \_____/
+            ||                 ||
+
       Welcome to my online space. Feel free to explore and learn a little bit about me =)
+
       Type 'help' for a list of available commands
 
   bootsequence: |
@@ -131,11 +140,6 @@ params:
         percentage: 85
         description: "Words are the most powerful tool we have to communicate and I try to use them well."
         color: "blue"
-
-  languages:
-    details:
-      - name: "English"
-        percentage: 100
 
   projects:
     details:
