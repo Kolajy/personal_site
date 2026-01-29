@@ -1,14 +1,12 @@
 ---
-title: "Welcome to My Terminal CV"
-date: "2025-01-28"
-category: "News"
-author: "terminalcv"
-description: "Welcome to your terminal-style resume with blogging."
+title: "Hello World"
+date: "2026-01-28"
+category: "Post"
+author: "Jay"
+description: "First post =)."
 ---
 
 # Welcome!
-
-This site uses the **TerminalCV** Hugo theme — a command-line style CV.
 
 ## How to use
 
