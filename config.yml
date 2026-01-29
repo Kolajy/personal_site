@@ -132,7 +132,6 @@ params:
         description: "Words are the most powerful tool we have to communicate and I try to use them well."
         color: "blue"
 
-
   languages:
     details:
       - name: "English"
@@ -149,14 +148,6 @@ params:
         date: "2023"
         link: "https://github.com/yourusername/another"
         description: "Another cool thing."
-
-  certifications:
-    details:
-      - certName: ""
-        company: ""
-        date: ""
-        badge: ""
-        description: "Nothing to see here."
 
   misc:
     commandName: "about"

@@ -14,9 +14,3 @@ description: "First post =)."
 - Type **`whois`** to see who I am.
 - Type **`work`** for experience, **`education`** for education, **`skills`** for skills.
 - Type **`posts`** or **`ls`** to list blog posts, then **`cat welcome`** to read this post.
-
-## Customize
-
-Edit **`config.yml`** in the project root to change your name, links, work history, skills, and all content. No need to touch theme files.
-
-Enjoy your new terminal CV.
