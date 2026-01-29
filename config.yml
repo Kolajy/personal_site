@@ -2,15 +2,15 @@
 # Custom domain; workflow uses this for builds when HUGO_BASEURL repo variable is not set
 baseURL: "https://www.jaylok.com/"
 theme: "terminalcv"
-title: "My Terminal CV"
+title: "Jay's Space"
 
 params:
   version: "2.0.0"
-  description: "My terminal-style resume"
+  description: "Jay's Personal Site"
   blog: true
   prompt:
     core:
-      text: "user@terminalCV"
+      text: "hi@there"
       color: "pink"
       before: "["
       beforeColor: "red"
@@ -21,7 +21,7 @@ params:
     path:
       before: "["
       beforeColor: "red"
-      text: "~/terminalcv"
+      text: "~/jays_space"
       color: "blue"
       after: '\]'
       afterColor: "red"
@@ -32,7 +32,7 @@ params:
   exitMessage: "[Session completed, the browser window can be safely closed]"
   source: true
   greeting: |
-      Welcome to my online resume
+      Welcome to my online space. Feel free to explore and learn a little bit about me =)
       Type 'help' for a list of available commands
 
   bootsequence: |
@@ -66,71 +66,77 @@ params:
 
   whois:
     details:
-      name: "Your Name"
-      profession: "Developer"
-      location: "Your City"
-      email: "you@example.com"
-      homelink: "https://github.com/yourusername"
+      name: "Jay Lok"
+      profession: "Soft Engineer"
+      location: "USA"
+      email: ""
+      homelink: "https://github.com/kolajy"
       description: |
-          A short catchy description about yourself goes here.
-
+        Just a guy who likes building things, digging into data, and seeing the world on foot
   social:
     details:
       - name: "github"
-        url: "https://github.com"
+        url: "https://github.com/kolajy"
       - name: "linkedin"
-        url: "https://linkedin.com"
-      - name: "twitter"
-        url: "https://twitter.com"
+        url: "https://linkedin.com/in/jaylok"
 
   work:
     details:
-      - jobTitle: "Software Developer"
+      - jobTitle: "Software Engineer"
         color: "green"
-        company: "Company Name"
-        location: "Remote"
-        date: "2022 - Present"
-        description: "Building awesome things with code."
+        company: "Squarespace"
+        location: "New York"
+        date: "2020 - 2024"
+        description: "Wrangling with financial plumbing and data"
 
-      - jobTitle: "Junior Developer"
-        company: "Previous Co"
-        location: "City"
-        date: "2020 - 2022"
-        description: "Learned the ropes and shipped features."
+      - jobTitle: "Software Engineer"
+        company: "Yelp"
+        location: "San Francisco"
+        date: "2018 - 2020"
+        description: "Restaurant Reservations and Data Platforms"
+
+      - jobTitle: "Software Engineer"
+        company: "Apple"
+        location: "Cupertino"
+        date: "2016 - 2017"
+        description: "Creativity Applications Platform"
+
+      - jobTitle: "Software Engineer"
+        company: "Yelp"
+        location: "Boston"
+        date: "2015- 2016"
+        description: "Doing things with vehicle telematics and Android"
 
   education:
     details:
-      - courseName: "Computer Science"
+      - schoolName: "Northeastern University"
         color: "blue"
         date: "2016 - 2020"
-        description: "Degree or certification description."
+        description: "Got my Bachelor's in Computer Science"
 
   skills:
     settings:
       useLess: true
     details:
-      - name: "JavaScript"
+      - name: "Coding"
         percentage: 85
-        description: "Frontend & Node.js"
-      - name: "Python"
-        percentage: 75
-      - name: "Go"
-        percentage: 60
-        color: "blue"
+        description: "I know how to write a bit of code but these days I let the AI do most of the writing."
 
   softskills:
     details:
-      - name: "Problem Solving"
-        percentage: 90
-      - name: "Communication"
+      - name: "Communication and Empathy"
+        percentage: 85 
+        description: "I try not to take myself too seriously and try to be a good listener.""
+      - name: "Writing and Documentation"
         percentage: 85
+        description: "Words are the most powerful tool we have to communicate and I try to use them well."
+        color: "blue"
+
 
   languages:
     details:
       - name: "English"
         percentage: 100
-      - name: "Spanish"
-        percentage: 70
 
   projects:
     details:
@@ -146,17 +152,16 @@ params:
 
   certifications:
     details:
-      - certName: "AWS Certified"
-        company: "Amazon Web Services"
-        date: "2024"
-        badge: "https://example.com/badge"
-        description: "Cloud practitioner or similar."
+      - certName: ""
+        company: ""
+        date: ""
+        badge: ""
+        description: "Nothing to see here."
 
   misc:
     commandName: "about"
-    title: "About This Site"
+    title: "About"
     titleColor: "teal"
     content: |
-        This site is built with Hugo and the TerminalCV theme.
-        Edit config.yml to customize your CV. Deploy to GitHub Pages with one click.
+      This is my personal site. It's a work in progress and I'm still figuring out what I want to put here.
     contentColor: "orange"
