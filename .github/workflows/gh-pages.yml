@@ -40,15 +40,22 @@ jobs:
           extended: true
 
       - name: Build
+        env:
+          # Set repo variable HUGO_BASEURL (e.g. https://www.jaylok.com/) in Settings → Secrets and variables → Actions to use a custom domain
+          CUSTOM_BASEURL: ${{ vars.HUGO_BASEURL }}
         run: |
-          OWNER="${{ github.repository_owner }}"
-          REPO="${{ github.event.repository.name }}"
-          OWNER_LOWER=$(echo "$OWNER" | tr '[:upper:]' '[:lower:]')
-          REPO_LOWER=$(echo "$REPO" | tr '[:upper:]' '[:lower:]')
-          if [ "$REPO_LOWER" = "${OWNER_LOWER}.github.io" ]; then
-            HUGO_BASEURL="https://${OWNER_LOWER}.github.io/"
+          if [ -n "$CUSTOM_BASEURL" ]; then
+            HUGO_BASEURL="$CUSTOM_BASEURL"
           else
-            HUGO_BASEURL="https://${OWNER_LOWER}.github.io/${REPO_LOWER}/"
+            OWNER="${{ github.repository_owner }}"
+            REPO="${{ github.event.repository.name }}"
+            OWNER_LOWER=$(echo "$OWNER" | tr '[:upper:]' '[:lower:]')
+            REPO_LOWER=$(echo "$REPO" | tr '[:upper:]' '[:lower:]')
+            if [ "$REPO_LOWER" = "${OWNER_LOWER}.github.io" ]; then
+              HUGO_BASEURL="https://${OWNER_LOWER}.github.io/"
+            else
+              HUGO_BASEURL="https://${OWNER_LOWER}.github.io/${REPO_LOWER}/"
+            fi
           fi
           echo "Building with baseURL: $HUGO_BASEURL"
           hugo --minify --baseURL "$HUGO_BASEURL"

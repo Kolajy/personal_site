@@ -1,7 +1,6 @@
 # TerminalCV Hugo Site - Edit this file to personalize your CV
-# For GitHub Pages: https://kolajy.github.io/personal_site/
-# (The GitHub Actions workflow sets this automatically on deploy.)
-baseURL: "https://kolajy.github.io/personal_site/"
+# Custom domain; workflow uses this for builds when HUGO_BASEURL repo variable is not set
+baseURL: "https://www.jaylok.com/"
 theme: "terminalcv"
 title: "My Terminal CV"
 
