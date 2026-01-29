@@ -60,20 +60,13 @@ Edit **`config.yml`** in the project root. All content (name, bio, work, educati
    git branch -M main
    git push -u origin main
    ```
+   **If Git says "password not supported":** GitHub no longer accepts account passwords. Use a [Personal Access Token](https://github.com/settings/tokens) as the password when prompted, or use SSH: `git remote set-url origin git@github.com:YOUR_USERNAME/YOUR_REPO.git` then `git push -u origin main`.
 3. **Enable GitHub Pages:** Repo → **Settings** → **Pages** → under "Build and deployment", set **Source** to **GitHub Actions**.
 4. The workflow (`.github/workflows/gh-pages.yml`) runs on every push to `main`: it builds Hugo and deploys to the `gh-pages` branch. Your site will be at:
    - **Project site:** `https://YOUR_USERNAME.github.io/YOUR_REPO/`
    - **User/org site** (if repo name is `YOUR_USERNAME.github.io`): `https://YOUR_USERNAME.github.io/`
 
 No need to add the theme as a submodule — the workflow fetches it if missing. To use a submodule instead, run `git submodule add https://github.com/coolapso/hugo-theme-terminalcv.git themes/terminalcv` before pushing.
-
----
-
-### Other hosts
-
-**Netlify:** Push to GitHub, then [Netlify](https://netlify.com) → Add new site → Import from Git. Uses `netlify.toml`.
-
-**Vercel:** Push to GitHub, then [Vercel](https://vercel.com) → New Project → import repo. Uses `vercel.json` and `build.sh`.
 
 ## Theme
 
