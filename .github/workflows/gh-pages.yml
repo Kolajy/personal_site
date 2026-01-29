@@ -41,12 +41,19 @@ jobs:
 
       - name: Build
         run: |
-          if [ "${{ github.event.repository.name }}" = "${{ github.repository_owner }}.github.io" ]; then
-            HUGO_BASEURL="https://${{ github.repository_owner }}.github.io/"
+          OWNER="${{ github.repository_owner }}"
+          REPO="${{ github.event.repository.name }}"
+          OWNER_LOWER=$(echo "$OWNER" | tr '[:upper:]' '[:lower:]')
+          REPO_LOWER=$(echo "$REPO" | tr '[:upper:]' '[:lower:]')
+          if [ "$REPO_LOWER" = "${OWNER_LOWER}.github.io" ]; then
+            HUGO_BASEURL="https://${OWNER_LOWER}.github.io/"
           else
-            HUGO_BASEURL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+            HUGO_BASEURL="https://${OWNER_LOWER}.github.io/${REPO_LOWER}/"
           fi
+          echo "Building with baseURL: $HUGO_BASEURL"
           hugo --minify --baseURL "$HUGO_BASEURL"
+          ls -la public/
+          [ -f public/index.html ] || (echo "ERROR: no index.html generated" && exit 1)
 
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
