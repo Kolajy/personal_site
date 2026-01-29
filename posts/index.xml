@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on My Terminal CV</title><link>https://www.jaylok.com/posts/</link><description>Recent content in Posts on My Terminal CV</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 28 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.jaylok.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Welcome to My Terminal CV</title><link>https://www.jaylok.com/posts/welcome/</link><pubDate>Tue, 28 Jan 2025 00:00:00 +0000</pubDate><guid>https://www.jaylok.com/posts/welcome/</guid><description>&lt;h1 id="welcome">Welcome!&lt;/h1>
+&lt;p>This site uses the &lt;strong>TerminalCV&lt;/strong> Hugo theme — a command-line style CV.&lt;/p>
+&lt;h2 id="how-to-use">How to use&lt;/h2>
+&lt;ul>
+&lt;li>Type &lt;strong>&lt;code>help&lt;/code>&lt;/strong> for a list of commands.&lt;/li>
+&lt;li>Type &lt;strong>&lt;code>whois&lt;/code>&lt;/strong> to see who I am.&lt;/li>
+&lt;li>Type &lt;strong>&lt;code>work&lt;/code>&lt;/strong> for experience, &lt;strong>&lt;code>education&lt;/code>&lt;/strong> for education, &lt;strong>&lt;code>skills&lt;/code>&lt;/strong> for skills.&lt;/li>
+&lt;li>Type &lt;strong>&lt;code>posts&lt;/code>&lt;/strong> or &lt;strong>&lt;code>ls&lt;/code>&lt;/strong> to list blog posts, then &lt;strong>&lt;code>cat welcome&lt;/code>&lt;/strong> to read this post.&lt;/li>
+&lt;/ul>
+&lt;h2 id="customize">Customize&lt;/h2>
+&lt;p>Edit &lt;strong>&lt;code>config.yml&lt;/code>&lt;/strong> in the project root to change your name, links, work history, skills, and all content. No need to touch theme files.&lt;/p></description></item></channel></rss>

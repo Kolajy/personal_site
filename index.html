@@ -1,0 +1,111 @@
+<!doctype html><html xmlns=http://www.w2.org/1999/xhtml><html lang=en><head><meta name=generator content="Hugo 0.139.4"><meta charset=utf-8><title>My Terminal CV </title><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="My terminal-style resume"><meta property="og:title" content="My Terminal CV"><meta property="og:type" content="website"><meta property="og:url" content="https://www.jaylok.com/"><link rel=sitemap type=application/xml title=Sitemap href><link rel=canonical href=https://www.jaylok.com/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/safari-pinned-tab.svg color><link rel="shortcut icon" href=/favicon.ico><meta name=msapplication-TileColor content><script src=https://cdn.jsdelivr.net/npm/jquery></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.42.2/js/jquery.terminal.min.js></script><script src=https://cdn.jsdelivr.net/npm/jquery.terminal/js/less.min.js></script><script src=https://unpkg.com/jquery.terminal/js/autocomplete_menu.js></script><link href=https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.42.0/css/jquery.terminal.min.css rel=stylesheet><style>body{width:100%;font-size:18px}</style></head><body><script>jQuery(document).ready(function(e){var o,a,r,c,l,d,u,h,m,f,v,b,y,s=!1,t={help:"shows help",less:"Use less as output method",whois:"list basic details",social:"list social networks",work:"list work experience",education:"list education",skills:"list core skills",softskills:"list soft skills",languages:"list spoken languages",projects:"list projects",certifications:"list certifications",about:"About This Site",version:"Current version",posts:"List all posts",ls:"List all posts",cat:"Open a post",all:"Show all details about me"};function n(e){var t=Math.round(e/10),n=Array(t+1).join("&#9611;"),s=Array(11-t).join("&#9617;");return n+s}function p(e,t){return e+" ".repeat(t-e.length)}function _(){let n=Math.max(...Object.keys(t).map(e=>e.length)),e="";for(let s in t)t.hasOwnProperty(s)&&(e+=` ${p(s,n)}	${t[s]}
+`);return e}v=`
+[[b;white;]usage:]
+
+ <command> - execute the command
+ less <command> - use less to display the output
+
+
+[[b;white;]Available commands:]
+`+_(),c=[`[[b;grey;]Name:]			Your Name
+[[b;grey;]Profession:]		Developer
+[[b;grey;]Location:]		Your City
+[[b;grey;]Email:]			you@example.com
+[[b;grey;]Homepage:]		https://github.com/yourusername
+A short catchy description about yourself goes here.
+\r`];function g(){var t=!1;let e={github:"https://github.com",linkedin:"https://linkedin.com",twitter:"https://twitter.com"};socialText=[];for(let n in e)if(e.hasOwnProperty(n))if(t)socialText.push(e[n]);else{let t=Math.max(...Object.keys(e).map(e=>e.length));socialText.push(`${p(n,t)}	${e[n]}`)}return socialText}function w(t){e.ajax({url:"posts/",type:"GET",success:function(e){t.echo(e,{raw:!0})},error:function(){t.echo("Error: Could not load posts data")}})}function j(t,n){url="/posts/"+n+"/",e.ajax({url,type:"GET",success:function(e){t.echo(e,{raw:!0})},error:function(){t.echo("Error: Could not load post "+n)}})}h=[`---
+[[b;grey;]AWS Certified]
+2024
+Amazon Web Services
+Cloud practitioner or similar.
+Badge: 	https://example.com/badge
+\r`],m=[`---
+[[b;green;]Software Developer]
+Company Name
+Remote
+2022 - Present
+
+Building awesome things with code.\r`,`---
+[[b;grey;]Junior Developer]
+Previous Co
+City
+2020 - 2022
+
+Learned the ropes and shipped features.\r`],f=[`---
+[[b;blue;]Computer Science]
+2016 - 2020
+Degree or certification description.
+\r`],u=[`---
+[[b;green;]Cool Project]
+2024
+https://github.com/yourusername/project
+A project you're proud of.
+\r`,`---
+[[b;grey;]Another Project]
+2023
+https://github.com/yourusername/another
+Another cool thing.
+\r`],y=[],o=[`[[b;grey;]JavaScript:]
+`+n(85)+`85%
+Frontend & Node.js
+\r`,`[[b;grey;]Python:]
+`+n(75)+`75%
+\r`,`[[b;blue;]Go:]
+`+n(60)+`60%
+\r`],a=[`[[b;grey;]Problem Solving:]
+`+n(90)+`90%
+\r`,`[[b;grey;]Communication:]
+`+n(85)+`85%
+\r`],d=[`[[b;grey;]English:]
+`+n(100)+`100%
+\r`,`[[b;grey;]Spanish:]
+`+n(70)+`70%
+\r`],l=[`[[b;teal;]About This Site]
+[[;orange;]This site is built with Hugo and the TerminalCV theme.
+Edit config.yml to customize your CV. Deploy to GitHub Pages with one click.
+]
+`],r=`        _______            
+       |       |           
+       |       |           
+       |_______|_______    
+               |       |   
+               |       |   
+ ______________|_______|   
+|      |       |       |   
+|      |       |       |   
+|______|_______|_______|   
+[[;red;]May the source be with you]
+[[;grey;]https://github.com/coolapso/hugo-theme-terminalcv
+`,b=[c,g(),m,f,o,a,d,u,h,l,r],e("body").terminal(function(e,n){var O,_=!1;function p(e){if(_)n.less(e,{onExit:function(){n.set_command(""),n.scroll_to_bottom()}});else for(i=0;i<e.length;i+=1)n.echo(e[i])}function y(e,t){var s,o=Math.round(t*e/100),i="",n="";for(s=o;s--;)n+="=";n.length>0&&(n=n.replace(/=$/,">"));for(s=t-o;s--;)i+=" ";return"["+n+i+"] "+e+"%"}function x(){var e=0,t=30;prompt=n.get_prompt(),string=y(0,t),n.set_prompt(y),s=!0,function o(){string=y(e++,t),n.set_prompt(string),e<100?timer=setTimeout(o,10):(n.echo(y(e,t)+" [[b;green;]OK]").set_prompt(prompt),s=!1)}()}switch(t=e.split(/[ ]+/),t[0]=="less"&&(_=!0,t.shift()),t[0]){case"whois":p(c);break;case"social":p(g());break;case"work":p(m);break;case"education":p(f);break;case"skills":_=!0,p(o);break;case"softskills":p(a);break;case"languages":p(d);break;case"projects":p(u);break;case"certifications":p(h);break;case"about":p(l);break;case"help":case"?":n.echo(v);break;case"all":p(b.flat(1));break;case":(){:|:&};:":n.echo("nice try");break;case"source":n.echo(r);break;case"exit":n.echo("Terminating session, thanks for visiting"),x(),setTimeout(function(){n.pause(),n.clear(),n.echo("[Session completed, the browser window can be safely closed]")},2e3);break;case"version":n.echo("2.0.0");break;case"cat":t.length<2?n.echo("Usage: cat <filename>"):(O=t[1],j(n,O));break;case"posts":case"ls":w(n);break;case"":break;default:n.echo(`
+unknown command: `+e+`
+please type 'help' or '?' for a list of available commands
+`)}},{greetings:!1,onInit:function(e){e.pause(),e.typing("echo",1,`User request detected
+Reserving Cloud Resources
+............................
+Cloud Network ready
+........
+Cloud Instance ready
+.......................
+Internet Breakout Ready
+
+Initiating CloudOS
+CloudOS Kernel Version 1.4.2
+Loglevel = quiet
+......
+
+Copyright 1979, 1980, 1983, 1986, 1988, 1989, 1991, 1992, 1993, 1994
+The Regents of the University of California. All rights reserved.
+
+Copyright 2024, 2025
+TerminalCV. MIT License (MIT)
+
+[CloudOSBoot1]: ready
+[CloudOSBoot2]: ready
+[Webserver]: ready
+[HUGO]: ready
+[TerminalCV]: ready
+
+Boot Complete, accepting user input.
+`,function(){e.clear(),e.echo(`[[b;white;]Welcome to my online resume
+Type 'help' for a list of available commands
+]`)}),e.resume()},prompt:"[[;red;][][[;pink;]user@terminalCV][[;red;]\\]][[;grey;]-][[;red;][][[;blue;]~/terminalcv][[;red;]\\]][[;orange;]: ]",keydown:function(e,t){if(s)return e.which==68&&e.ctrlKey&&(clearTimeout(timer),s=!1,t.echo(string+" [[b;red;]FAIL]").set_prompt(prompt)),!1},autocompleteMenu:!0,completion:Object.keys(t)})})</script></body></html>
