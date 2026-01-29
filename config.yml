@@ -126,7 +126,7 @@ params:
     details:
       - name: "Communication and Empathy"
         percentage: 85 
-        description: "I try not to take myself too seriously and try to be a good listener.""
+        description: "I try not to take myself too seriously and try to be a good listener."
       - name: "Writing and Documentation"
         percentage: 85
         description: "Words are the most powerful tool we have to communicate and I try to use them well."
