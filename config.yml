@@ -33,16 +33,17 @@ params:
   source: false
   greeting: |
 
-      [ EXPECTATION ]    [ REALITY ]
-          _______            _____
-          |       |          /     \
-          |  0/1  |         (  ?!!  )
-          |_______|          \_____/
-            ||                 ||
+     .---.            USER: jay@jayspace
+      /     \         -----------------------
+     | () () |        OS: Ubuntu 24.04 (Web Edition)
+      \  ^  /         Last login: Thu Jan 29 02:21:41 on ttys001
+       |||||          Status: Chomping on a bagel
+       |||||          Contact: No-more-spam@jaylok.com
 
       Welcome to my online space. Feel free to explore and learn a little bit about me =)
 
       Type 'help' for a list of available commands
+
 
   bootsequence: |
       User request detected
