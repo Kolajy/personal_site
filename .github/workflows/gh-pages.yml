@@ -1,0 +1,52 @@
+# Build Hugo site and deploy to GitHub Pages
+# After push to main, site is at https://<owner>.github.io/<repo>/
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Get theme (if not submodule)
+        run: |
+          if [ ! -d themes/terminalcv ]; then
+            git clone --depth 1 https://github.com/coolapso/hugo-theme-terminalcv.git themes/terminalcv
+          fi
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.139.4"
+          extended: true
+
+      - name: Build
+        run: |
+          if [ "${{ github.event.repository.name }}" = "${{ github.repository_owner }}.github.io" ]; then
+            HUGO_BASEURL="https://${{ github.repository_owner }}.github.io/"
+          else
+            HUGO_BASEURL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          fi
+          hugo --minify --baseURL "$HUGO_BASEURL"
+
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public

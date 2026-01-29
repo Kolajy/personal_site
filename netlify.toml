@@ -1,0 +1,10 @@
+# Netlify build config for TerminalCV Hugo site
+# Ensures theme is available (submodule or clone), then builds
+[build]
+  command = "git submodule update --init --recursive || (mkdir -p themes && git clone --depth 1 https://github.com/coolapso/hugo-theme-terminalcv.git themes/terminalcv) && hugo --minify"
+  publish = "public"
+
+[build.environment]
+  HUGO_VERSION = "0.139.4"
+  HUGO_ENV = "production"
+  NODE_VERSION = "20"
