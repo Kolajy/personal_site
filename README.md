@@ -2,7 +2,7 @@
 
 A terminal-style CV/resume site built with [Hugo](https://gohugo.io/) and the [TerminalCV theme](https://github.com/coolapso/hugo-theme-terminalcv). **Configured for GitHub Pages** — push to `main` and the site deploys automatically.
 
-> **If your live site shows this README instead of the Terminal CV:** In this repo go to **Settings → Pages**. Under "Build and deployment", set **Branch** to **gh-pages** (not main), Folder **/ (root)**, then Save. The built site is on `gh-pages`; `main` only has source files.
+> **If your live site shows this README instead of the Terminal CV:** In this repo go to **Settings → Pages**. Under "Build and deployment", set **Source** to **GitHub Actions** (not "Deploy from a branch"). The workflow deploys the built site via the Pages API.
 
 ## Prerequisites
 
@@ -70,9 +70,9 @@ Edit **`config.yml`** in the project root. All content (name, bio, work, educati
    ```
    **If Git says "password not supported":** GitHub no longer accepts account passwords. Use a [Personal Access Token](https://github.com/settings/tokens) as the password when prompted, or use SSH: `git remote set-url origin git@github.com:Kolajy/personal_site.git` then `git push -u origin main`.
 3. **Enable GitHub Pages:** Repo → **Settings** → **Pages**:
-   - **Build and deployment:** Source = **Deploy from a branch**, Branch = **gh-pages**, Folder = **/ (root)** → Save. (Using **main** here will show the README instead of your site.)
+   - **Build and deployment:** Source = **GitHub Actions** (use the workflow that deploys to Pages).
    - **Custom domain (optional):** Enter your domain (e.g. `www.jaylok.com`) and save; then add the CNAME or A record at your DNS provider as GitHub shows.
-4. The workflow (`.github/workflows/gh-pages.yml`) runs on every push to `main`: it builds Hugo and pushes the site to the `gh-pages` branch. That branch is what Pages serves. Your site will be at:
+4. The workflow (`.github/workflows/gh-pages.yml`) runs on every push to `main`: it builds Hugo, uploads the site as an artifact, and deploys via the Pages deployment API. Your site will be at:
    - **Project site:** `https://kolajy.github.io/personal_site/`
    - **User/org site** (if repo name is `YOUR_USERNAME.github.io`): `https://YOUR_USERNAME.github.io/`
 
@@ -80,12 +80,12 @@ No need to add the theme as a submodule — the workflow fetches it if missing. 
 
 ### Troubleshooting: "404 There isn't a GitHub Pages site here"
 
-1. **Enable Pages and set the branch:** Repo → **Settings** → **Pages** → **Build and deployment** → Source: **Deploy from a branch** → Branch: **gh-pages** → Folder: **/ (root)** → Save.
-2. **Create the gh-pages branch:** The workflow creates it when it runs. Push to `main` to trigger it:
+1. **Enable Pages with Actions:** Repo → **Settings** → **Pages** → **Build and deployment** → Source: **GitHub Actions** → Save.
+2. **Trigger the workflow:** Push to `main` to run the workflow:
    ```powershell
    git push -u origin main
    ```
-3. **Check the workflow:** Repo → **Actions** → open the latest "GitHub Pages" run. It must **succeed** (green). If it fails, open the run and fix the error; the "Deploy to GitHub Pages" step must complete so that `gh-pages` gets the built site.
+3. **Check the workflow:** Repo → **Actions** → open the latest "Deploy Hugo to GitHub Pages" run. Both **build** and **deploy** jobs must **succeed** (green). If it fails, open the run and fix the error.
 4. **Wait a minute** after the workflow succeeds, then open your site (e.g. `https://kolajy.github.io/personal_site/` or your custom domain).
 
 ### Troubleshooting: "Domain does not resolve" (NotServedByPagesError)

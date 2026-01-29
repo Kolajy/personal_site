@@ -1,6 +1,6 @@
-# Build Hugo site and deploy to GitHub Pages
-# After push to main, site is at https://<owner>.github.io/<repo>/
-name: GitHub Pages
+# Build Hugo site and deploy to GitHub Pages (GitHub Actions source)
+# Repo Settings → Pages → Source: GitHub Actions
+name: Deploy Hugo to GitHub Pages
 
 on:
   push:
@@ -11,15 +11,9 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
+    name: Build Hugo site
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
-      cancel-in-progress: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -41,7 +35,6 @@ jobs:
 
       - name: Build
         env:
-          # Set repo variable HUGO_BASEURL (e.g. https://www.jaylok.com/) in Settings → Secrets and variables → Actions to use a custom domain
           CUSTOM_BASEURL: ${{ vars.HUGO_BASEURL }}
         run: |
           if [ -n "$CUSTOM_BASEURL" ]; then
@@ -62,9 +55,27 @@ jobs:
           ls -la public/
           [ -f public/index.html ] || (echo "ERROR: no index.html generated" && exit 1)
 
-      - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          path: ./public
+
+  deploy:
+    name: Deploy to Pages
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
