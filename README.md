@@ -2,6 +2,8 @@
 
 A terminal-style CV/resume site built with [Hugo](https://gohugo.io/) and the [TerminalCV theme](https://github.com/coolapso/hugo-theme-terminalcv). **Configured for GitHub Pages** — push to `main` and the site deploys automatically.
 
+> **If your live site shows this README instead of the Terminal CV:** In this repo go to **Settings → Pages**. Under "Build and deployment", set **Branch** to **gh-pages** (not main), Folder **/ (root)**, then Save. The built site is on `gh-pages`; `main` only has source files.
+
 ## Prerequisites
 
 - [Hugo (extended)](https://gohugo.io/installation/) — required to run and build the site
