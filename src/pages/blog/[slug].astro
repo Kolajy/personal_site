@@ -1,0 +1,51 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={`${post.data.title} — Jay Lok`} description={post.data.excerpt}>
+  <div class="min-h-screen flex flex-col max-w-3xl mx-auto px-6 py-6 font-sans">
+    <header class="flex justify-between items-center py-4 mb-12 border-b border-[var(--border-color)]">
+      <a href="/" class="text-xl font-bold tracking-wide hover:opacity-85 text-[var(--text-primary)]">
+        Jay Lok
+      </a>
+      <a href="/" class="text-sm text-[var(--text-secondary)] hover:underline">
+        Back Home
+      </a>
+    </header>
+
+    <main class="flex-grow">
+      <article class="space-y-6">
+        <a href="/" class="text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:underline mb-4 inline-block">
+          &larr; Back to list
+        </a>
+        <header class="space-y-2">
+          <h1 class="text-3xl font-extrabold text-[var(--text-primary)] font-sans">{post.data.title}</h1>
+          <div class="text-xs text-[var(--text-secondary)] space-x-3">
+            <span>{post.data.date}</span>
+            <span>•</span>
+            <span>{post.data.readTime}</span>
+          </div>
+        </header>
+        <div class="border-t border-[var(--border-color)] pt-6 font-serif leading-relaxed text-[17px] text-[var(--text-primary)] space-y-4">
+          <Content />
+        </div>
+      </article>
+    </main>
+
+    <footer class="mt-20 py-6 border-t border-[var(--border-color)] text-center text-xs text-[var(--text-secondary)]">
+      <p>© 2026 Jay Lok. Powered by Astro & PaperMod aesthetic.</p>
+    </footer>
+  </div>
+</BaseLayout>
