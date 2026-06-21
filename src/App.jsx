@@ -111,7 +111,7 @@ export default function App({ posts = [], projects = [] }) {
           onClick={() => { setActiveTab('home'); setSelectedPost(null); }}
           className="text-xl font-bold tracking-wide hover:opacity-85 text-[var(--text-primary)] cursor-pointer"
         >
-          Jay Lok
+          Jay's space
         </button>
         
         <div className="flex items-center space-x-6">
@@ -127,6 +127,12 @@ export default function App({ posts = [], projects = [] }) {
               className={`hover:underline cursor-pointer ${activeTab === 'projects' && !selectedPost ? 'underline text-[var(--text-primary)] font-medium' : 'text-[var(--text-secondary)]'}`}
             >
               Projects
+            </button>
+            <button 
+              onClick={() => { setActiveTab('about'); setSelectedPost(null); }}
+              className={`hover:underline cursor-pointer ${activeTab === 'about' && !selectedPost ? 'underline text-[var(--text-primary)] font-medium' : 'text-[var(--text-secondary)]'}`}
+            >
+              About
             </button>
           </nav>
           
@@ -185,9 +191,6 @@ export default function App({ posts = [], projects = [] }) {
               </div>
               <div className="space-y-2">
                 <h1 className="text-3xl font-extrabold text-[var(--text-primary)]">Jay Lok</h1>
-                <p className="text-[15px] text-[var(--text-secondary)] max-w-md leading-relaxed">
-                  Passionate explorer who loves building 0 to 1 and loves learning and understanding the world around us.
-                </p>
               </div>
               
               {/* Minimal social links */}
@@ -287,6 +290,18 @@ export default function App({ posts = [], projects = [] }) {
               ))}
             </div>
           </div>
+        ) : activeTab === 'about' ? (
+          /* ABOUT ME VIEW */
+          <div className="space-y-8">
+            <header className="space-y-1">
+              <h1 className="text-2xl font-extrabold text-[var(--text-primary)]">About Me</h1>
+            </header>
+            <div className="prose text-[15px] text-[var(--text-secondary)] leading-relaxed max-w-xl">
+              <p>
+                Passionate explorer who loves building 0 to 1 and loves learning and understanding the world around us.
+              </p>
+            </div>
+          </div>
         ) : (
           /* MINIMAL BLOG LIST VIEW */
           <div className="space-y-8">
@@ -323,7 +338,7 @@ export default function App({ posts = [], projects = [] }) {
 
       {/* PaperMod Footer */}
       <footer className="mt-20 py-6 border-t border-[var(--border-color)] text-center text-xs text-[var(--text-secondary)]">
-        <p>© 2026 Jay Lok. Powered by React & PaperMod aesthetic.</p>
+        <p>© 2026 Jay's space. Powered by React & PaperMod aesthetic.</p>
       </footer>
     </div>
   );
