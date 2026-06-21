@@ -292,13 +292,19 @@ export default function App({ posts = [], projects = [] }) {
           </div>
         ) : activeTab === 'about' ? (
           /* ABOUT ME VIEW */
-          <div className="space-y-8">
+          <div className="space-y-6">
             <header className="space-y-1">
-              <h1 className="text-2xl font-extrabold text-[var(--text-primary)]">About Me</h1>
+              <h1 className="text-2xl font-extrabold text-[var(--text-primary)]">Who Am I</h1>
             </header>
-            <div className="prose text-[15px] text-[var(--text-secondary)] leading-relaxed max-w-xl">
+            <div className="prose text-[15px] text-[var(--text-secondary)] leading-relaxed max-w-xl space-y-4">
               <p>
-                Passionate explorer who loves building 0 to 1 and loves learning and understanding the world around us.
+                I'm an engineer who's worked across the stack — mostly backend, data infrastructure, and systems, with a recent focus on building products and services powered by AI.
+              </p>
+              <p>
+                I love building from 0 to 1, and I've got a real passion for breaking complex things down into something simple.
+              </p>
+              <p>
+                Outside of work, I'm usually bouldering, hiking, or biking. Lately I've also been spending a lot of time on the business side of things — digging into 10-Ks, studying fundamentals, and trying to understand what actually separates the businesses that win from the ones that don't.
               </p>
             </div>
           </div>
