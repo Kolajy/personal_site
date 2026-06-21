@@ -344,7 +344,7 @@ export default function App({ posts = [], projects = [] }) {
 
       {/* PaperMod Footer */}
       <footer className="mt-20 py-6 border-t border-[var(--border-color)] text-center text-xs text-[var(--text-secondary)]">
-        <p>© 2026 Jay's space. Powered by React & PaperMod aesthetic.</p>
+        <p>© 2026 Jay's space.</p>
       </footer>
     </div>
   );
