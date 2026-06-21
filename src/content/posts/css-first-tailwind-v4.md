@@ -3,6 +3,7 @@ title: "Embracing CSS-First Configuration with Tailwind CSS v4"
 excerpt: "A look into Tailwind v4's new architecture, how it simplifies configuration using pure CSS, and its massive performance improvements."
 date: "2026-05-28"
 readTime: "4 min read"
+tags: ["CSS", "Tailwind CSS", "Frontend"]
 ---
 
 Tailwind CSS v4 introduces a complete rewrite of the compiler, focusing on speed and a new configuration style that moves away from JS config files (`tailwind.config.js`) and embraces CSS-first configuration.

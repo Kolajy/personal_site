@@ -3,6 +3,7 @@ title: "Building Interactive AI Agents in React Applications"
 excerpt: "How to orchestrate client-side AI workflows, manage asynchronous agent states, and build a beautiful, reactive interface for LLM pipelines."
 date: "2026-06-15"
 readTime: "6 min read"
+tags: ["React", "AI", "Frontend"]
 ---
 
 Building complex LLM systems often focuses entirely on the backend, but the frontend is where users actually interact with agents. Orchestrating multi-turn interactions, showing intermediate reasoning states, and handling streaming responses are key tasks for modern web developers.

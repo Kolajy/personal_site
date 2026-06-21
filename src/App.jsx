@@ -83,6 +83,7 @@ export default function App({ posts = [], projects = [] }) {
   const [activeTab, setActiveTab] = useState('home'); // 'home', 'projects', 'blog'
   const [selectedPost, setSelectedPost] = useState(null);
   const [selectedTag, setSelectedTag] = useState(null);
+  const [selectedBlogTag, setSelectedBlogTag] = useState(null);
   const [isDark, setIsDark] = useState(true);
 
   // Sync state with HTML class
@@ -102,6 +103,11 @@ export default function App({ posts = [], projects = [] }) {
   const filteredProjects = selectedTag
     ? projects.filter(p => p.tags.includes(selectedTag))
     : projects;
+
+  const allBlogTags = Array.from(new Set(posts.flatMap(p => p.tags || [])));
+  const filteredPosts = selectedBlogTag
+    ? posts.filter(p => (p.tags || []).includes(selectedBlogTag))
+    : posts;
 
   return (
     <div className="min-h-screen flex flex-col max-w-3xl mx-auto px-6 py-6 font-sans">
@@ -171,10 +177,15 @@ export default function App({ posts = [], projects = [] }) {
             </button>
             <header className="space-y-2">
               <h1 className="text-3xl font-extrabold text-[var(--text-primary)] font-sans">{selectedPost.title}</h1>
-              <div className="text-xs text-[var(--text-secondary)] space-x-3">
+              <div className="text-xs text-[var(--text-secondary)] space-x-3 flex flex-wrap items-center gap-y-1">
                 <span>{selectedPost.date}</span>
                 <span>•</span>
                 <span>{selectedPost.readTime}</span>
+                {selectedPost.tags && selectedPost.tags.map(t => (
+                  <span key={t} className="text-[10px] bg-[var(--code-bg)] border border-[var(--border-color)] px-1.5 py-0.5 rounded text-[var(--text-secondary)] ml-1">
+                    {t}
+                  </span>
+                ))}
               </div>
             </header>
             <div className="border-t border-[var(--border-color)] pt-6">
@@ -311,8 +322,37 @@ export default function App({ posts = [], projects = [] }) {
               <p className="text-xs text-[var(--text-secondary)]">A chronological list of posts and publications.</p>
             </header>
 
-            <div className="space-y-6 border-t border-[var(--border-color)] pt-6">
-              {posts.map(post => (
+            {/* Blog Tag Filters */}
+            {allBlogTags.length > 0 && (
+              <div className="flex flex-wrap gap-1.5 border-b border-[var(--border-color)] pb-4 mb-6">
+                <button
+                  onClick={() => setSelectedBlogTag(null)}
+                  className={`px-2.5 py-1 rounded text-xs border cursor-pointer transition ${
+                    !selectedBlogTag 
+                      ? 'bg-[var(--text-primary)] text-[var(--bg-primary)] border-transparent' 
+                      : 'bg-transparent border-[var(--border-color)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                  }`}
+                >
+                  All
+                </button>
+                {allBlogTags.map(tag => (
+                  <button
+                    key={tag}
+                    onClick={() => setSelectedBlogTag(tag)}
+                    className={`px-2.5 py-1 rounded text-xs border cursor-pointer transition ${
+                      selectedBlogTag === tag 
+                        ? 'bg-[var(--text-primary)] text-[var(--bg-primary)] border-transparent' 
+                        : 'bg-transparent border-[var(--border-color)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                    }`}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            <div className="space-y-6">
+              {filteredPosts.map(post => (
                 <article key={post.id} className="space-y-1">
                   <header>
                     <h2 
@@ -321,10 +361,22 @@ export default function App({ posts = [], projects = [] }) {
                     >
                       {post.title}
                     </h2>
-                    <div className="text-xs text-[var(--text-secondary)] space-x-2 mt-0.5">
+                    <div className="text-xs text-[var(--text-secondary)] space-x-2 mt-0.5 flex flex-wrap items-center gap-y-1">
                       <span>{post.date}</span>
                       <span>•</span>
                       <span>{post.readTime}</span>
+                      {post.tags && post.tags.map(t => (
+                        <span 
+                          key={t} 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedBlogTag(t);
+                          }}
+                          className="text-[10px] bg-[var(--code-bg)] border border-[var(--border-color)] px-1.5 py-0.5 rounded text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--text-secondary)] transition-colors duration-150 cursor-pointer ml-1"
+                        >
+                          {t}
+                        </span>
+                      ))}
                     </div>
                   </header>
                   <p className="text-sm text-[var(--text-secondary)] leading-relaxed line-clamp-2 pt-1">

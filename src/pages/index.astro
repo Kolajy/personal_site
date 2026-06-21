@@ -14,6 +14,7 @@ const postsData = rawPosts.map(post => ({
   date: post.data.date,
   readTime: post.data.readTime,
   content: post.body,
+  tags: post.data.tags || [],
 }));
 
 const projectsData = rawProjects.map(proj => ({

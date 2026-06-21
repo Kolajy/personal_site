@@ -8,6 +8,7 @@ const postsCollection = defineCollection({
     excerpt: z.string(),
     date: z.string(),
     readTime: z.string(),
+    tags: z.array(z.string()).default([]),
   }),
 });
 

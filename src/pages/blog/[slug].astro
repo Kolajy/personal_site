@@ -32,10 +32,15 @@ const { Content } = await render(post);
         </a>
         <header class="space-y-2">
           <h1 class="text-3xl font-extrabold text-[var(--text-primary)] font-sans">{post.data.title}</h1>
-          <div class="text-xs text-[var(--text-secondary)] space-x-3">
+          <div class="text-xs text-[var(--text-secondary)] space-x-3 flex flex-wrap items-center gap-y-1">
             <span>{post.data.date}</span>
             <span>•</span>
             <span>{post.data.readTime}</span>
+            {post.data.tags && post.data.tags.map(t => (
+              <span class="text-[10px] bg-[var(--code-bg)] border border-[var(--border-color)] px-1.5 py-0.5 rounded text-[var(--text-secondary)]">
+                {t}
+              </span>
+            ))}
           </div>
         </header>
         <div class="border-t border-[var(--border-color)] pt-6 font-serif leading-relaxed text-[17px] text-[var(--text-primary)] space-y-4">
