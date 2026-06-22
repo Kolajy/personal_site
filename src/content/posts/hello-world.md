@@ -1,6 +1,6 @@
 ---
 title: "Hello World!"
-excerpt: "Intro Post"
+excerpt: ""
 date: "2024-09-22"
 readTime: "2 min read"
 tags: ["Engineering", "Business", "Life"]
@@ -15,9 +15,8 @@ I haven't settled on the topics or a clear cadence yet, but hopefully, whatever 
 
 Later!
 
-```text
-    _._     _,-'""`-._
-   (,-.`._,'(       |\`-/|
-       `-.-' \ )-`( , o o)
-             `-    \`_`"'-
-```
+&nbsp;&nbsp;&nbsp;&nbsp;\_.\_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\_,-'""\`-.\_<br>
+&nbsp;&nbsp;&nbsp;(,-.\`.\_,'(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|\\\`-/|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\`-.-'&nbsp;\\&nbsp;)-\`( , o o)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\`-    \\\_\`"'-
+
