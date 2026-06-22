@@ -311,6 +311,31 @@ export default function App({ posts = [], projects = [] }) {
                   desc: "A cozy mountain pasture refuge under the towering Alpine peaks."
                 },
                 {
+                  src: "/images/lake-town.jpg",
+                  title: "Lake Annecy Village",
+                  desc: "A picturesque village nestled between alpine mountains and the crystal clear lake."
+                },
+                {
+                  src: "/images/guangzhou-night.jpg",
+                  title: "Guangzhou Skyline",
+                  desc: "Looking down onto illuminated skyscrapers, bridges, and the Pearl River at night."
+                },
+                {
+                  src: "/images/rocky-beach.png",
+                  title: "Rocky Seashore",
+                  desc: "Crashing white waves against textured coastal boulders under a bright sky."
+                },
+                {
+                  src: "/images/city-overlook-night.jpg",
+                  title: "Coastal City Night View",
+                  desc: "An expansive overlook of city lights curving along the dark bay at dusk."
+                },
+                {
+                  src: "/images/light-deer.png",
+                  title: "Illuminated Deer Sculptures",
+                  desc: "Artistic wire-frame deer figures shining brightly in a dark, mysterious forest."
+                },
+                {
                   src: "/images/forest-mountains.png",
                   title: "Blue Ridge Forests",
                   desc: "Panoramic mountain forest ridges stretching out into the distance."
