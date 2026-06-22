@@ -301,9 +301,6 @@ export default function App({ posts = [], projects = [] }) {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
               {[
                 {
-                  src: "/images/yosemite-valley.jpg"
-                },
-                {
                   src: "/images/lake-town.jpg"
                 },
                 {
@@ -338,6 +335,10 @@ export default function App({ posts = [], projects = [] }) {
                 },
                 {
                   src: "/images/mountain-panorama.png",
+                  isPanorama: true
+                },
+                {
+                  src: "/images/yosemite-valley.jpg",
                   isPanorama: true
                 }
               ].map((photo, index) => (
