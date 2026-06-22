@@ -84,6 +84,7 @@ export default function App({ posts = [], projects = [] }) {
   const [selectedPost, setSelectedPost] = useState(null);
   const [selectedTag, setSelectedTag] = useState(null);
   const [selectedBlogTag, setSelectedBlogTag] = useState(null);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [isDark, setIsDark] = useState(true);
 
   // Sync state with HTML class
@@ -295,7 +296,6 @@ export default function App({ posts = [], projects = [] }) {
           <div className="space-y-8">
             <header className="space-y-1">
               <h1 className="text-2xl font-extrabold text-[var(--text-primary)]">Photos</h1>
-              <p className="text-xs text-[var(--text-secondary)]">Moments captured during hikes, travels, and outdoor climbs.</p>
             </header>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
@@ -343,7 +343,8 @@ export default function App({ posts = [], projects = [] }) {
               ].map((photo, index) => (
                 <div 
                   key={index}
-                  className={`group relative overflow-hidden bg-[var(--code-bg)] border border-[var(--border-color)] transition-all duration-300 hover:border-[var(--text-secondary)] ${
+                  onClick={() => setSelectedPhoto(photo.src)}
+                  className={`group relative overflow-hidden bg-[var(--code-bg)] border border-[var(--border-color)] transition-all duration-300 hover:border-[var(--text-secondary)] cursor-zoom-in ${
                     photo.isPanorama 
                       ? 'col-span-2 md:col-span-3 aspect-[21/9]' 
                       : 'aspect-square'
@@ -358,6 +359,35 @@ export default function App({ posts = [], projects = [] }) {
                 </div>
               ))}
             </div>
+
+            {/* LIGHTBOX OVERLAY */}
+            {selectedPhoto && (
+              <div 
+                className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-xs p-4 cursor-zoom-out"
+                onClick={() => setSelectedPhoto(null)}
+              >
+                <button 
+                  className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors p-2 cursor-pointer z-51"
+                  onClick={(e) => { e.stopPropagation(); setSelectedPhoto(null); }}
+                  aria-label="Close Lightbox"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+                <div 
+                  className="relative max-w-5xl max-h-[90vh] w-full flex items-center justify-center"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <img 
+                    src={selectedPhoto} 
+                    alt="Enlarged gallery photo" 
+                    className="max-w-full max-h-[85vh] object-contain rounded-md select-none border border-neutral-800"
+                  />
+                </div>
+              </div>
+            )}
           </div>
         ) : activeTab === 'about' ? (
           /* ABOUT ME VIEW */
