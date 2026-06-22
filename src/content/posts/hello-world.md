@@ -1,24 +1,16 @@
 ---
-title: "Hello World: Welcome to Jay's Space"
-excerpt: "A brief look into what I'm building, what I'm learning, and what to expect on this corner of the internet."
-date: "2026-06-22"
+title: "Hello World!"
+excerpt: "Intro Post"
+date: "2024-09-22"
 readTime: "2 min read"
 tags: ["Engineering", "Business", "Life"]
 ---
 
-Welcome to **Jay's space**!
 
-This is a corner of the internet where I'll be sharing my thoughts on software engineering, product design, business strategy, and whatever else I'm currently learning.
+It seems counterintuitive to build out a blog these days when everyone's attention is on LLM-produced content. I'm not sure where I want this to go, but I figure it can't hurt to get some more practice writing.
 
-### What I Do
+This is my corner of the internet where I'll be sharing my thoughts publicly. It feels a bit scary, and I don't really know if anyone will ever come across this site, but there are a lot of people on the web and I haven't set up my `robots.txt` yet, so who knows. 
 
-I'm a software engineer who loves building things from **0 to 1**. My background spans the stack, from backend systems and data infrastructure to building AI-driven products.
+I haven't settled on the topics or a clear cadence yet, but hopefully, whatever ends up here will be an enjoyable read.
 
-### What to Expect Here
 
-I plan to write about:
-- **Engineering & AI**: Orchestrating agentic workflows and building practical AI-powered services.
-- **Business Fundamentals**: Thoughts and insights from digging into company 10-Ks, analyzing business models, and studying what separates winning companies.
-- **Life Outside Work**: Occasional notes on bouldering, hiking, or biking.
-
-Thanks for stopping by. More to come!
