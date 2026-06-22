@@ -323,13 +323,6 @@ export default function App({ posts = [], projects = [] }) {
                   src: "/images/banyan-steps.png"
                 },
                 {
-                  src: "/images/forest-mountains.png",
-                  isPanorama: true
-                },
-                {
-                  src: "/images/misty-canyon.png"
-                },
-                {
                   src: "/images/yosemite-cliff.jpg",
                   isPanorama: true
                 },
