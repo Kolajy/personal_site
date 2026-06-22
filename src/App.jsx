@@ -336,6 +336,11 @@ export default function App({ posts = [], projects = [] }) {
                   desc: "Artistic wire-frame deer figures shining brightly in a dark, mysterious forest."
                 },
                 {
+                  src: "/images/banyan-steps.png",
+                  title: "Banyan Tree Steps",
+                  desc: "Stone steps climbing past a sprawling, ancient banyan tree with hanging vines."
+                },
+                {
                   src: "/images/forest-mountains.png",
                   title: "Blue Ridge Forests",
                   desc: "Panoramic mountain forest ridges stretching out into the distance."
