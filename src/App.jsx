@@ -306,7 +306,8 @@ export default function App({ posts = [], projects = [] }) {
                 },
                 {
                   src: "/images/swiss-alps-chalet.png",
-                  title: "Swiss Alps Chalet"
+                  title: "Swiss Alps Chalet",
+                  isPanorama: true
                 },
                 {
                   src: "/images/lake-town.jpg",
@@ -334,11 +335,13 @@ export default function App({ posts = [], projects = [] }) {
                 },
                 {
                   src: "/images/forest-mountains.png",
-                  title: "Blue Ridge Forests"
+                  title: "Blue Ridge Forests",
+                  isPanorama: true
                 },
                 {
                   src: "/images/yosemite-cliff.jpg",
-                  title: "Glacier Point View"
+                  title: "Glacier Point View",
+                  isPanorama: true
                 },
                 {
                   src: "/images/mountain-panorama.png",
@@ -351,7 +354,11 @@ export default function App({ posts = [], projects = [] }) {
               ].map((photo, index) => (
                 <div 
                   key={index}
-                  className="group relative aspect-square overflow-hidden bg-[var(--code-bg)] border border-[var(--border-color)] transition-all duration-300 hover:border-[var(--text-secondary)]"
+                  className={`group relative overflow-hidden bg-[var(--code-bg)] border border-[var(--border-color)] transition-all duration-300 hover:border-[var(--text-secondary)] ${
+                    photo.isPanorama 
+                      ? 'col-span-2 md:col-span-3 aspect-[21/9]' 
+                      : 'aspect-square'
+                  }`}
                 >
                   <img 
                     src={photo.src} 
