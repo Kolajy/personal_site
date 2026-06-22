@@ -301,55 +301,43 @@ export default function App({ posts = [], projects = [] }) {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
               {[
                 {
-                  src: "/images/yosemite-valley.jpg",
-                  title: "Yosemite Valley"
+                  src: "/images/yosemite-valley.jpg"
+                },
+                {
+                  src: "/images/lake-town.jpg"
+                },
+                {
+                  src: "/images/guangzhou-night.jpg"
+                },
+                {
+                  src: "/images/rocky-beach.png"
+                },
+                {
+                  src: "/images/city-overlook-night.jpg"
+                },
+                {
+                  src: "/images/light-deer.png"
+                },
+                {
+                  src: "/images/banyan-steps.png"
+                },
+                {
+                  src: "/images/mountain-panorama.png"
+                },
+                {
+                  src: "/images/misty-canyon.png"
                 },
                 {
                   src: "/images/swiss-alps-chalet.png",
-                  title: "Swiss Alps Chalet",
                   isPanorama: true
                 },
                 {
-                  src: "/images/lake-town.jpg",
-                  title: "Lake Annecy Village"
-                },
-                {
-                  src: "/images/guangzhou-night.jpg",
-                  title: "Guangzhou Skyline"
-                },
-                {
-                  src: "/images/rocky-beach.png",
-                  title: "Rocky Seashore"
-                },
-                {
-                  src: "/images/city-overlook-night.jpg",
-                  title: "Coastal City Night View"
-                },
-                {
-                  src: "/images/light-deer.png",
-                  title: "Illuminated Deer Sculptures"
-                },
-                {
-                  src: "/images/banyan-steps.png",
-                  title: "Banyan Tree Steps"
-                },
-                {
                   src: "/images/forest-mountains.png",
-                  title: "Blue Ridge Forests",
                   isPanorama: true
                 },
                 {
                   src: "/images/yosemite-cliff.jpg",
-                  title: "Glacier Point View",
                   isPanorama: true
-                },
-                {
-                  src: "/images/mountain-panorama.png",
-                  title: "High Sierra Panorama"
-                },
-                {
-                  src: "/images/misty-canyon.png",
-                  title: "Misty Valley River"
                 }
               ].map((photo, index) => (
                 <div 
@@ -362,13 +350,10 @@ export default function App({ posts = [], projects = [] }) {
                 >
                   <img 
                     src={photo.src} 
-                    alt={photo.title}
+                    alt="Gallery photo"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
-                    <p className="text-white text-xs font-semibold tracking-wide line-clamp-2">{photo.title}</p>
-                  </div>
                 </div>
               ))}
             </div>
