@@ -310,6 +310,10 @@ export default function App({ posts = [], projects = [] }) {
                   src: "/images/rocky-beach.png"
                 },
                 {
+                  src: "/images/swiss-alps-chalet.png",
+                  isPanorama: true
+                },
+                {
                   src: "/images/city-overlook-night.jpg"
                 },
                 {
@@ -319,15 +323,11 @@ export default function App({ posts = [], projects = [] }) {
                   src: "/images/banyan-steps.png"
                 },
                 {
-                  src: "/images/misty-canyon.png"
-                },
-                {
-                  src: "/images/swiss-alps-chalet.png",
-                  isPanorama: true
-                },
-                {
                   src: "/images/forest-mountains.png",
                   isPanorama: true
+                },
+                {
+                  src: "/images/misty-canyon.png"
                 },
                 {
                   src: "/images/yosemite-cliff.jpg",
