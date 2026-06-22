@@ -135,6 +135,12 @@ export default function App({ posts = [], projects = [] }) {
               Projects
             </button>
             <button 
+              onClick={() => { setActiveTab('photos'); setSelectedPost(null); }}
+              className={`hover:underline cursor-pointer ${activeTab === 'photos' && !selectedPost ? 'underline text-[var(--text-primary)] font-medium' : 'text-[var(--text-secondary)]'}`}
+            >
+              Photos
+            </button>
+            <button 
               onClick={() => { setActiveTab('about'); setSelectedPost(null); }}
               className={`hover:underline cursor-pointer ${activeTab === 'about' && !selectedPost ? 'underline text-[var(--text-primary)] font-medium' : 'text-[var(--text-secondary)]'}`}
             >
@@ -281,6 +287,67 @@ export default function App({ posts = [], projects = [] }) {
                     ))}
                   </div>
                 </article>
+              ))}
+            </div>
+          </div>
+        ) : activeTab === 'photos' ? (
+          /* PHOTOS GALLERY VIEW */
+          <div className="space-y-8">
+            <header className="space-y-1">
+              <h1 className="text-2xl font-extrabold text-[var(--text-primary)]">Photos</h1>
+              <p className="text-xs text-[var(--text-secondary)]">Moments captured during hikes, travels, and outdoor climbs.</p>
+            </header>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {[
+                {
+                  src: "/images/yosemite-valley.jpg",
+                  title: "Yosemite Valley",
+                  desc: "Tunnel view overlooking El Capitan, Half Dome, and Bridalveil Fall."
+                },
+                {
+                  src: "/images/swiss-alps-chalet.png",
+                  title: "Swiss Alps Chalet",
+                  desc: "A cozy mountain pasture refuge under the towering Alpine peaks."
+                },
+                {
+                  src: "/images/forest-mountains.png",
+                  title: "Blue Ridge Forests",
+                  desc: "Panoramic mountain forest ridges stretching out into the distance."
+                },
+                {
+                  src: "/images/yosemite-cliff.jpg",
+                  title: "Glacier Point View",
+                  desc: "Dramatic panorama of Yosemite Valley and high sierra peaks from above."
+                },
+                {
+                  src: "/images/mountain-panorama.png",
+                  title: "High Sierra Panorama",
+                  desc: "Golden hour light striking Yosemite valley floor and surrounding granite cliffs."
+                },
+                {
+                  src: "/images/misty-canyon.png",
+                  title: "Misty Valley River",
+                  desc: "A peaceful river running through the green valley floor under giant cliffs."
+                }
+              ].map((photo, index) => (
+                <div 
+                  key={index}
+                  className="group bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-lg overflow-hidden transition-all duration-300 hover:border-[var(--text-secondary)]"
+                >
+                  <div className="overflow-hidden aspect-video relative bg-[var(--code-bg)]">
+                    <img 
+                      src={photo.src} 
+                      alt={photo.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-4 space-y-1">
+                    <h3 className="font-bold text-[var(--text-primary)] text-base">{photo.title}</h3>
+                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">{photo.desc}</p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
