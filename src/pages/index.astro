@@ -17,14 +17,26 @@ const postsData = rawPosts.map(post => ({
   tags: post.data.tags || [],
 }));
 
-const projectsData = rawProjects.map(proj => ({
-  id: proj.id,
-  title: proj.data.title,
-  description: proj.data.description,
-  tags: proj.data.tags,
-  links: proj.data.links || {},
-  featured: proj.data.featured,
-}));
+const desiredOrder = ['cooking-alchemist', 'warmly', 'omnimo'];
+
+const projectsData = rawProjects
+  .map(proj => ({
+    id: proj.id,
+    title: proj.data.title,
+    description: proj.data.description,
+    tags: proj.data.tags,
+    links: proj.data.links || {},
+    featured: proj.data.featured,
+  }))
+  .sort((a, b) => {
+    const aIndex = desiredOrder.indexOf(a.id);
+    const bIndex = desiredOrder.indexOf(b.id);
+    
+    if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
+    if (aIndex !== -1) return -1;
+    if (bIndex !== -1) return 1;
+    return 0;
+  });
 ---
 
 <BaseLayout>
