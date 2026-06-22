@@ -1,10 +1,10 @@
 ---
 title: "FinTools"
-description: "A comprehensive dashboard for fundamental analysis, offering 10-K parsing, company metrics comparison, and financial health calculators."
-tags: ["Finance", "React", "TypeScript", "Tailwind CSS", "Vercel"]
+description: "A multi-agent fundamental analysis suite employing specialized LLM business agents to parse 10-Ks, analyze metrics, and run financial health checks."
+tags: ["Finance", "Multi-Agent", "React", "TypeScript", "Vercel"]
 links:
   live: "https://fintools.jaylok.com"
 featured: true
 ---
 
-FinTools is built for investors who want to study business fundamentals without manual spreadsheet entry. It automatically extracts key items from SEC filings (10-Ks and 10-Qs), performs financial ratio analysis, and visualizes company metric trends over time.
+FinTools leverages a collaborative multi-agent architecture where specialized business agents perform fundamental analysis. Dedicated agents parse SEC filings (10-Ks & 10-Qs), calculate financial ratios, and synthesize investment briefs, eliminating manual spreadsheet entry for investors.
