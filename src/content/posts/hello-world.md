@@ -13,4 +13,11 @@ This is my corner of the internet where I'll be sharing my thoughts publicly. It
 
 I haven't settled on the topics or a clear cadence yet, but hopefully, whatever ends up here will be an enjoyable read.
 
+Later!
 
+```text
+    _._     _,-'""`-._
+   (,-.`._,'(       |\`-/|
+       `-.-' \ )-`( , o o)
+             `-    \`_`"'-
+```
