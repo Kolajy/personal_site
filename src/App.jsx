@@ -322,9 +322,6 @@ export default function App({ posts = [], projects = [] }) {
                   src: "/images/banyan-steps.png"
                 },
                 {
-                  src: "/images/mountain-panorama.png"
-                },
-                {
                   src: "/images/misty-canyon.png"
                 },
                 {
@@ -337,6 +334,10 @@ export default function App({ posts = [], projects = [] }) {
                 },
                 {
                   src: "/images/yosemite-cliff.jpg",
+                  isPanorama: true
+                },
+                {
+                  src: "/images/mountain-panorama.png",
                   isPanorama: true
                 }
               ].map((photo, index) => (
