@@ -298,84 +298,69 @@ export default function App({ posts = [], projects = [] }) {
               <p className="text-xs text-[var(--text-secondary)]">Moments captured during hikes, travels, and outdoor climbs.</p>
             </header>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
               {[
                 {
                   src: "/images/yosemite-valley.jpg",
-                  title: "Yosemite Valley",
-                  desc: "Tunnel view overlooking El Capitan, Half Dome, and Bridalveil Fall."
+                  title: "Yosemite Valley"
                 },
                 {
                   src: "/images/swiss-alps-chalet.png",
-                  title: "Swiss Alps Chalet",
-                  desc: "A cozy mountain pasture refuge under the towering Alpine peaks."
+                  title: "Swiss Alps Chalet"
                 },
                 {
                   src: "/images/lake-town.jpg",
-                  title: "Lake Annecy Village",
-                  desc: "A picturesque village nestled between alpine mountains and the crystal clear lake."
+                  title: "Lake Annecy Village"
                 },
                 {
                   src: "/images/guangzhou-night.jpg",
-                  title: "Guangzhou Skyline",
-                  desc: "Looking down onto illuminated skyscrapers, bridges, and the Pearl River at night."
+                  title: "Guangzhou Skyline"
                 },
                 {
                   src: "/images/rocky-beach.png",
-                  title: "Rocky Seashore",
-                  desc: "Crashing white waves against textured coastal boulders under a bright sky."
+                  title: "Rocky Seashore"
                 },
                 {
                   src: "/images/city-overlook-night.jpg",
-                  title: "Coastal City Night View",
-                  desc: "An expansive overlook of city lights curving along the dark bay at dusk."
+                  title: "Coastal City Night View"
                 },
                 {
                   src: "/images/light-deer.png",
-                  title: "Illuminated Deer Sculptures",
-                  desc: "Artistic wire-frame deer figures shining brightly in a dark, mysterious forest."
+                  title: "Illuminated Deer Sculptures"
                 },
                 {
                   src: "/images/banyan-steps.png",
-                  title: "Banyan Tree Steps",
-                  desc: "Stone steps climbing past a sprawling, ancient banyan tree with hanging vines."
+                  title: "Banyan Tree Steps"
                 },
                 {
                   src: "/images/forest-mountains.png",
-                  title: "Blue Ridge Forests",
-                  desc: "Panoramic mountain forest ridges stretching out into the distance."
+                  title: "Blue Ridge Forests"
                 },
                 {
                   src: "/images/yosemite-cliff.jpg",
-                  title: "Glacier Point View",
-                  desc: "Dramatic panorama of Yosemite Valley and high sierra peaks from above."
+                  title: "Glacier Point View"
                 },
                 {
                   src: "/images/mountain-panorama.png",
-                  title: "High Sierra Panorama",
-                  desc: "Golden hour light striking Yosemite valley floor and surrounding granite cliffs."
+                  title: "High Sierra Panorama"
                 },
                 {
                   src: "/images/misty-canyon.png",
-                  title: "Misty Valley River",
-                  desc: "A peaceful river running through the green valley floor under giant cliffs."
+                  title: "Misty Valley River"
                 }
               ].map((photo, index) => (
                 <div 
                   key={index}
-                  className="group bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-lg overflow-hidden transition-all duration-300 hover:border-[var(--text-secondary)]"
+                  className="group relative aspect-square overflow-hidden bg-[var(--code-bg)] border border-[var(--border-color)] transition-all duration-300 hover:border-[var(--text-secondary)]"
                 >
-                  <div className="overflow-hidden aspect-video relative bg-[var(--code-bg)]">
-                    <img 
-                      src={photo.src} 
-                      alt={photo.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-4 space-y-1">
-                    <h3 className="font-bold text-[var(--text-primary)] text-base">{photo.title}</h3>
-                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed">{photo.desc}</p>
+                  <img 
+                    src={photo.src} 
+                    alt={photo.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                    <p className="text-white text-xs font-semibold tracking-wide line-clamp-2">{photo.title}</p>
                   </div>
                 </div>
               ))}
