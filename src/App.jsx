@@ -79,7 +79,7 @@ function RenderMarkdown({ content }) {
   );
 }
 
-export default function App({ posts = [], projects = [] }) {
+export default function App({ posts = [], projects = [], photos = [] }) {
   const [activeTab, setActiveTab] = useState('home'); // 'home', 'projects', 'blog'
   const [selectedPost, setSelectedPost] = useState(null);
   const [selectedTag, setSelectedTag] = useState(null);
@@ -299,42 +299,7 @@ export default function App({ posts = [], projects = [] }) {
             </header>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-              {[
-                {
-                  src: "/images/lake-town.jpg"
-                },
-                {
-                  src: "/images/guangzhou-night.jpg"
-                },
-                {
-                  src: "/images/rocky-beach.png"
-                },
-                {
-                  src: "/images/swiss-alps-chalet.png",
-                  isPanorama: true
-                },
-                {
-                  src: "/images/city-overlook-night.jpg"
-                },
-                {
-                  src: "/images/light-deer.png"
-                },
-                {
-                  src: "/images/banyan-steps.png"
-                },
-                {
-                  src: "/images/yosemite-cliff.jpg",
-                  isPanorama: true
-                },
-                {
-                  src: "/images/mountain-panorama.png",
-                  isPanorama: true
-                },
-                {
-                  src: "/images/yosemite-valley.jpg",
-                  isPanorama: true
-                }
-              ].map((photo, index) => (
+              {photos.map((photo, index) => (
                 <div 
                   key={index}
                   onClick={() => setSelectedPhoto(photo.src)}

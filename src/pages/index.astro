@@ -3,6 +3,18 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import App from '../App.jsx';
 
+// Import image assets for optimization
+import lakeTownImg from '../assets/images/lake-town.jpg';
+import guangzhouNightImg from '../assets/images/guangzhou-night.jpg';
+import rockyBeachImg from '../assets/images/rocky-beach.png';
+import swissAlpsChaletImg from '../assets/images/swiss-alps-chalet.png';
+import cityOverlookNightImg from '../assets/images/city-overlook-night.jpg';
+import lightDeerImg from '../assets/images/light-deer.png';
+import banyanStepsImg from '../assets/images/banyan-steps.png';
+import yosemiteCliffImg from '../assets/images/yosemite-cliff.jpg';
+import mountainPanoramaImg from '../assets/images/mountain-panorama.png';
+import yosemiteValleyImg from '../assets/images/yosemite-valley.jpg';
+
 const rawPosts = await getCollection('posts');
 const rawProjects = await getCollection('projects');
 
@@ -37,8 +49,21 @@ const projectsData = rawProjects
     if (bIndex !== -1) return 1;
     return 0;
   });
+
+const photosData = [
+  { src: lakeTownImg.src },
+  { src: guangzhouNightImg.src },
+  { src: rockyBeachImg.src },
+  { src: swissAlpsChaletImg.src, isPanorama: true },
+  { src: cityOverlookNightImg.src },
+  { src: lightDeerImg.src },
+  { src: banyanStepsImg.src },
+  { src: yosemiteCliffImg.src, isPanorama: true },
+  { src: mountainPanoramaImg.src, isPanorama: true },
+  { src: yosemiteValleyImg.src, isPanorama: true }
+];
 ---
 
 <BaseLayout>
-  <App posts={postsData} projects={projectsData} client:load />
+  <App posts={postsData} projects={projectsData} photos={photosData} client:load />
 </BaseLayout>
