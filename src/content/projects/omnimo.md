@@ -4,7 +4,7 @@ description: "A productivity-focused Chrome extension providing unified browser 
 tags: ["Chrome Extension", "JavaScript", "HTML/CSS", "AI", "Tailwind CSS"]
 links:
   github: "https://github.com/kolajy/omnimo"
-  live: "https://chromewebstore.google.com/detail/omnimo/lffnfephffopocbcmmdlgkflfghpllga"
+  live: "https://chromewebstore.google.com/detail/omnimo/igegdahifgnmfbmbbgcmkjhkiaegbdmc"
 featured: true
 ---
 
