@@ -15,8 +15,10 @@ I haven't settled on the topics or a clear cadence yet, but hopefully, whatever 
 
 Later!
 
-&nbsp;&nbsp;&nbsp;&nbsp;\_.\_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\_,-'""\`-.\_<br>
-&nbsp;&nbsp;&nbsp;(,-.\`.\_,'(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|\\\`-/|<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\`-.-'&nbsp;\\&nbsp;)-\`( , o o)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\`-    \\\_\`"'-
+<pre style="font-family: monospace; line-height: 1.2; background: transparent; border: none; padding: 0; margin-top: 1rem; color: var(--text-primary);">
+    _._     _,-'""`-._
+   (,-.`._,'(       |\`-/|
+       `-.-' \ )-`( , o o)
+             `-    \`_`"'-
+</pre>
 
