@@ -148,10 +148,6 @@
   },
   "active": "38924ed8539a4331",
   "lastOpenFiles": [
-    "src/content/posts/os/day-1-intro.md",
-    "src/content/posts/os/day-2-filesystems.md",
-    "src/content/posts/hello-world.md",
-    "src/content/posts/os/day-4-journaling-and-wal.md",
     "dist/sitemap-index.xml",
     "dist/sitemap-0.xml",
     "dist/index.html",
@@ -162,9 +158,10 @@
     "dist/blog/os/day-7-swap-space/index.html",
     "dist/blog/os/day-7-swap-space",
     "dist/blog/os/day-6-memory-management/index.html",
+    "dist/blog/os/day-6-memory-management",
+    "dist/_astro/swiss-alps-chalet.Bod1BFKe.png",
     "dist/_astro/yosemite-valley.CM0J0KIa.jpg",
     "dist/_astro/yosemite-cliff.DxBUw6dI.jpg",
-    "dist/_astro/swiss-alps-chalet.Bod1BFKe.png",
     "dist/_astro/rocky-beach.Bfgo-Yko.png",
     "dist/_astro/mountain-panorama.CgJG2W1c.png",
     "dist/_astro/light-deer.BJF0AouJ.png",
@@ -172,6 +169,10 @@
     "dist/_astro/guangzhou-night.CS7T9BAq.jpg",
     "dist/_astro/city-overlook-night.OORLLCOv.jpg",
     "dist/_astro/banyan-steps.DaRrjs8Z.png",
+    "src/content/posts/os/day-1-intro.md",
+    "src/content/posts/os/day-2-filesystems.md",
+    "src/content/posts/hello-world.md",
+    "src/content/posts/os/day-4-journaling-and-wal.md",
     "src/content/posts/os/day-6-memory-management.md",
     "src/content/posts/os/day-7-swap-space.md",
     "src/content/posts/os/day-30-wrapping-up.md",
@@ -192,7 +193,6 @@
     "src/content/posts/os/day-15-memory-mapping-and-allocation.md",
     "src/content/posts/os/day-14-numa.md",
     "src/content/posts/os/day-13-cpu-cores.md",
-    "src/content/posts/os/day-12-cache-coherence.md",
-    "src/content/posts/os/day-11-memory-hierarchy.md"
+    "src/content/posts/os/day-12-cache-coherence.md"
   ]
 }

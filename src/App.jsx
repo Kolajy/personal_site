@@ -307,6 +307,49 @@ export function CurrentSpecs() {
   );
 }
 
+function Pagination({ currentPage, totalPages, onPageChange }) {
+  if (totalPages <= 1) return null;
+
+  const pages = [];
+  for (let i = 1; i <= totalPages; i++) {
+    pages.push(i);
+  }
+
+  return (
+    <div className="flex justify-between items-center pt-8 border-t border-[var(--border-color)] mt-6">
+      <button
+        onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
+        disabled={currentPage === 1}
+        className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none cursor-pointer transition"
+      >
+        &larr; Prev
+      </button>
+      <div className="flex items-center space-x-2">
+        {pages.map(page => (
+          <button
+            key={page}
+            onClick={() => onPageChange(page)}
+            className={`px-3 py-1 rounded text-xs font-mono border transition duration-150 cursor-pointer ${
+              currentPage === page
+                ? 'bg-[var(--text-primary)] text-[var(--bg-primary)] border-transparent font-bold'
+                : 'bg-transparent border-[var(--border-color)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--text-secondary)]'
+            }`}
+          >
+            {page}
+          </button>
+        ))}
+      </div>
+      <button
+        onClick={() => onPageChange(Math.min(currentPage + 1, totalPages))}
+        disabled={currentPage === totalPages}
+        className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none cursor-pointer transition"
+      >
+        Next &rarr;
+      </button>
+    </div>
+  );
+}
+
 export default function App({ posts = [], projects = [], photos = [] }) {
   const [activeTab, setActiveTab] = useState('home'); // 'home', 'projects', 'blog'
   const [selectedPost, setSelectedPost] = useState(null);
@@ -314,6 +357,48 @@ export default function App({ posts = [], projects = [], photos = [] }) {
   const [selectedBlogTag, setSelectedBlogTag] = useState(null);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [isDark, setIsDark] = useState(true);
+
+  // Browser History Navigation Sync
+  useEffect(() => {
+    const handlePopState = (event) => {
+      if (event.state) {
+        if (event.state.tab) setActiveTab(event.state.tab);
+        if (event.state.postId) {
+          const post = posts.find(p => p.id === event.state.postId);
+          setSelectedPost(post || null);
+        } else {
+          setSelectedPost(null);
+        }
+      } else {
+        setActiveTab('home');
+        setSelectedPost(null);
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    // Initialize state
+    window.history.replaceState({ tab: activeTab, postId: selectedPost?.id }, '');
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [posts]);
+
+  const navigateToTab = (tab) => {
+    setActiveTab(tab);
+    setSelectedPost(null);
+    window.history.pushState({ tab, postId: null }, '');
+  };
+
+  const navigateToPost = (post) => {
+    setSelectedPost(post);
+    window.history.pushState({ tab: activeTab, postId: post.id }, '');
+  };
+
+  const navigateBack = () => {
+    if (window.history.state && window.history.state.postId) {
+      window.history.back();
+    } else {
+      setSelectedPost(null);
+      window.history.pushState({ tab: activeTab, postId: null }, '');
+    }
+  };
 
   // Sync state with HTML class
   useEffect(() => {
@@ -348,12 +433,22 @@ export default function App({ posts = [], projects = [], photos = [] }) {
   const startHomeIndex = (currentHomePage - 1) * POSTS_PER_PAGE;
   const paginatedHomePosts = sortedPosts.slice(startHomeIndex, startHomeIndex + POSTS_PER_PAGE);
 
+  // Pagination for Blog page
+  const [currentBlogPage, setCurrentBlogPage] = useState(1);
+  const totalBlogPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  const startBlogIndex = (currentBlogPage - 1) * POSTS_PER_PAGE;
+  const paginatedBlogPosts = filteredPosts.slice(startBlogIndex, startBlogIndex + POSTS_PER_PAGE);
+
+  useEffect(() => {
+    setCurrentBlogPage(1);
+  }, [selectedBlogTag]);
+
   return (
     <div className="min-h-screen flex flex-col max-w-3xl mx-auto px-6 py-6 font-sans">
       {/* PaperMod Style Navigation Header */}
       <header className="flex justify-between items-center py-4 mb-12 border-b border-[var(--border-color)]">
         <button 
-          onClick={() => { setActiveTab('home'); setSelectedPost(null); }}
+          onClick={() => navigateToTab('home')}
           className="text-xl font-bold tracking-wide hover:opacity-85 text-[var(--text-primary)] cursor-pointer"
         >
           Jay's space
@@ -362,25 +457,25 @@ export default function App({ posts = [], projects = [], photos = [] }) {
         <div className="flex items-center space-x-6">
           <nav className="flex space-x-4 text-[15px]">
             <button 
-              onClick={() => { setActiveTab('blog'); setSelectedPost(null); }}
+              onClick={() => navigateToTab('blog')}
               className={`hover:underline cursor-pointer ${activeTab === 'blog' && !selectedPost ? 'underline text-[var(--text-primary)] font-medium' : 'text-[var(--text-secondary)]'}`}
             >
               Blog
             </button>
             <button 
-              onClick={() => { setActiveTab('projects'); setSelectedPost(null); }}
+              onClick={() => navigateToTab('projects')}
               className={`hover:underline cursor-pointer ${activeTab === 'projects' && !selectedPost ? 'underline text-[var(--text-primary)] font-medium' : 'text-[var(--text-secondary)]'}`}
             >
               Projects
             </button>
             <button 
-              onClick={() => { setActiveTab('photos'); setSelectedPost(null); }}
+              onClick={() => navigateToTab('photos')}
               className={`hover:underline cursor-pointer ${activeTab === 'photos' && !selectedPost ? 'underline text-[var(--text-primary)] font-medium' : 'text-[var(--text-secondary)]'}`}
             >
               Photos
             </button>
             <button 
-              onClick={() => { setActiveTab('about'); setSelectedPost(null); }}
+              onClick={() => navigateToTab('about')}
               className={`hover:underline cursor-pointer ${activeTab === 'about' && !selectedPost ? 'underline text-[var(--text-primary)] font-medium' : 'text-[var(--text-secondary)]'}`}
             >
               About
@@ -415,7 +510,7 @@ export default function App({ posts = [], projects = [], photos = [] }) {
           /* BLOG READ DETAIL VIEW */
           <article className="space-y-6">
             <button 
-              onClick={() => setSelectedPost(null)}
+              onClick={() => navigateBack()}
               className="text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:underline mb-4 inline-block cursor-pointer"
             >
               &larr; Back to list
@@ -452,7 +547,7 @@ export default function App({ posts = [], projects = [], photos = [] }) {
                   <article key={post.id} className="space-y-2">
                     <header>
                       <h3 
-                        onClick={() => setSelectedPost(post)}
+                        onClick={() => navigateToPost(post)}
                         className="text-xl font-bold hover:underline cursor-pointer text-[var(--text-primary)]"
                       >
                         {post.title}
@@ -471,33 +566,14 @@ export default function App({ posts = [], projects = [], photos = [] }) {
               </div>
 
               {/* Homepage Pagination Controls */}
-              {totalHomePages > 1 && (
-                <div className="flex justify-between items-center pt-8 border-t border-[var(--border-color)]">
-                  <button
-                    onClick={() => {
-                      setCurrentHomePage(prev => Math.max(prev - 1, 1));
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }}
-                    disabled={currentHomePage === 1}
-                    className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none cursor-pointer transition"
-                  >
-                    &larr; Earlier Posts
-                  </button>
-                  <span className="text-xs text-[var(--text-secondary)] font-mono">
-                    Page {currentHomePage} of {totalHomePages}
-                  </span>
-                  <button
-                    onClick={() => {
-                      setCurrentHomePage(prev => Math.min(prev + 1, totalHomePages));
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }}
-                    disabled={currentHomePage === totalHomePages}
-                    className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none cursor-pointer transition"
-                  >
-                    Later Posts &rarr;
-                  </button>
-                </div>
-              )}
+              <Pagination 
+                currentPage={currentHomePage} 
+                totalPages={totalHomePages} 
+                onPageChange={(page) => {
+                  setCurrentHomePage(page);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }} 
+              />
             </section>
           </div>
         ) : activeTab === 'projects' ? (
@@ -733,11 +809,11 @@ export default function App({ posts = [], projects = [], photos = [] }) {
             )}
 
             <div className="space-y-6">
-              {filteredPosts.map(post => (
+              {paginatedBlogPosts.map(post => (
                 <article key={post.id} className="space-y-1">
                   <header>
                     <h2 
-                      onClick={() => setSelectedPost(post)}
+                      onClick={() => navigateToPost(post)}
                       className="text-lg font-bold hover:underline cursor-pointer text-[var(--text-primary)]"
                     >
                       {post.title}
@@ -766,6 +842,16 @@ export default function App({ posts = [], projects = [], photos = [] }) {
                 </article>
               ))}
             </div>
+
+            {/* Blog Pagination Controls */}
+            <Pagination 
+              currentPage={currentBlogPage} 
+              totalPages={totalBlogPages} 
+              onPageChange={(page) => {
+                setCurrentBlogPage(page);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }} 
+            />
           </div>
         )}
       </main>
