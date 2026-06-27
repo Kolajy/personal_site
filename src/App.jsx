@@ -263,14 +263,18 @@ function CurrentSpecs() {
   const ping = localPing !== null ? localPing : (rawPing !== null && rawPing !== undefined ? rawPing : visitorInfo.ping);
   const timezone = typeof Intl !== 'undefined' ? Intl.DateTimeFormat().resolvedOptions().timeZone : null;
 
-  if (visitorInfo.loading) return null;
-
   return (
-    <div className="mt-6 pt-6 border-t border-[var(--border-color)]/40 max-w-xl mx-auto text-center">
+    <div className="mt-4 pt-4 border-t border-[var(--border-color)]/20 max-w-2xl mx-auto text-center">
       <span className="text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-semibold block mb-2">Current Specs</span>
       <div className="flex flex-wrap justify-center gap-x-3 gap-y-1.5 text-[11px] font-mono text-[var(--text-secondary)]/60 select-none">
-        {visitorInfo.ip && <span>IP: {visitorInfo.ip}</span>}
-        {visitorInfo.city && <span>• Location: {visitorInfo.city}, {visitorInfo.country}</span>}
+        {visitorInfo.loading ? (
+          <span>IP: Scanning...</span>
+        ) : (
+          visitorInfo.ip && <span>IP: {visitorInfo.ip}</span>
+        )}
+        {!visitorInfo.loading && visitorInfo.city && (
+          <span>• Location: {visitorInfo.city}, {visitorInfo.country}</span>
+        )}
         <span>• Client: {browser} ({os}, {deviceType})</span>
         {resolution && <span>• Screen: {resolution}</span>}
         {cores && <span>• CPU: {cores} Cores</span>}
