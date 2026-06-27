@@ -316,14 +316,24 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
   }
 
   return (
-    <div className="flex justify-between items-center pt-8 border-t border-[var(--border-color)] mt-6">
-      <button
-        onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
-        disabled={currentPage === 1}
-        className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none cursor-pointer transition"
-      >
-        &larr; Prev
-      </button>
+    <div className="flex justify-between items-center pt-8 border-t border-[var(--border-color)] mt-6 select-none">
+      <div className="flex items-center space-x-2">
+        <button
+          onClick={() => onPageChange(1)}
+          disabled={currentPage === 1}
+          className="text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none cursor-pointer transition"
+        >
+          &laquo; First
+        </button>
+        <button
+          onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
+          disabled={currentPage === 1}
+          className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none cursor-pointer transition"
+        >
+          &larr; Prev
+        </button>
+      </div>
+
       <div className="flex items-center space-x-2">
         {pages.map(page => (
           <button
@@ -339,13 +349,23 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
           </button>
         ))}
       </div>
-      <button
-        onClick={() => onPageChange(Math.min(currentPage + 1, totalPages))}
-        disabled={currentPage === totalPages}
-        className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none cursor-pointer transition"
-      >
-        Next &rarr;
-      </button>
+
+      <div className="flex items-center space-x-2">
+        <button
+          onClick={() => onPageChange(Math.min(currentPage + 1, totalPages))}
+          disabled={currentPage === totalPages}
+          className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none cursor-pointer transition"
+        >
+          Next &rarr;
+        </button>
+        <button
+          onClick={() => onPageChange(totalPages)}
+          disabled={currentPage === totalPages}
+          className="text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none cursor-pointer transition"
+        >
+          Last &raquo;
+        </button>
+      </div>
     </div>
   );
 }
