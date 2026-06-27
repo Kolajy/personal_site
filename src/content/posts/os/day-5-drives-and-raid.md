@@ -1,9 +1,13 @@
 ---
-title: "OS Relearning: Day 5 - CPU Scheduling Algorithms"
-excerpt: "Comparing basic CPU schedulers: First-Come-First-Served, Shortest Job First, and the fairness of Round Robin."
-date: "2024-10-05"
-readTime: "3 min read"
-tags: ["Operating Systems","CPU","Scheduling"]
+title: 30 Days Of Operating Systems - Day 5
+excerpt: Drive types and RAID
+date: 2024-10-05
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - CPU
+  - Scheduling
 ---
 
 How does the CPU decide which Ready process to run next? I refreshed my memory on the basic scheduling algorithms:

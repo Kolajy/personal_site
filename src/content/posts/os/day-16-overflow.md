@@ -1,9 +1,12 @@
 ---
-title: "OS Relearning: Day 15 - Physical vs Virtual Memory"
-excerpt: "Why virtual memory is the greatest illusion in computer science."
-date: "2024-10-15"
-readTime: "3 min read"
-tags: ["Operating Systems","Memory"]
+title: 30 Days Of Operating Systems - Day 16
+excerpt: Stack Overflow
+date: 2024-10-15
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Memory
 ---
 
 When a computer boots up, RAM is just a massive physical array of bytes. In early computers, programs wrote directly to these physical addresses. If two programs ran at the same time, they could overwrite each other's data.

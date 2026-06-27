@@ -1,9 +1,13 @@
 ---
-title: "OS Relearning: Day 27 - Monolithic vs Microkernel"
-excerpt: "Debating OS architectures: the classic Tanenbaum-Torvalds debate."
-date: "2024-10-27"
-readTime: "3 min read"
-tags: ["Operating Systems","Architecture","Kernel"]
+title: 30 Days Of Operating Systems - Day 27
+excerpt: OSI Network Model
+date: 2024-10-27
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Architecture
+  - Kernel
 ---
 
 Today I read about kernel architectures, specifically the Monolithic vs. Microkernel designs.

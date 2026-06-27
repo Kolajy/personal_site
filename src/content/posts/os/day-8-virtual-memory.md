@@ -1,9 +1,13 @@
 ---
-title: "OS Relearning: Day 8 - Sockets and Network IPC"
-excerpt: "Expanding communication beyond a single machine using network socket boundaries."
-date: "2024-10-08"
-readTime: "3 min read"
-tags: ["Operating Systems","IPC","Sockets"]
+title: 30 Days Of Operating Systems - Day 8
+excerpt: How does Virtual Memory Work?
+date: 2024-10-08
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - IPC
+  - Sockets
 ---
 
 Pipes and shared memory are great for processes running on the same machine. But what if the processes are running on different servers across the world?

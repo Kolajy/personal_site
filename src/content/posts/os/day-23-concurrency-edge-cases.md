@@ -1,9 +1,13 @@
 ---
-title: "OS Relearning: Day 23 - Hard Links vs Soft Links"
-excerpt: "Understanding the underlying inode links that configure file references."
-date: "2024-10-23"
-readTime: "3 min read"
-tags: ["Operating Systems","File System"]
+title: 30 Days Of Operating Systems - Day 23
+excerpt: Deadlocks and Spinlocks and stuff
+date: 2024-10-23
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - File
+  - System
 ---
 
 Since Unix directory entries map names to inode numbers, we can have multiple directory entries pointing to the exact same inode. This brings us to links:

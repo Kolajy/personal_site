@@ -1,9 +1,13 @@
 ---
-title: "OS Relearning: Day 19 - Page Replacement Algorithms"
-excerpt: "Comparing cache algorithms like LRU and FIFO when deciding which page to evict."
-date: "2024-10-19"
-readTime: "3 min read"
-tags: ["Operating Systems","Memory","Algorithms"]
+title: 30 Days Of Operating Systems - Day 20
+excerpt: Stop Interrupting Me
+date: 2024-10-19
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Memory
+  - Algorithms
 ---
 
 When a page fault occurs and RAM is full, the OS must choose an existing page to evict to make room. How does it choose?

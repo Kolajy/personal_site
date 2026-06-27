@@ -1,9 +1,13 @@
 ---
-title: "OS Relearning: Day 26 - Disk Scheduling (SCAN & LOOK)"
-excerpt: "How mechanical disk arms choose the path of least resistance to read sectors."
-date: "2024-10-26"
-readTime: "3 min read"
-tags: ["Operating Systems","Storage","Algorithms"]
+title: 30 Days Of Operating Systems - Day 26
+excerpt: Network Interfaces
+date: 2024-10-26
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Storage
+  - Algorithms
 ---
 
 Even though SSDs are common now, mechanical hard drives still run heavily in data centers. To read blocks, a mechanical arm must physically seek across tracks.

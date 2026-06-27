@@ -1,9 +1,12 @@
 ---
-title: "OS Relearning: Day 18 - Page Faults and Demand Paging"
-excerpt: "What happens when you request memory that is currently swapped out to disk?"
-date: "2024-10-18"
-readTime: "3 min read"
-tags: ["Operating Systems","Memory"]
+title: 30 Days Of Operating Systems - Day 19
+excerpt: The life of a Process
+date: 2024-10-18
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Memory
 ---
 
 What happens when you run out of physical RAM? The OS can write inactive memory pages to disk (swap space) to free up physical frames. 

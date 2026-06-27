@@ -1,9 +1,13 @@
 ---
-title: "OS Relearning: Day 22 - File Allocation Methods"
-excerpt: "Comparing contiguous, linked, and indexed block allocations."
-date: "2024-10-22"
-readTime: "3 min read"
-tags: ["Operating Systems","File System"]
+title: 30 Days Of Operating Systems - Day 22
+excerpt: Why is talking to other processes hard
+date: 2024-10-22
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - File
+  - System
 ---
 
 Today I reviewed the three main ways a file system can organize file blocks on a disk:

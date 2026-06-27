@@ -1,9 +1,13 @@
 ---
-title: "OS Relearning: Day 3 - The System Call Boundary"
-excerpt: "Exploring how user space requests actions from kernel space, and why user-to-kernel mode switches are expensive."
-date: "2024-10-03"
-readTime: "3 min read"
-tags: ["Operating Systems","Kernel","Syscalls"]
+title: 30 Days Of Operating Systems - Day 3
+excerpt: Understanding Disk I/O and Memory Interactions
+date: 2024-10-03
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Kernel
+  - Syscalls
 ---
 
 When a program wants to read a file or send a network packet, it can't just access the hardware directly. If it could, malicious code could easily hijack the system. Instead, the OS implements a strict boundary: User Mode vs. Kernel Mode.

@@ -1,9 +1,13 @@
 ---
-title: "OS Relearning: Day 29 - Containers vs Virtual Machines"
-excerpt: "How kernel namespaces and cgroups allow containers to skip the guest OS overhead."
-date: "2024-10-29"
-readTime: "3 min read"
-tags: ["Operating Systems","Virtualization","Containers"]
+title: 30 Days Of Operating Systems - Day 29
+excerpt: Computer Lifecycle Stuff
+date: 2024-10-29
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Virtualization
+  - Containers
 ---
 
 Why are Docker containers so much lighter than Virtual Machines?

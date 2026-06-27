@@ -1,9 +1,12 @@
 ---
-title: "OS Relearning: Day 13 - Deadlocks and Coffman Conditions"
-excerpt: "The four ingredients required for a system to lock up completely."
-date: "2024-10-13"
-readTime: "3 min read"
-tags: ["Operating Systems","Deadlock"]
+title: 30 Days Of Operating Systems - Day 14
+excerpt: Numa Numa Numa
+date: 2024-10-13
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Deadlock
 ---
 
 A **Deadlock** occurs when a set of processes are blocked because each process holds a resource and waits for another resource held by someone else in the set.

@@ -1,9 +1,12 @@
 ---
-title: "OS Relearning: Day 6 - Multi-Level Feedback Queues"
-excerpt: "Unpacking the design of real-world schedulers that adapt dynamically based on process behavior."
-date: "2024-10-06"
-readTime: "3 min read"
-tags: ["Operating Systems","Scheduling"]
+title: 30 Days Of Operating Systems - Day 6
+excerpt: Adventures with RAM
+date: 2024-10-06
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Scheduling
 ---
 
 Yesterday we learned that we can't predict process runtimes. How do modern operating systems schedule tasks without knowing their futures?

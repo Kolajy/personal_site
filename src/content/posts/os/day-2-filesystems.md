@@ -1,9 +1,13 @@
 ---
-title: "OS Relearning: Day 2 - Processes vs Threads"
-excerpt: "Breaking down the classic interview question: what actually separates a process from a thread, and how does the kernel view them?"
-date: "2024-10-02"
-readTime: "3 min read"
-tags: ["Operating Systems","Processes","Threads"]
+title: 30 Days Of Operating Systems - Day 2
+excerpt: Breaking Down Filesystems
+date: 2024-10-02
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Processes
+  - Threads
 ---
 
 Today I dove back into processes and threads. I used to think of a process as a running application, which is true at a high level. But structurally, what is it?

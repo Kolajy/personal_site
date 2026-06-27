@@ -1,9 +1,13 @@
 ---
-title: "OS Relearning: Day 17 - Translation Lookaside Buffer (TLB)"
-excerpt: "How the CPU caches virtual address lookups to avoid hitting RAM twice."
-date: "2024-10-17"
-readTime: "3 min read"
-tags: ["Operating Systems","Memory","CPU"]
+title: 30 Days Of Operating Systems - Day 18
+excerpt: Context Switching
+date: 2024-10-17
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Memory
+  - CPU
 ---
 
 If every memory access required looking up a page table stored in RAM, our systems would run at half speed. To speed things up, the CPU uses a dedicated hardware cache called the **Translation Lookaside Buffer (TLB)**.

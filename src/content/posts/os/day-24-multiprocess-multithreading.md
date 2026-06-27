@@ -1,9 +1,13 @@
 ---
-title: "OS Relearning: Day 24 - I/O Devices and Controllers"
-excerpt: "How the CPU coordinates reads and writes to physical hardware devices."
-date: "2024-10-24"
-readTime: "3 min read"
-tags: ["Operating Systems","Hardware","IO"]
+title: 30 Days Of Operating Systems - Day 24
+excerpt: When is multiprocessing faster than multithreading
+date: 2024-10-24
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Hardware
+  - IO
 ---
 
 An operating system communicates with hardware devices through **Device Controllers**. A controller acts as a bridge, translating high-level instructions into raw electrical signals.

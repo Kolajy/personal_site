@@ -1,9 +1,13 @@
 ---
-title: "OS Relearning: Day 25 - Interrupts, Polling, and DMA"
-excerpt: "Three ways to handle hardware data transfers without wasting CPU cycles."
-date: "2024-10-25"
-readTime: "3 min read"
-tags: ["Operating Systems","Hardware","IO"]
+title: 30 Days Of Operating Systems - Day 25
+excerpt: Networking
+date: 2024-10-25
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Hardware
+  - IO
 ---
 
 How does the OS know when a device has finished a task?

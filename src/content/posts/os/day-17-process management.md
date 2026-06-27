@@ -1,9 +1,12 @@
 ---
-title: "OS Relearning: Day 16 - Paging and Page Tables"
-excerpt: "Understanding pages, frames, and how the kernel tracks memory mappings."
-date: "2024-10-16"
-readTime: "3 min read"
-tags: ["Operating Systems","Memory"]
+title: 30 Days Of Operating Systems - Day 17
+excerpt: Processes and Threads
+date: 2024-10-16
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Memory
 ---
 
 Yesterday we learned about virtual-to-physical translation. Doing this byte-by-byte would require a massive lookup table. Instead, the OS divides memory into blocks:

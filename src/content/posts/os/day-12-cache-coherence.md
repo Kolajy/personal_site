@@ -1,9 +1,12 @@
 ---
-title: "OS Relearning: Day 12 - Mutexes vs Binary Semaphores"
-excerpt: "Clarifying the subtle difference: Mutex ownership vs Semaphore signaling."
-date: "2024-10-12"
-readTime: "3 min read"
-tags: ["Operating Systems","Concurrency"]
+title: 30 Days Of Operating Systems - Day 12
+excerpt: Wtf is Cache Coherence?
+date: 2024-10-12
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Concurrency
 ---
 
 A common source of confusion is whether a **Mutex** is just a binary semaphore. I had to look this up to set my mental model straight.

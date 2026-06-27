@@ -1,9 +1,13 @@
 ---
-title: "OS Relearning: Day 14 - Deadlock Prevention & Banker’s Algorithm"
-excerpt: "Dijkstra’s classic banker model to avoid unsafe execution states in resource allocation."
-date: "2024-10-14"
-readTime: "3 min read"
-tags: ["Operating Systems","Deadlock","Algorithms"]
+title: 30 Days Of Operating Systems - Day 15
+excerpt: Malloc and Mmap
+date: 2024-10-14
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Deadlock
+  - Algorithms
 ---
 
 Today I reviewed the **Banker's Algorithm**, designed by Edsger Dijkstra. It is a deadlock avoidance algorithm.

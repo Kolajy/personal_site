@@ -1,9 +1,13 @@
 ---
-title: "OS Relearning: Day 7 - Inter-Process Communication (IPC)"
-excerpt: "How do isolated processes talk to each other? Relearning pipes, message queues, and shared memory."
-date: "2024-10-07"
-readTime: "3 min read"
-tags: ["Operating Systems","IPC","Pipes"]
+title: 30 Days Of Operating Systems - Day 7
+excerpt: Is Swap Space Bad?
+date: 2024-10-07
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - IPC
+  - Pipes
 ---
 
 Since processes have isolated memory address spaces, they cannot read or write to each other's memory directly. To coordinate, they must use **Inter-Process Communication (IPC)**.

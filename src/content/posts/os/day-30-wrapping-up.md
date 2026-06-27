@@ -1,9 +1,13 @@
 ---
-title: "OS Relearning: Day 30 - Epilogue & Takeaways"
-excerpt: "Wrapping up 30 days of Operating Systems concepts: what changed in my engineering mindset."
-date: "2024-10-30"
-readTime: "3 min read"
-tags: ["Operating Systems","Relearning","Conclusion"]
+title: 30 Days Of Operating Systems - Day 30
+excerpt: Wrapping Up Learnings
+date: 2024-10-30
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Relearning
+  - Conclusion
 ---
 
 Today marks the end of my 30-day journey relearning Operating Systems. Looking back, I realize how much of modern application design is shaped by kernel-level limitations.

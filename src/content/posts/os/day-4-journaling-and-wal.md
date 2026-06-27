@@ -1,9 +1,12 @@
 ---
-title: "OS Relearning: Day 4 - The Process Lifecycle"
-excerpt: "Looking closely at the state machine of a process: from Ready and Running to Blocked and Terminated."
-date: "2024-10-04"
-readTime: "3 min read"
-tags: ["Operating Systems","Processes"]
+title: 30 Days Of Operating Systems - Day 4
+excerpt: Digging into Filesystem Journaling
+date: 2024-10-04
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Processes
 ---
 
 A process isn't just running or not running. It progresses through a strict state machine managed by the OS scheduler:

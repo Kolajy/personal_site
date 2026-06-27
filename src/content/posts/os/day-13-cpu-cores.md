@@ -1,9 +1,13 @@
 ---
-title: "OS Relearning: Day 21 - File System Structures & Inodes"
-excerpt: "How Unix structures files on raw disk sectors using Index Nodes."
-date: "2024-10-21"
-readTime: "3 min read"
-tags: ["Operating Systems","File System"]
+title: 30 Days Of Operating Systems - Day 13
+excerpt: How's a CPU work?
+date: 2024-10-21
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - File
+  - System
 ---
 
 How does a file system map a file name like `hello.txt` to blocks on a raw magnetic disk or SSD? In Unix systems, the core abstraction is the **Inode (Index Node)**.

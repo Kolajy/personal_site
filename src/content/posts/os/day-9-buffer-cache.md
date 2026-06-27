@@ -1,9 +1,12 @@
 ---
-title: "OS Relearning: Day 9 - Race Conditions and Shared State"
-excerpt: "The bank account analogy: understanding why concurrent programming breaks without synchronization."
-date: "2024-10-09"
-readTime: "3 min read"
-tags: ["Operating Systems","Concurrency"]
+title: 30 Days Of Operating Systems - Day 9
+excerpt: Whats the Buffer Cache
+date: 2024-10-09
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Concurrency
 ---
 
 Today we entered the territory of concurrency. The classic problem is the **Race Condition**.

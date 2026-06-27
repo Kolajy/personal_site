@@ -1,9 +1,13 @@
 ---
-title: "OS Relearning: Day 10 - The Critical Section Problem"
-excerpt: "Revisiting the theoretical solutions to managing concurrency, including Peterson’s Algorithm."
-date: "2024-10-10"
-readTime: "3 min read"
-tags: ["Operating Systems","Concurrency","Algorithms"]
+title: 30 Days Of Operating Systems - Day 10
+excerpt: How can I optimize disk IO
+date: 2024-10-10
+readTime: 3 min read
+tags:
+  - Operating
+  - Systems
+  - Concurrency
+  - Algorithms
 ---
 
 To solve race conditions, we must protect the code segment that accesses shared resources. This segment is called the **Critical Section**.
