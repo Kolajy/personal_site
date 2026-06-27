@@ -96,33 +96,48 @@ function VisitorGreeting() {
 
   useEffect(() => {
     const startFetch = performance.now();
+
+    const handleApiResponse = (data) => {
+      const endFetch = performance.now();
+      const measuredPing = Math.round(endFetch - startFetch);
+      setVisitorInfo({
+        ip: data.ip || data.ipAddress || '',
+        city: data.city || data.cityName || '',
+        region: data.region || data.regionName || '',
+        country: data.country_name || data.countryName || data.country || '',
+        org: data.org || '',
+        timezone: data.timezone || data.timeZone || '',
+        ping: measuredPing,
+        loading: false,
+      });
+    };
+
     fetch('https://ipapi.co/json/')
-      .then((res) => res.json())
-      .then((data) => {
-        const endFetch = performance.now();
-        const measuredPing = Math.round(endFetch - startFetch);
-        setVisitorInfo({
-          ip: data.ip || '',
-          city: data.city || '',
-          region: data.region || '',
-          country: data.country_name || '',
-          org: data.org || '',
-          timezone: data.timezone || '',
-          ping: measuredPing,
-          loading: false,
-        });
+      .then((res) => {
+        if (!res.ok) throw new Error('ipapi rate limit or error');
+        return res.json();
       })
+      .then((data) => handleApiResponse(data))
       .catch(() => {
-        setVisitorInfo({
-          ip: '',
-          city: '',
-          region: '',
-          country: '',
-          org: '',
-          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
-          ping: null,
-          loading: false,
-        });
+        // Fallback: freeipapi.com (Generous limits, CORS enabled, HTTPS)
+        fetch('https://freeipapi.com/api/json')
+          .then((res) => {
+            if (!res.ok) throw new Error('fallback failed');
+            return res.json();
+          })
+          .then((data) => handleApiResponse(data))
+          .catch(() => {
+            setVisitorInfo({
+              ip: '',
+              city: '',
+              region: '',
+              country: '',
+              org: '',
+              timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
+              ping: null,
+              loading: false,
+            });
+          });
       });
 
     // Detect GPU
