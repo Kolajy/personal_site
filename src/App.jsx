@@ -310,10 +310,20 @@ export default function App({ posts = [], projects = [], photos = [] }) {
     ? projects.filter(p => p.tags.includes(selectedTag))
     : projects;
 
-  const allBlogTags = Array.from(new Set(posts.flatMap(p => p.tags || [])));
+  // Sort posts from earliest to latest (chronological order)
+  const sortedPosts = [...posts].sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  const allBlogTags = Array.from(new Set(sortedPosts.flatMap(p => p.tags || [])));
   const filteredPosts = selectedBlogTag
-    ? posts.filter(p => (p.tags || []).includes(selectedBlogTag))
-    : posts;
+    ? sortedPosts.filter(p => (p.tags || []).includes(selectedBlogTag))
+    : sortedPosts;
+
+  // Pagination for Home page
+  const [currentHomePage, setCurrentHomePage] = useState(1);
+  const POSTS_PER_PAGE = 5;
+  const totalHomePages = Math.ceil(sortedPosts.length / POSTS_PER_PAGE);
+  const startHomeIndex = (currentHomePage - 1) * POSTS_PER_PAGE;
+  const paginatedHomePosts = sortedPosts.slice(startHomeIndex, startHomeIndex + POSTS_PER_PAGE);
 
   return (
     <div className="min-h-screen flex flex-col max-w-3xl mx-auto px-6 py-6 font-sans">
@@ -412,7 +422,7 @@ export default function App({ posts = [], projects = [], photos = [] }) {
             <section className="space-y-6">
               <h2 className="text-xs uppercase tracking-wider text-[var(--text-secondary)] font-semibold mb-4">Recent Posts</h2>
               <div className="space-y-6">
-                {posts.map(post => (
+                {paginatedHomePosts.map(post => (
                   <article key={post.id} className="space-y-2">
                     <header>
                       <h3 
@@ -433,6 +443,35 @@ export default function App({ posts = [], projects = [], photos = [] }) {
                   </article>
                 ))}
               </div>
+
+              {/* Homepage Pagination Controls */}
+              {totalHomePages > 1 && (
+                <div className="flex justify-between items-center pt-8 border-t border-[var(--border-color)]">
+                  <button
+                    onClick={() => {
+                      setCurrentHomePage(prev => Math.max(prev - 1, 1));
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    disabled={currentHomePage === 1}
+                    className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none cursor-pointer transition"
+                  >
+                    &larr; Earlier Posts
+                  </button>
+                  <span className="text-xs text-[var(--text-secondary)] font-mono">
+                    Page {currentHomePage} of {totalHomePages}
+                  </span>
+                  <button
+                    onClick={() => {
+                      setCurrentHomePage(prev => Math.min(prev + 1, totalHomePages));
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    disabled={currentHomePage === totalHomePages}
+                    className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-30 disabled:pointer-events-none cursor-pointer transition"
+                  >
+                    Later Posts &rarr;
+                  </button>
+                </div>
+              )}
             </section>
           </div>
         ) : activeTab === 'projects' ? (
