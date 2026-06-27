@@ -1,0 +1,198 @@
+{
+  "main": {
+    "id": "62d4800c1cd9dc23",
+    "type": "split",
+    "children": [
+      {
+        "id": "10cf35cb8fd81e8a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "38924ed8539a4331",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "src/content/posts/hello-world.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a2e5e2ac7fde8fe9",
+    "type": "split",
+    "children": [
+      {
+        "id": "b21538507c65acbd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "57f90cd9a7bfa4fa",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "a0c858198355a21e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "3b3d50620dd18048",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "bf512e7ee2dfd12b",
+    "type": "split",
+    "children": [
+      {
+        "id": "8b7f1151847f6c7d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f3673f916074d408",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "src/content/posts/hello-world.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "7520d711dc91cf48",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "src/content/posts/hello-world.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "426d2a20cc6ba1cc",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "fd6b15dcc0cb3ff7",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "src/content/posts/hello-world.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "38924ed8539a4331",
+  "lastOpenFiles": [
+    "dist/sitemap-0.xml",
+    "dist/sitemap-index.xml",
+    "dist/index.html",
+    "dist/blog/os/day30-os-relearning-day-30-epilogue-takeaways/index.html",
+    "dist/blog/os/day30-os-relearning-day-30-epilogue-takeaways",
+    "dist/blog/os/day29-os-relearning-day-29-containers-vs-virtual-machines/index.html",
+    "dist/blog/os/day29-os-relearning-day-29-containers-vs-virtual-machines",
+    "dist/blog/os/day28-os-relearning-day-28-virtualization-and-hypervisors/index.html",
+    "dist/blog/os/day28-os-relearning-day-28-virtualization-and-hypervisors",
+    "dist/blog/os/day27-os-relearning-day-27-monolithic-vs-microkernel/index.html",
+    "dist/blog/os/day27-os-relearning-day-27-monolithic-vs-microkernel",
+    "dist/_astro/yosemite-valley.CM0J0KIa.jpg",
+    "dist/_astro/yosemite-cliff.DxBUw6dI.jpg",
+    "dist/_astro/swiss-alps-chalet.Bod1BFKe.png",
+    "dist/_astro/rocky-beach.Bfgo-Yko.png",
+    "dist/_astro/mountain-panorama.CgJG2W1c.png",
+    "dist/_astro/light-deer.BJF0AouJ.png",
+    "dist/_astro/lake-town.DyDE4yg_.jpg",
+    "dist/_astro/guangzhou-night.CS7T9BAq.jpg",
+    "dist/_astro/city-overlook-night.OORLLCOv.jpg",
+    "dist/_astro/banyan-steps.DaRrjs8Z.png",
+    "src/content/posts/day30-os-relearning-day-30-epilogue-takeaways.md",
+    "src/content/posts/os/day30-os-relearning-day-30-epilogue-takeaways.md",
+    "src/content/posts/os/day29-os-relearning-day-29-containers-vs-virtual-machines.md",
+    "src/content/posts/os/day28-os-relearning-day-28-virtualization-and-hypervisors.md",
+    "src/content/posts/os/day27-os-relearning-day-27-monolithic-vs-microkernel.md",
+    "src/content/posts/os/day26-os-relearning-day-26-disk-scheduling-scan-look.md",
+    "src/content/posts/os/day25-os-relearning-day-25-interrupts-polling-and-dma.md",
+    "src/content/posts/os/day24-os-relearning-day-24-i-o-devices-and-controllers.md",
+    "src/content/posts/os/day23-os-relearning-day-23-hard-links-vs-soft-links.md",
+    "src/content/posts/os/day22-os-relearning-day-22-file-allocation-methods.md",
+    "src/content/posts/os/day21-os-relearning-day-21-file-system-structures-inodes.md",
+    "src/content/posts/os/day20-os-relearning-day-20-segmentation-vs-paging.md",
+    "src/content/posts/os/day19-os-relearning-day-19-page-replacement-algorithms.md",
+    "src/content/posts/os/day18-os-relearning-day-18-page-faults-and-demand-paging.md",
+    "src/content/posts/os/day17-os-relearning-day-17-translation-lookaside-buffer-tlb.md",
+    "src/content/posts/os/day16-os-relearning-day-16-paging-and-page-tables.md",
+    "src/content/posts/os/day15-os-relearning-day-15-physical-vs-virtual-memory.md",
+    "src/content/posts/os/day14-os-relearning-day-14-deadlock-prevention-banker-s-algorithm.md",
+    "src/content/posts/os/day13-os-relearning-day-13-deadlocks-and-coffman-conditions.md",
+    "src/content/posts/os/day12-os-relearning-day-12-mutexes-vs-binary-semaphores.md",
+    "src/content/posts/os/day11-os-relearning-day-11-semaphores.md",
+    "src/content/posts/os/day10-os-relearning-day-10-the-critical-section-problem.md",
+    "src/content/posts/os/day09-os-relearning-day-9-race-conditions-and-shared-state.md",
+    "src/content/posts/os/day08-os-relearning-day-8-sockets-and-network-ipc.md",
+    "src/content/posts/os/day07-os-relearning-day-7-inter-process-communication-ipc.md"
+  ]
+}
