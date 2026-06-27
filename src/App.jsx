@@ -244,7 +244,7 @@ function VisitorGreeting() {
     : `arrived here via ${referrerText}`;
 
   const locationPhrase = visitorInfo.city
-    ? `currently in ${visitorInfo.city}`
+    ? `currently near ${visitorInfo.city}`
     : 'currently somewhere special on Earth';
 
   return (
