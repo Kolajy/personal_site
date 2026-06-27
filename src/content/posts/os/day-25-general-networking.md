@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 25"
-excerpt: "General Networking Stack"
-date: "2024-10-25"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 25
+excerpt: Networking
+date: 2024-10-25
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

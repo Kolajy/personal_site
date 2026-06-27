@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 14"
-excerpt: "NUMA Architecture"
-date: "2024-10-14"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 14
+excerpt: Numa Numa Numa
+date: 2024-10-13
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

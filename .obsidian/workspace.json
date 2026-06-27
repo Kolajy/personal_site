@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/posts/os/day-2-filesystems.md",
+                "file": "src/content/posts/os/day-15-memory-mapping-and-allocation.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "src/content/posts/os/day-2-filesystems.md",
+                "file": "src/content/posts/os/day-15-memory-mapping-and-allocation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "src/content/posts/os/day-2-filesystems.md",
+                "file": "src/content/posts/os/day-15-memory-mapping-and-allocation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/content/posts/os/day-2-filesystems.md"
+                "file": "src/content/posts/os/day-15-memory-mapping-and-allocation.md"
               }
             }
           }
@@ -148,6 +148,21 @@
   },
   "active": "38924ed8539a4331",
   "lastOpenFiles": [
+    "dist/_astro/mountain-panorama.CgJG2W1c.png",
+    "dist/_astro/banyan-steps.DaRrjs8Z.png",
+    "dist/_astro/swiss-alps-chalet.Bod1BFKe.png",
+    "dist/_astro/yosemite-valley.CM0J0KIa.jpg",
+    "dist/_astro/yosemite-cliff.DxBUw6dI.jpg",
+    "dist/_astro/guangzhou-night.CS7T9BAq.jpg",
+    "dist/_astro/index.d58uyY4S.js",
+    "dist/CNAME",
+    "src/content/posts/os/day-16-overflow.md",
+    "src/content/posts/os/day-17-process management.md",
+    "src/content/posts/os/day-19-process-lifecycle.md",
+    "src/content/posts/os/day-21-locks-mutexes-semaphores.md",
+    "src/content/posts/os/day-22-ipc.md",
+    "src/content/posts/os/day-23-concurrency-edge-cases.md",
+    "src/content/posts/os/day-2-filesystems.md",
     "dist/sitemap-index.xml",
     "dist/sitemap-0.xml",
     "dist/index.html",
@@ -156,21 +171,11 @@
     "dist/blog/os/day-8-virtual-memory/index.html",
     "dist/blog/os/day-8-virtual-memory",
     "dist/blog/os/day-7-swap-space/index.html",
-    "dist/blog/os/day-7-swap-space",
-    "dist/blog/os/day-6-memory-management/index.html",
-    "dist/blog/os/day-6-memory-management",
-    "dist/_astro/swiss-alps-chalet.Bod1BFKe.png",
-    "dist/_astro/yosemite-valley.CM0J0KIa.jpg",
-    "dist/_astro/yosemite-cliff.DxBUw6dI.jpg",
     "dist/_astro/rocky-beach.Bfgo-Yko.png",
-    "dist/_astro/mountain-panorama.CgJG2W1c.png",
     "dist/_astro/light-deer.BJF0AouJ.png",
     "dist/_astro/lake-town.DyDE4yg_.jpg",
-    "dist/_astro/guangzhou-night.CS7T9BAq.jpg",
     "dist/_astro/city-overlook-night.OORLLCOv.jpg",
-    "dist/_astro/banyan-steps.DaRrjs8Z.png",
     "src/content/posts/os/day-1-intro.md",
-    "src/content/posts/os/day-2-filesystems.md",
     "src/content/posts/hello-world.md",
     "src/content/posts/os/day-4-journaling-and-wal.md",
     "src/content/posts/os/day-6-memory-management.md",
@@ -182,14 +187,8 @@
     "src/content/posts/os/day-26-network-interfaces.md",
     "src/content/posts/os/day-25-general-networking.md",
     "src/content/posts/os/day-24-multiprocess-multithreading.md",
-    "src/content/posts/os/day-23-concurrency-edge-cases.md",
-    "src/content/posts/os/day-22-ipc.md",
-    "src/content/posts/os/day-21-locks-mutexes-semaphores.md",
     "src/content/posts/os/day-20-signals-and-interrupts.md",
-    "src/content/posts/os/day-19-process-lifecycle.md",
     "src/content/posts/os/day-18-context-switching.md",
-    "src/content/posts/os/day-17-process management.md",
-    "src/content/posts/os/day-16-overflow.md",
     "src/content/posts/os/day-15-memory-mapping-and-allocation.md",
     "src/content/posts/os/day-14-numa.md",
     "src/content/posts/os/day-13-cpu-cores.md",

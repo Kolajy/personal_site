@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 2"
-excerpt: "Breaking Down Filesystems"
-date: "2024-10-02"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 2
+excerpt: Breaking Down Filesystems
+date: 2024-10-02
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

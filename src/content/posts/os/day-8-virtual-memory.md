@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 8"
-excerpt: "Virtual Memory"
-date: "2024-10-08"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 8
+excerpt: How does Virtual Memory Work?
+date: 2024-10-08
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

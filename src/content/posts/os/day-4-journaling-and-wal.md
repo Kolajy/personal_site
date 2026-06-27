@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 4"
-excerpt: "Journaling and WAL"
-date: "2024-10-04"
-readTime: "4 min read"
+title: 30 Days Of Operating Systems - Day 4
+excerpt: Digging into Filesystem Journaling
+date: 2024-10-04
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

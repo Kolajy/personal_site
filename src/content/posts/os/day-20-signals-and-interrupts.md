@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 20"
-excerpt: "Signals and Interrupts"
-date: "2024-10-20"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 20
+excerpt: Stop Interrupting Me
+date: 2024-10-19
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

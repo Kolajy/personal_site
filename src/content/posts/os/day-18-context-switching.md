@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 18"
-excerpt: "Context Switching"
-date: "2024-10-18"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 18
+excerpt: Context Switching
+date: 2024-10-17
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

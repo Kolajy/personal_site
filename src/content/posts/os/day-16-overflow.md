@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 16"
-excerpt: "Memory Overflows and Protection"
-date: "2024-10-16"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 16
+excerpt: Stack Overflow
+date: 2024-10-15
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

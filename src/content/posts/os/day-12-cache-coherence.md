@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 12"
-excerpt: "Cache Coherence"
-date: "2024-10-12"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 12
+excerpt: Wtf is Cache Coherence?
+date: 2024-10-12
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 11"
-excerpt: "The Memory Hierarchy"
-date: "2024-10-11"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 11
+excerpt: Jeff Dean's numbers
+date: 2024-10-11
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

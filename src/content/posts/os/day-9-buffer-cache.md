@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 9"
-excerpt: "Buffer Cache"
-date: "2024-10-09"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 9
+excerpt: Whats the Buffer Cache
+date: 2024-10-09
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

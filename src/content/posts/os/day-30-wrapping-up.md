@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 30"
-excerpt: "Wrapping Up the 30 Days"
-date: "2024-10-30"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 30
+excerpt: Wrapping Up Learnings
+date: 2024-10-30
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

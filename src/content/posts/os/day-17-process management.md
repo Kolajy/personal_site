@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 17"
-excerpt: "Process Management"
-date: "2024-10-17"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 17
+excerpt: Processes and Threads
+date: 2024-10-16
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

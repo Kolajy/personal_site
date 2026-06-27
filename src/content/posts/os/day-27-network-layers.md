@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 27"
-excerpt: "Network Layers and Routing"
-date: "2024-10-27"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 27
+excerpt: OSI Network Model
+date: 2024-10-27
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

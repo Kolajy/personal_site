@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 7"
-excerpt: "Swap Space"
-date: "2024-10-07"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 7
+excerpt: Is Swap Space Bad?
+date: 2024-10-07
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

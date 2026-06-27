@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 6"
-excerpt: "Memory Management"
-date: "2024-10-06"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 6
+excerpt: Adventures with RAM
+date: 2024-10-06
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

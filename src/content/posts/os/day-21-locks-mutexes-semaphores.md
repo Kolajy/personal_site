@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 21"
-excerpt: "Locks, Mutexes, and Semaphores"
-date: "2024-10-21"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 21
+excerpt: Concurrency Primitives
+date: 2024-10-20
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 24"
-excerpt: "Multiprocessing vs Multithreading"
-date: "2024-10-24"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 24
+excerpt: When is multiprocessing faster than multithreading
+date: 2024-10-24
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

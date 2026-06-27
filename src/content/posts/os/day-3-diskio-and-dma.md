@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 3"
-excerpt: "Disk I/O and DMA"
-date: "2024-10-03"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 3
+excerpt: Understanding Disk I/O and Memory Interactions
+date: 2024-10-03
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

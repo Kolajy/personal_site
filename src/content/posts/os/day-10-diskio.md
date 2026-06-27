@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 10"
-excerpt: "Optimizing Disk I/O"
-date: "2024-10-10"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 10
+excerpt: How can I optimize disk IO
+date: 2024-10-10
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

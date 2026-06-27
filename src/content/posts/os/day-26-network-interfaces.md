@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 26"
-excerpt: "Network Interfaces"
-date: "2024-10-26"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 26
+excerpt: Network Interfaces
+date: 2024-10-26
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

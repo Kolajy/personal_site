@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 28"
-excerpt: "Operating System Security"
-date: "2024-10-28"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 28
+excerpt: I should probably cover security
+date: 2024-10-28
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

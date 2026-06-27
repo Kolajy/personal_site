@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 29"
-excerpt: "The Booting Process"
-date: "2024-10-29"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 29
+excerpt: Computer Lifecycle Stuff
+date: 2024-10-29
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---

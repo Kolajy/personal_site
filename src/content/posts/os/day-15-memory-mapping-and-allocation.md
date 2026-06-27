@@ -1,8 +1,8 @@
 ---
-title: "30 Days Of Operating Systems - Day 15"
-excerpt: "Memory Mapping and Allocation"
-date: "2024-10-15"
-readTime: "3 min read"
+title: 30 Days Of Operating Systems - Day 15
+excerpt: Malloc and Mmap
+date: 2024-10-14
+readTime: 3 min read
 tags:
   - Operating-Systems
 ---
