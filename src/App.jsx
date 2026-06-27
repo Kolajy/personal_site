@@ -109,7 +109,7 @@ function VisitorGreeting() {
   );
 }
 
-function CurrentSpecs() {
+export function CurrentSpecs() {
   const [visitorInfo, setVisitorInfo] = useState({
     ip: '',
     city: '',
@@ -124,8 +124,10 @@ function CurrentSpecs() {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [gpu, setGpu] = useState('');
   const [localPing, setLocalPing] = useState(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const startFetch = performance.now();
 
     const handleApiResponse = (data) => {
@@ -262,6 +264,18 @@ function CurrentSpecs() {
   const rawPing = connection ? connection.rtt : null;
   const ping = localPing !== null ? localPing : (rawPing !== null && rawPing !== undefined ? rawPing : visitorInfo.ping);
   const timezone = typeof Intl !== 'undefined' ? Intl.DateTimeFormat().resolvedOptions().timeZone : null;
+
+  if (!mounted) {
+    return (
+      <div className="mt-4 pt-4 border-t border-[var(--border-color)]/20 max-w-2xl mx-auto text-center">
+        <span className="text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-semibold block mb-2">Current Specs</span>
+        <div className="flex flex-wrap justify-center gap-x-3 gap-y-1.5 text-[11px] font-mono text-[var(--text-secondary)]/40 select-none">
+          <span>IP: Scanning...</span>
+          <span>• Client: Detecting...</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="mt-4 pt-4 border-t border-[var(--border-color)]/20 max-w-2xl mx-auto text-center">

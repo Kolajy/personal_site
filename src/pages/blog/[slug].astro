@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CurrentSpecs } from '../../App.jsx';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
@@ -51,6 +52,7 @@ const { Content } = await render(post);
 
     <footer class="mt-20 py-6 border-t border-[var(--border-color)] text-center text-xs text-[var(--text-secondary)]">
       <p>© 2026 Jay's space.</p>
+      <CurrentSpecs client:load />
     </footer>
   </div>
 </BaseLayout>
