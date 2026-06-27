@@ -267,9 +267,9 @@ export function CurrentSpecs() {
 
   if (!mounted) {
     return (
-      <div className="mt-4 pt-4 border-t border-[var(--border-color)]/20 max-w-2xl mx-auto text-center">
+      <div className="mt-4 pt-4 border-t border-[var(--border-color)]/30 text-left select-none">
         <span className="text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-semibold block mb-2">Current Specs</span>
-        <div className="flex flex-wrap justify-center gap-x-3 gap-y-1.5 text-[11px] font-mono text-[var(--text-secondary)]/40 select-none">
+        <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-[11px] font-mono text-[var(--text-secondary)]/40">
           <span>IP: Scanning...</span>
           <span>• Client: Detecting...</span>
         </div>
@@ -278,9 +278,9 @@ export function CurrentSpecs() {
   }
 
   return (
-    <div className="mt-4 pt-4 border-t border-[var(--border-color)]/20 max-w-2xl mx-auto text-center">
+    <div className="mt-4 pt-4 border-t border-[var(--border-color)]/30 text-left select-none">
       <span className="text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-semibold block mb-2">Current Specs</span>
-      <div className="flex flex-wrap justify-center gap-x-3 gap-y-1.5 text-[11px] font-mono text-[var(--text-secondary)]/60 select-none">
+      <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-[11px] font-mono text-[var(--text-secondary)]/60">
         {visitorInfo.loading ? (
           <span>IP: Scanning...</span>
         ) : (
@@ -435,7 +435,10 @@ export default function App({ posts = [], projects = [], photos = [] }) {
         ) : activeTab === 'home' ? (
           /* PAPERMOD PROFILE MODE (HOME) */
           <div className="space-y-12">
-            <VisitorGreeting />
+            <div>
+              <VisitorGreeting />
+              <CurrentSpecs />
+            </div>
             {/* Featured Posts list in Home */}
             <section className="space-y-6">
               <h2 className="text-xs uppercase tracking-wider text-[var(--text-secondary)] font-semibold mb-4">Recent Posts</h2>
@@ -765,7 +768,6 @@ export default function App({ posts = [], projects = [], photos = [] }) {
       {/* PaperMod Footer */}
       <footer className="mt-20 py-6 border-t border-[var(--border-color)] text-center text-xs text-[var(--text-secondary)]">
         <p>© 2026 Jay's space.</p>
-        <CurrentSpecs />
       </footer>
     </div>
   );
