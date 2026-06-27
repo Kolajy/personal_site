@@ -80,6 +80,36 @@ function RenderMarkdown({ content }) {
 }
 
 function VisitorGreeting() {
+  return (
+    <div className="border-b border-[var(--border-color)] pb-8 mb-8 font-serif">
+      <div className="space-y-4">
+        {/* Warm Greeting Heading */}
+        <h1 className="text-3xl font-extrabold text-[var(--text-primary)] font-sans tracking-tight">
+          Hey there!
+        </h1>
+
+        {/* Narrative Flow */}
+        <div className="text-[16px] leading-relaxed text-[var(--text-secondary)] space-y-4">
+          <p>
+            Welcome to my humble little corner of the internet. I'm Jay!
+          </p>
+          <p>
+            Feel free to take a look around or reach out to me at{' '}
+            <a 
+              href="mailto:hello@jaylok.com" 
+              className="text-[var(--accent-color)] hover:underline font-sans font-medium"
+            >
+              hello@jaylok.com
+            </a>{' '}
+            if you wanna chat!
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CurrentSpecs() {
   const [visitorInfo, setVisitorInfo] = useState({
     ip: '',
     city: '',
@@ -115,12 +145,11 @@ function VisitorGreeting() {
 
     fetch('https://ipapi.co/json/')
       .then((res) => {
-        if (!res.ok) throw new Error('ipapi rate limit or error');
+        if (!res.ok) throw new Error('ipapi error');
         return res.json();
       })
       .then((data) => handleApiResponse(data))
       .catch(() => {
-        // Fallback: freeipapi.com (Generous limits, CORS enabled, HTTPS)
         fetch('https://freeipapi.com/api/json')
           .then((res) => {
             if (!res.ok) throw new Error('fallback failed');
@@ -161,7 +190,7 @@ function VisitorGreeting() {
       // ignore
     }
 
-    // Measure local ping to favicon (ignores cache to get accurate network latency)
+    // Measure local ping
     const pingStart = performance.now();
     fetch('/favicon.ico', { cache: 'no-store', method: 'HEAD' })
       .then(() => {
@@ -184,14 +213,12 @@ function VisitorGreeting() {
   }, []);
 
   const ua = typeof navigator !== 'undefined' ? navigator.userAgent : '';
-  
   const getBrowserAndOS = () => {
-    let browser = 'a modern browser';
-    let os = 'your device';
-
+    let browser = 'a browser';
+    let os = 'device';
     if (ua.includes('Firefox/')) browser = 'Firefox';
-    else if (ua.includes('Edg/')) browser = 'Microsoft Edge';
-    else if (ua.includes('Chrome/')) browser = 'Google Chrome';
+    else if (ua.includes('Edg/')) browser = 'Edge';
+    else if (ua.includes('Chrome/')) browser = 'Chrome';
     else if (ua.includes('Safari/')) browser = 'Safari';
 
     if (ua.includes('Windows NT')) os = 'Windows';
@@ -199,36 +226,15 @@ function VisitorGreeting() {
     else if (ua.includes('Linux')) os = 'Linux';
     else if (ua.includes('Android')) os = 'Android';
     else if (ua.includes('iPhone') || ua.includes('iPad')) os = 'iOS';
-
     return { browser, os };
   };
 
   const getDeviceType = () => {
     if (/Mobi|Android|iPhone|iPad|iPod/i.test(ua)) {
-      if (/iPad|tablet/i.test(ua)) return 'a tablet';
-      return 'a mobile device';
+      if (/iPad|tablet/i.test(ua)) return 'tablet';
+      return 'mobile';
     }
-    return 'a desktop computer';
-  };
-
-  const getReferrerText = () => {
-    if (typeof document === 'undefined' || !document.referrer) {
-      return 'directly';
-    }
-    try {
-      const url = new URL(document.referrer);
-      let hostname = url.hostname;
-      if (hostname.startsWith('www.')) {
-        hostname = hostname.substring(4);
-      }
-      if (hostname.includes('github.com')) return 'GitHub';
-      if (hostname.includes('google.com')) return 'Google';
-      if (hostname.includes('linkedin.com')) return 'LinkedIn';
-      if (hostname.includes('twitter.com') || hostname.includes('t.co')) return 'Twitter/X';
-      return hostname;
-    } catch (e) {
-      return 'another webpage';
-    }
+    return 'desktop';
   };
 
   const getMoonPhase = (date) => {
@@ -249,79 +255,30 @@ function VisitorGreeting() {
 
   const { browser, os } = getBrowserAndOS();
   const deviceType = getDeviceType();
-  const referrerText = getReferrerText();
   const moonPhase = getMoonPhase(currentTime);
   const resolution = typeof window !== 'undefined' ? `${window.screen.width}x${window.screen.height}` : null;
   const cores = typeof navigator !== 'undefined' ? navigator.hardwareConcurrency : null;
   const connection = typeof navigator !== 'undefined' ? navigator.connection : null;
   const rawPing = connection ? connection.rtt : null;
   const ping = localPing !== null ? localPing : (rawPing !== null && rawPing !== undefined ? rawPing : visitorInfo.ping);
-  const bandwidth = connection ? connection.downlink : null;
   const timezone = typeof Intl !== 'undefined' ? Intl.DateTimeFormat().resolvedOptions().timeZone : null;
 
-  // Determine morning, afternoon, evening
-  const getGreetingTimeOfDay = (date) => {
-    const hrs = date.getHours();
-    if (hrs < 12) return 'morning';
-    if (hrs < 17) return 'afternoon';
-    return 'evening';
-  };
-
-  const dayOfWeek = currentTime.toLocaleDateString([], { weekday: 'long' });
-  const timeOfDay = getGreetingTimeOfDay(currentTime);
-
-  const referrerPhrase = referrerText === 'directly'
-    ? 'arrived directly'
-    : `arrived here via ${referrerText}`;
-
-  const locationPhrase = visitorInfo.city
-    ? `currently near ${visitorInfo.city}`
-    : 'currently somewhere special on Earth';
+  if (visitorInfo.loading) return null;
 
   return (
-    <div className="border-b border-[var(--border-color)] pb-8 mb-8 font-serif">
-      <div className="space-y-4">
-        {/* Warm Greeting Heading */}
-        <h1 className="text-3xl font-extrabold text-[var(--text-primary)] font-sans tracking-tight">
-          Hey there!
-        </h1>
-
-        {/* Narrative Flow */}
-        <div className="text-[16px] leading-relaxed text-[var(--text-secondary)] space-y-4">
-          <p>
-            Hope your {dayOfWeek} {timeOfDay} is going well. I'm Jay!
-          </p>
-          <p>
-            Welcome to my humble little corner of the internet. I notice that you {referrerPhrase} and that you're {locationPhrase} using{' '}
-            <span className="text-[var(--text-primary)] font-sans font-medium">{browser}</span> on{' '}
-            <span className="text-[var(--text-primary)] font-sans font-medium">{deviceType}</span>. It must have been quite a journey to end up here, but I'm glad to have you from such a long way away!
-          </p>
-          <p>
-            Don't worry, none of this is saved on a server or tracked; it's just rendered locally in your browser for fun. Feel free to take a look around or reach out to me at{' '}
-            <a 
-              href="mailto:hello@jaylok.com" 
-              className="text-[var(--accent-color)] hover:underline font-sans font-medium"
-            >
-              hello@jaylok.com
-            </a>{' '}
-            if you wanna chat!
-          </p>
-        </div>
-
-        {/* Subtle Tech Specs Footer Bar */}
-        {!visitorInfo.loading && (
-          <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] font-mono text-[var(--text-secondary)]/70 pt-2 select-none border-t border-[var(--border-color)]/30 mt-4">
-            {visitorInfo.ip && <span>IP: {visitorInfo.ip}</span>}
-            {resolution && <span>• Screen: {resolution}</span>}
-            {cores && <span>• CPU: {cores} Cores</span>}
-            {gpu && <span>• GPU: {gpu}</span>}
-            {ping !== null && ping !== undefined && <span>• Ping: {ping}ms</span>}
-            {bandwidth !== null && bandwidth !== undefined && <span>• Bandwidth: {bandwidth} Mbps</span>}
-            {timezone && <span>• Timezone: {timezone}</span>}
-            <span>• Moon: {moonPhase.emoji} {moonPhase.name}</span>
-            <span>• Time: {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>
-          </div>
-        )}
+    <div className="mt-6 pt-6 border-t border-[var(--border-color)]/40 max-w-xl mx-auto text-center">
+      <span className="text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-semibold block mb-2">Current Specs</span>
+      <div className="flex flex-wrap justify-center gap-x-3 gap-y-1.5 text-[11px] font-mono text-[var(--text-secondary)]/60 select-none">
+        {visitorInfo.ip && <span>IP: {visitorInfo.ip}</span>}
+        {visitorInfo.city && <span>• Location: {visitorInfo.city}, {visitorInfo.country}</span>}
+        <span>• Client: {browser} ({os}, {deviceType})</span>
+        {resolution && <span>• Screen: {resolution}</span>}
+        {cores && <span>• CPU: {cores} Cores</span>}
+        {gpu && <span>• GPU: {gpu}</span>}
+        {ping !== null && ping !== undefined && <span>• Ping: {ping}ms</span>}
+        {timezone && <span>• Timezone: {timezone}</span>}
+        <span>• Moon: {moonPhase.emoji} {moonPhase.name}</span>
+        <span>• Time: {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>
       </div>
     </div>
   );
@@ -751,6 +708,7 @@ export default function App({ posts = [], projects = [], photos = [] }) {
       {/* PaperMod Footer */}
       <footer className="mt-20 py-6 border-t border-[var(--border-color)] text-center text-xs text-[var(--text-secondary)]">
         <p>© 2026 Jay's space.</p>
+        <CurrentSpecs />
       </footer>
     </div>
   );
