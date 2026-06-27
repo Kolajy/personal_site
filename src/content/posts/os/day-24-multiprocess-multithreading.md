@@ -1,16 +1,14 @@
 ---
-title: 30 Days Of Operating Systems - Day 24
-excerpt: When is multiprocessing faster than multithreading
-date: 2024-10-24
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 24"
+excerpt: "Multiprocessing vs Multithreading"
+date: "2024-10-24"
+readTime: "3 min read"
 tags:
   - Operating-Systems
 ---
+When building backend systems, how do you choose between scaling with processes vs. threads?
 
-An operating system communicates with hardware devices through **Device Controllers**. A controller acts as a bridge, translating high-level instructions into raw electrical signals.
+- **Multithreading**: Threads share address space. Communication is fast and memory overhead is low. But a single segfault crashes the entire application, and you must coordinate locks.
+- **Multiprocessing**: Processes are completely sandboxed. If a worker process crashes, the master process spawns a replacement. But communication requires IPC, and context-switching is slower.
 
-The CPU communicates with controllers using:
-- **I/O Ports**: Dedicated register addresses read/written using special CPU instructions (like `in` and `out` in x86).
-- **Memory-Mapped I/O (MMIO)**: The controller registers are mapped directly to the CPU's memory address space. Reading or writing to those memory addresses triggers hardware actions directly on the device.
-
-To shield developers from writing raw MMIO instructions for every mouse or hard drive model, the OS uses **Device Drivers** to provide a standard interface.
+Relearning this made me see why Chrome isolates tabs into separate OS processes (so a crashed tab doesn't kill the browser), while web servers like Nginx use a multi-process worker pool for stability.

@@ -1,16 +1,15 @@
 ---
-title: 30 Days Of Operating Systems - Day 7
-excerpt: Is Swap Space Bad?
-date: 2024-10-07
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 7"
+excerpt: "Swap Space"
+date: "2024-10-07"
+readTime: "3 min read"
 tags:
   - Operating-Systems
 ---
+Today I relearned what happens when you run out of physical RAM: Swap Space.
 
-Since processes have isolated memory address spaces, they cannot read or write to each other's memory directly. To coordinate, they must use **Inter-Process Communication (IPC)**.
+Swap is basically a designated portion of your storage drive that the OS uses as virtual RAM overflow. When physical memory fills up, the OS scheduler evicts inactive memory pages and writes them to the swap disk. When the program needs that memory again, the OS triggers a page fault, reads it back, and swaps something else out.
 
-The two main strategies are:
-1. **Shared Memory**: The kernel maps a common memory page to the address spaces of both processes. Once mapped, they read/write directly at hardware speed. However, they must synchronize accesses themselves.
-2. **Message Passing (Pipes/Queues)**: Processes write messages to a kernel-managed buffer. This is safer because the kernel manages the queue, but it involves multiple syscalls and memory copies.
+If you swap too much, you hit **thrashing**—where the OS spends 99% of its CPU time copying memory pages to and from the disk, and 1% running actual code. The system freezes.
 
-Relearning this made me see why unix pipes (`ls | grep`) are so elegant—they are kernel-managed byte streams connecting stdout to stdin.
+Modern OSes are smart. macOS, for instance, uses memory compression instead of immediately swapping. It compresses inactive memory pages in RAM using fast compression algorithms. It's much faster to compress data in L3 cache/RAM than to hit the SSD.

@@ -1,16 +1,17 @@
 ---
-title: 30 Days Of Operating Systems - Day 12
-excerpt: Wtf is Cache Coherence?
-date: 2024-10-12
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 12"
+excerpt: "Cache Coherence"
+date: "2024-10-12"
+readTime: "3 min read"
 tags:
   - Operating-Systems
 ---
+If you have 8 CPU cores, and each core has its own private L1/L2 cache, what happens when Core 1 modifies a memory address that Core 2 has cached? That is the Cache Coherence problem.
 
-A common source of confusion is whether a **Mutex** is just a binary semaphore. I had to look this up to set my mental model straight.
+CPUs solve this using hardware protocols (like MESI - Modified, Exclusive, Shared, Invalid). The cores constantly listen to a shared bus (bus snooping) to invalidate cached blocks if another core writes to them.
 
-They are fundamentally different in purpose and ownership:
-- **Mutex (Mutual Exclusion)**: Has an owner. The thread that locks the mutex *must* be the thread that unlocks it. It is designed to protect shared state.
-- **Binary Semaphore**: Has no owner. Thread A can call `wait()` to block itself, and Thread B can call `signal()` to wake it up. It is designed for signaling and coordination.
+But this leads to a software bottleneck: **False Sharing**. 
 
-Using a semaphore as a lock works, but a mutex is optimized for the lock-unlock pattern and often includes features like priority inheritance to prevent deadlocks.
+If two threads on different cores update two unrelated variables that happen to live on the same 64-byte chunk of memory (a cache line), the CPU has to bounce that entire cache line back and forth between the cores' caches. 
+
+Relearning this made me see why high-performance queues (like LMAX Disruptor) pad variables with empty bytes to force them onto separate cache lines.

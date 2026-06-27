@@ -1,14 +1,16 @@
 ---
-title: 30 Days Of Operating Systems - Day 22
-excerpt: Why is talking to other processes hard
-date: 2024-10-22
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 22"
+excerpt: "Inter-Process Communication"
+date: "2024-10-22"
+readTime: "3 min read"
 tags:
   - Operating-Systems
 ---
+Processes are isolated. To communicate, they must use Inter-Process Communication (IPC).
 
-Today I reviewed the three main ways a file system can organize file blocks on a disk:
+I spent today comparing:
+1. **Unix Domain Sockets**: Fast local network-like communication. The kernel handles message boundary alignment.
+2. **Pipes**: Unidirectional byte streams. Extremely elegant in command line routing (`cat log | grep error`).
+3. **Shared Memory**: Mapping a single physical memory frame to the virtual spaces of two processes. This is the fastest IPC because once mapped, it bypasses the kernel completely.
 
-1. **Contiguous Allocation**: Files are stored in sequential disk sectors. Great read performance (sequential reads are very fast), but suffers from fragmentation and makes it hard to grow a file.
-2. **Linked Allocation**: Each block contains a pointer to the next block (like a linked list). Wastes no space, but random access is terrible because you have to read every block sequentially to reach the middle.
-3. **Indexed Allocation**: All block pointers are collected in a single index block (the Inode method). This supports fast random access and avoids fragmentation, which is why it is preferred by modern Unix filesystems.
+This explains why Redis or local database clients connect via Unix sockets instead of TCP loopback (`127.0.0.1`)—Unix sockets bypass the network stack entirely, cutting latency in half.

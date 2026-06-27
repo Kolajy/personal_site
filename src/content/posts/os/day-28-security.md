@@ -1,15 +1,17 @@
 ---
-title: 30 Days Of Operating Systems - Day 28
-excerpt: I should probably cover security
-date: 2024-10-28
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 28"
+excerpt: "Operating System Security"
+date: "2024-10-28"
+readTime: "3 min read"
 tags:
   - Operating-Systems
 ---
+Today I researched how the kernel enforces security. The core principle is isolation.
 
-Virtualization lets us run multiple independent Operating Systems concurrently on a single physical machine. The core magic behind this is the **Hypervisor** (VMM).
+The CPU enforces hardware-level privileges. 
+- **Ring 0**: Kernel Mode. Full access to physical memory and hardware.
+- **Ring 3**: User Mode. Sandboxed access.
 
-- **Type 1 (Bare Metal)**: Runs directly on the host hardware (e.g., VMware ESXi, Xen). Highly efficient.
-- **Type 2 (Hosted)**: Runs as an application inside a host OS (e.g., VirtualBox).
+User programs access kernel resources using system calls. The kernel validates the syscall caller using UID/GID credentials. Linux also uses capabilities to divide root privileges into small permissions (like `CAP_NET_ADMIN` or `CAP_SYS_RAWIO`), so a network tool doesn't need full root access.
 
-The hypervisor intercepts privilege instructions from guest OSes and translates or coordinates them. Modern CPUs include hardware support (Intel VT-x, AMD-V) to let guest OSes run directly on the hardware for non-sensitive commands, stepping in only for privileged boundary transitions.
+Understanding privilege rings explains why system designs restrict container processes to non-root users: if an attacker escapes the user-mode sandbox, they can't hijack Ring 0.

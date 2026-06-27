@@ -1,18 +1,15 @@
 ---
-title: 30 Days Of Operating Systems - Day 9
-excerpt: Whats the Buffer Cache
-date: 2024-10-09
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 9"
+excerpt: "Buffer Cache"
+date: "2024-10-09"
+readTime: "3 min read"
 tags:
   - Operating-Systems
 ---
+Today I looked at the Buffer Cache (also called the Page Cache). 
 
-Today we entered the territory of concurrency. The classic problem is the **Race Condition**.
+When you read a file, the OS doesn't just read it once and forget it. It caches the file blocks in free physical RAM. The next time you read the file, the read is completed entirely from RAM, avoiding the disk controllers.
 
-Imagine two threads attempting to withdraw $50 from a shared bank account holding $80 concurrently.
-1. Thread A checks if balance ($80) >= $50. Yes.
-2. Thread B checks if balance ($80) >= $50. Yes.
-3. Thread A deducts $50. Balance is now $30.
-4. Thread B deducts $50. Balance is now -$20!
+When you write to a file, the OS writes it to the page cache in RAM, marks the page as "dirty," and immediately returns success to your application. A background kernel thread (like `pdflush` or `kswapd`) runs periodically to flush these dirty pages to disk.
 
-This happens because the operation `balance = balance - withdrawal` is not atomic. In assembly, it's compiled to loading the memory address into a register, subtracting, and writing it back. If a context switch occurs in the middle, data gets corrupted.
+This is why pulling a flash drive out without unmounting it can corrupt files: the data was written to the RAM buffer cache, but the kernel hadn't flushed it to the physical flash cells yet. Calling `fsync()` forces the kernel to write immediately.

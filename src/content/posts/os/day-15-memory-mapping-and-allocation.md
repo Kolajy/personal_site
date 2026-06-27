@@ -1,14 +1,15 @@
 ---
-title: 30 Days Of Operating Systems - Day 15
-excerpt: Malloc and Mmap
-date: 2024-10-14
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 15"
+excerpt: "Memory Mapping and Allocation"
+date: "2024-10-15"
+readTime: "3 min read"
 tags:
   - Operating-Systems
 ---
+Today I looked at the `mmap()` system call. 
 
-Today I reviewed the **Banker's Algorithm**, designed by Edsger Dijkstra. It is a deadlock avoidance algorithm.
+Instead of reading a file by copying it into a buffer, `mmap()` tells the kernel to map the file contents directly into the process's virtual address space. 
 
-The algorithm simulates resource allocation for processes. Before allocating a requested resource, the OS runs safety checks to see if there is still a valid sequence in which all processes can complete, assuming they request their maximum declared resources.
+When you read a mapped memory address, the CPU triggers a page fault, and the kernel loads the file block directly from disk into RAM. It bypasses the double copying (copying from disk cache to user buffers).
 
-If the allocation leads to an "unsafe state" (where a deadlock *might* occur), the OS denies the request and forces the calling thread to wait. While theoretically sound, it is rarely used in general-purpose OSes because declaring a program's maximum resource needs upfront is impractical.
+Many databases (like MongoDB's MMAPv1 engine or LMDB) use `mmap()` to delegate cache management entirely to the operating system. Let the OS kernel handle page eviction instead of writing database-level memory managers.

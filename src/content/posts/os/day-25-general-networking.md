@@ -1,13 +1,15 @@
 ---
-title: 30 Days Of Operating Systems - Day 25
-excerpt: Networking
-date: 2024-10-25
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 25"
+excerpt: "General Networking Stack"
+date: "2024-10-25"
+readTime: "3 min read"
 tags:
   - Operating-Systems
 ---
+Today I started the Networking section. The operating system kernel is responsible for implementing the entire TCP/IP network stack.
 
-How does the OS know when a device has finished a task?
-- **Polling**: The CPU repeatedly loops and checks a register status bit. Simple, but wastes massive CPU cycles ("busy waiting").
-- **Interrupts**: The controller sends a hardware signal when it's done. The CPU pauses its current instruction, runs the Interrupt Service Routine (ISR), and resumes.
-- **Direct Memory Access (DMA)**: For heavy transfers (like disk reads), the CPU tells the DMA controller the target memory address and tells the device to write directly to RAM. Once complete, the DMA controller sends a single interrupt. This frees the CPU from copying bytes individually.
+When you call `socket.connect()`, the kernel triggers the TCP 3-way handshake (SYN, SYN-ACK, ACK) transparently. The kernel maintains buffers for incoming and outgoing network data.
+
+When a packet arrives at the network card, a hardware interrupt is triggered. The kernel's driver copies the data to a socket buffer (sk_buff), parses the TCP headers, and wakes up the process waiting on the socket read.
+
+It's amazing how much packet routing and packet parsing happens in kernel space before your application code even knows a byte arrived.

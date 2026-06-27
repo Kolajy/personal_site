@@ -1,16 +1,17 @@
 ---
-title: 30 Days Of Operating Systems - Day 16
-excerpt: Stack Overflow
-date: 2024-10-15
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 16"
+excerpt: "Memory Overflows and Protection"
+date: "2024-10-16"
+readTime: "3 min read"
 tags:
   - Operating-Systems
 ---
+How does the operating system protect itself from malicious memory exploits? Today I looked at memory overflows and stack protections.
 
-When a computer boots up, RAM is just a massive physical array of bytes. In early computers, programs wrote directly to these physical addresses. If two programs ran at the same time, they could overwrite each other's data.
+In old C code, calling `strcpy()` on a buffer without bounds checks could write past the stack frame, overwriting the function's return address pointer. A hacker could inject shellcode and point the return address back to it.
 
-To solve this, modern OSes implement **Virtual Memory**.
+To prevent this, modern OSes implement:
+- **NX Bit (No-Execute)**: Marks memory pages (like the stack and heap) as non-executable. Even if you inject code there, the CPU refuses to run it.
+- **ASLR (Address Space Layout Randomization)**: Randomizes the memory locations of the stack, heap, and libraries every time the app starts, making it impossible for exploit code to target hardcoded jump addresses.
 
-Every process is given the illusion that it has a private, contiguous memory space spanning the entire system capacity (e.g., 4GB on a 32-bit CPU). Under the hood, the CPU's **Memory Management Unit (MMU)** translates these virtual addresses to physical RAM addresses on-the-fly.
-
-This means address `0x0040` in Process A maps to physical slot `0x9500`, while the same virtual address in Process B maps to slot `0x1200`. Complete isolation, transparently managed.
+It's neat to see how hardware-level flags (NX bit) and kernel layouts (ASLR) work together to secure our code.

@@ -1,18 +1,17 @@
 ---
-title: 30 Days Of Operating Systems - Day 29
-excerpt: Computer Lifecycle Stuff
-date: 2024-10-29
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 29"
+excerpt: "The Booting Process"
+date: "2024-10-29"
+readTime: "3 min read"
 tags:
   - Operating-Systems
 ---
+Today I looked at how a computer boots up. It is a chain reaction of bootstrap stages:
 
-Why are Docker containers so much lighter than Virtual Machines?
-- **Virtual Machines**: Include a full guest OS, virtual drivers, and virtual memory configurations. They run on virtual hardware managed by a hypervisor.
-- **Containers**: Share the host OS kernel directly. 
+1. **BIOS/UEFI**: Runs Power-On Self-Test (POST) and initializes hardware.
+2. **Bootloader**: UEFI reads the boot partition and runs the bootloader (like GRUB or Windows Boot Manager).
+3. **Kernel Loading**: The bootloader loads the compressed kernel image into RAM and jumps execution to it.
+4. **Init Process**: The kernel mounts the root filesystem and spawns the first user-space process (like `systemd` on Linux, or `launchd` on macOS) with PID 1.
+5. PID 1 spawns all other system services and user shells.
 
-Containers use two core Linux kernel features:
-1. **Namespaces**: Isolate system resources (processes, mount points, network interfaces) so a container thinks it is isolated.
-2. **Cgroups (Control Groups)**: Limit and measure resource usage (CPU cores, memory, disk I/O) for a process group.
-
-Containers skip the boot sequence and overhead of a full guest OS, running at native execution speed.
+Relearning this made me see how critical PID 1 is—it acts as the parent of all processes and is responsible for cleaning up orphan zombie processes.

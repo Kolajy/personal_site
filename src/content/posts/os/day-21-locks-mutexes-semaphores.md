@@ -1,14 +1,15 @@
 ---
-title: 30 Days Of Operating Systems - Day 21
-excerpt: Concurrency Primitives
-date: 2024-10-20
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 21"
+excerpt: "Locks, Mutexes, and Semaphores"
+date: "2024-10-21"
+readTime: "3 min read"
 tags:
   - Operating-Systems
 ---
+Today I dove into synchronization primitives. When multiple threads access shared resources, we need locks to prevent race conditions.
 
-While **Paging** divides memory into fixed physical blocks (like pages of a book), **Segmentation** divides memory into logical blocks of variable size based on how programmers view their code (e.g., Code Segment, Stack Segment, Heap, Libraries).
+I compared:
+- **Spinlocks**: The thread loops repeatedly checking if the lock is free. It wastes CPU cycles but is fast if the lock is held for brief moments.
+- **Mutexes/Sleep Locks**: If the lock is busy, the thread tells the kernel to block it. The scheduler moves the thread to the sleep queue and runs another process. When the lock releases, the kernel wakes it up.
 
-Paging prevents external fragmentation (unused gaps between allocations) but suffers from internal fragmentation (wasted space inside the last 4KB page). Segmentation prevents internal fragmentation but leads to external fragmentation over time as segments of different sizes are loaded and freed.
-
-Modern systems use a hybrid approach: segmentation at the logical layer, mapped to physical frames using paging underneath.
+Relearning this made me see why spinlocks are restricted to kernel space and very low-level routines—user-space spinlocks can completely starve other threads if the thread holding the lock is context-switched out.

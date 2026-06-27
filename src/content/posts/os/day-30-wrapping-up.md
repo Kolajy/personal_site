@@ -1,17 +1,18 @@
 ---
-title: 30 Days Of Operating Systems - Day 30
-excerpt: Wrapping Up Learnings
-date: 2024-10-30
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 30"
+excerpt: "Wrapping Up the 30 Days"
+date: "2024-10-30"
+readTime: "3 min read"
 tags:
   - Operating-Systems
 ---
+I've finished my 30-day OS journey! What did I actually learn?
 
-Today marks the end of my 30-day journey relearning Operating Systems. Looking back, I realize how much of modern application design is shaped by kernel-level limitations.
+Main takeaways:
+- **Everything is caching**: Memory caches, page caches, directory mappings—caching is what makes hardware fast.
+- **Locks are dangerous**: Concurrency errors are systemic. You must think about lock ordering and lock scopes.
+- **The kernel handles everything**: Filesystems, virtual memory, threads, and packet routing are all abstracted away by the kernel.
 
-My main takeaways:
-1. **Caching is everywhere**: From hardware registers and TLB lookup tables to filesystems and disk buffers, caching is what makes things fast.
-2. **Concurrency is hard**: The kernel solves the same problems we face in app dev (deadlocks, lock synchronization, and data races).
-3. **Abstractions hide costs**: File descriptors, virtual memory, and process threads hide massive complexities (context switches, page faults, and page table walks).
+I no longer treat the operating system as a black box. Having a clear mental model of kernel mode switches, page tables, and context switching makes it much easier to write efficient, stable applications. 
 
-I no longer view the operating system as a black box. It makes me a better developer, database operator, and troubleshooter. Thanks for reading along!
+Thanks for reading along!

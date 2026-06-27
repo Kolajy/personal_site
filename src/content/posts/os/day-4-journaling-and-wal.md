@@ -1,18 +1,18 @@
 ---
-title: 30 Days Of Operating Systems - Day 4
-excerpt: Digging into Filesystem Journaling
-date: 2024-10-04
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 4"
+excerpt: "Journaling and WAL"
+date: "2024-10-04"
+readTime: "4 min read"
 tags:
   - Operating-Systems
 ---
+If your computer loses power in the middle of writing a file, how does the system recover without corrupting everything? That is what journaling (ext4) and Write-Ahead Logging (WAL in databases) are built to solve.
 
-A process isn't just running or not running. It progresses through a strict state machine managed by the OS scheduler:
+I spent today researching how journaling works. When a filesystem wants to write a block, it does it in three phases:
+1. Write the metadata update to a dedicated journal block on disk.
+2. Commit the journal write.
+3. Write the actual data blocks to the filesystem.
 
-- **New**: The process is being created (loading code into memory).
-- **Ready**: The process is loaded and waiting to be assigned to a CPU core.
-- **Running**: The CPU is currently executing the process's instructions.
-- **Blocked / Waiting**: The process cannot continue until an event occurs (e.g., waiting for disk I/O, network packets, or a sleep timer).
-- **Terminated**: The process has finished executing, and the OS is cleaning up its memory.
+If the power dies halfway through step 3, the OS boots up, looks at the journal, sees an uncommitted transaction, and safely rolls it back. If it dies after step 2, the OS can replay it.
 
-Understanding the "Blocked" state explains why database calls don't freeze the entire machine. When a thread requests data from disk, the scheduler moves it to the Blocked state and instantly runs another Ready process on that CPU core.
+It's cool to see how database engines like Postgres copy this exact OS-level journaling concept for their WAL. It is all about writing logs sequentially first, because sequential disk writes are always faster and safer than random writes.

@@ -1,18 +1,17 @@
 ---
-title: 30 Days Of Operating Systems - Day 14
-excerpt: Numa Numa Numa
-date: 2024-10-13
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 14"
+excerpt: "NUMA Architecture"
+date: "2024-10-14"
+readTime: "3 min read"
 tags:
   - Operating-Systems
 ---
+When you scale to multi-socket servers (servers with 2 or 4 physical CPU chips), you encounter **NUMA (Non-Uniform Memory Access)**.
 
-A **Deadlock** occurs when a set of processes are blocked because each process holds a resource and waits for another resource held by someone else in the set.
+In a NUMA system, RAM slots are physically divided and wired directly to specific CPU sockets. 
+- CPU 1 accessing its local RAM node is incredibly fast.
+- CPU 1 accessing RAM wired to CPU 2 requires jumping across an interconnect bus (like QPI or Infinity Fabric), which adds latency and congestion.
 
-For a deadlock to happen, the four **Coffman Conditions** must hold simultaneously:
-1. **Mutual Exclusion**: At least one resource must be held in non-shareable mode.
-2. **Hold and Wait**: A process holding resources can request new resources without releasing what it already has.
-3. **No Preemption**: Resources cannot be forcibly taken from a process.
-4. **Circular Wait**: Process A waits for B, B waits for C, and C waits for A.
+If the OS scheduler moves a database thread from CPU 1 to CPU 2, but all its cache data and memory allocations remain on CPU 1's local RAM node, performance degrades.
 
-If you can break even *one* of these conditions, you can prevent deadlocks entirely. For example, ordering locks globally breaks the Circular Wait condition.
+Relearning this explains why tools like `numactl` are critical when running large databases: we can pin the database process to a specific socket and force it to only allocate local RAM.

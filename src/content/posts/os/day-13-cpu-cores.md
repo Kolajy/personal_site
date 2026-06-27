@@ -1,17 +1,17 @@
 ---
-title: 30 Days Of Operating Systems - Day 13
-excerpt: How's a CPU work?
-date: 2024-10-21
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 13"
+excerpt: "CPU Cores and Threads"
+date: "2024-10-13"
+readTime: "3 min read"
 tags:
   - Operating-Systems
 ---
+Today I looked at CPU Cores and SMT (Simultaneous Multithreading, or Hyperthreading).
 
-How does a file system map a file name like `hello.txt` to blocks on a raw magnetic disk or SSD? In Unix systems, the core abstraction is the **Inode (Index Node)**.
+A physical core has the actual ALU, registers, and execution units. A logical core is just a duplicated register state. Hyperthreading works by giving a single physical core two sets of registers, pretending to be two processors.
 
-An inode is a metadata structure containing:
-- File size, permissions, and owner.
-- Creation, modification, and access timestamps.
-- A list of pointers to the raw disk blocks containing the data.
+If Thread A is waiting for a memory block to load from RAM (taking 100ns), the CPU instantly switches execution to Thread B on the other logical thread. 
 
-Crucially, the inode does *not* contain the file name. Directory structures are just special files that map file names to inode numbers. This explains why renaming a file is instant—it just modifies a directory name-to-inode map, without copying any file blocks.
+However, they share the same physical execution pipeline. If both threads are doing heavy mathematical calculation, hyperthreading won't double your speed—it might even slow things down due to pipeline stalls.
+
+This is why container CPU allocations must be carefully tuned depending on whether the workload is CPU-bound or I/O-bound.

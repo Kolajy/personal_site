@@ -1,9 +1,10 @@
 ---
-title: "Hello World!"
+title: Hello World!
 excerpt: ""
-date: "2024-09-22"
-readTime: "2 min read"
-tags: ["Engineering", "Business", "Life"]
+date: 2024-09-22
+readTime: 2 min read
+tags:
+  - Life
 ---
 
 

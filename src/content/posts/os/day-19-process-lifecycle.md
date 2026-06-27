@@ -1,19 +1,15 @@
 ---
-title: 30 Days Of Operating Systems - Day 19
-excerpt: The life of a Process
-date: 2024-10-18
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 19"
+excerpt: "The Process Lifecycle"
+date: "2024-10-19"
+readTime: "3 min read"
 tags:
   - Operating-Systems
 ---
+Today I mapped out the process lifecycle and states inside the kernel task struct:
 
-What happens when you run out of physical RAM? The OS can write inactive memory pages to disk (swap space) to free up physical frames. 
+- **TASK_RUNNING**: The process is either currently running on a core, or waiting in the scheduler queue (Runnable).
+- **TASK_INTERRUPTIBLE / UNINTERRUPTIBLE**: Sleeping/Waiting for an event (like I/O). Interruptible sleeps can be woken up by software signals, while uninterruptible sleeps are waiting on hardware events (like a disk read).
+- **EXIT_ZOMBIE**: The process has finished, but its exit code is still waiting to be read by its parent. 
 
-This leads to **Demand Paging**.
-
-When a process accesses a page that is mapped to virtual memory but is not currently in physical RAM:
-1. The page table entry indicates the page is invalid.
-2. The MMU generates a hardware interrupt called a **Page Fault**.
-3. The kernel traps the interrupt, halts the process, reads the page content from the disk swap file, loads it into a physical frame, updates the page table, and resumes the process.
-
-This process is slow because disk reads are orders of magnitude slower than RAM, but it lets us run applications larger than our physical memory.
+Zombies don't consume memory or CPU; they are just single rows in the process table. But if parent processes fail to call `wait()`, the process table fills up and blocks new process allocations.

@@ -1,16 +1,13 @@
 ---
-title: 30 Days Of Operating Systems - Day 2
-excerpt: Breaking Down Filesystems
-date: 2024-10-02
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 2"
+excerpt: "Breaking Down Filesystems"
+date: "2024-10-02"
+readTime: "3 min read"
 tags:
   - Operating-Systems
 ---
+So, Day 2 is all about filesystems. When I was looking at this in OSTEP, it struck me how much magic we take for granted when we call `fs.writeFile()` in Node or run a simple Unix pipe. 
 
-Today I dove back into processes and threads. I used to think of a process as a running application, which is true at a high level. But structurally, what is it?
+Under the hood, a filesystem is just a logical data structure mapped onto raw disk blocks. I relearned what an Inode actually is: it's basically the metadata index of a file. It stores file size, permissions, owner, and pointers to the physical data blocks. The funny thing is, the inode doesn't even know the filename! The filename only exists in a directory file, which is just a simple map matching names to inode numbers.
 
-A **process** is the OS's unit of resource allocation. It has its own isolated address space (code, data, heap, stack), file descriptors, security contexts, and environment variables. If one process crashes, it doesn't drag other processes down with it because of this isolation.
-
-A **thread**, on the other hand, is the unit of CPU execution. It lives inside a process and shares that process's address space, heap, and open files. However, each thread gets its own private program counter, register set, and stack to track its execution.
-
-Relearning this made me appreciate why multi-threading is fast but dangerous. Because threads share memory, context-switching between threads is cheap (no need to swap page tables), but a single bug can corrupt the process's shared state and crash everything.
+This explains why renaming a file is practically instant. We aren't moving any raw sectors around on disk; we are just updating a string key in a directory map. Over the years I've spent hours debugging "disk full" issues only to find out the disk ran out of inodes instead of bytes. Now it completely makes sense why that happens.

@@ -1,15 +1,13 @@
 ---
-title: 30 Days Of Operating Systems - Day 27
-excerpt: OSI Network Model
-date: 2024-10-27
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 27"
+excerpt: "Network Layers and Routing"
+date: "2024-10-27"
+readTime: "3 min read"
 tags:
   - Operating-Systems
 ---
+How does the kernel decide where to send a packet? It walks the **Routing Table**.
 
-Today I read about kernel architectures, specifically the Monolithic vs. Microkernel designs.
+Every OS maintains a routing table mapping IP subnets to specific interfaces or gateway routers. When a process sends data, the kernel evaluates the destination IP, matches the most specific subnet route, wraps the data in an Ethernet frame with the gateway's MAC address, and sends it out.
 
-- **Monolithic Kernel (Linux)**: The entire OS (scheduler, virtual memory, device drivers, file system) runs in a single, massive address space inside kernel mode. It is fast (no privilege boundaries to cross) but a bug in a single network driver can panic the entire system.
-- **Microkernel (MINIX, Mach)**: Only the absolute essentials (IPC, basic scheduling, memory management) run in kernel mode. Drivers and file systems run in user space as normal processes. This is highly secure and stable, but message passing overhead makes it historically slower.
-
-Modern OSes (like macOS or Windows) use hybrid approaches to balance speed and safety.
+This is exactly what happens with the "Routing Hub" metric on my site's specs bar. The IP address geolocates back to the ISP's gateway routing center, which acts as the edge node connecting your local network to the global internet backbone.

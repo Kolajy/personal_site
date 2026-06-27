@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/posts/os/day-4-journaling-and-wal.md",
+                "file": "src/content/posts/os/day-2-filesystems.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "src/content/posts/os/day-4-journaling-and-wal.md",
+                "file": "src/content/posts/os/day-2-filesystems.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "src/content/posts/os/day-4-journaling-and-wal.md",
+                "file": "src/content/posts/os/day-2-filesystems.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/content/posts/os/day-4-journaling-and-wal.md"
+                "file": "src/content/posts/os/day-2-filesystems.md"
               }
             }
           }
@@ -148,17 +148,20 @@
   },
   "active": "38924ed8539a4331",
   "lastOpenFiles": [
+    "src/content/posts/os/day-1-intro.md",
+    "src/content/posts/os/day-2-filesystems.md",
+    "src/content/posts/hello-world.md",
+    "src/content/posts/os/day-4-journaling-and-wal.md",
     "dist/sitemap-index.xml",
     "dist/sitemap-0.xml",
     "dist/index.html",
     "dist/blog/os/day-9-buffer-cache/index.html",
+    "dist/blog/os/day-9-buffer-cache",
     "dist/blog/os/day-8-virtual-memory/index.html",
+    "dist/blog/os/day-8-virtual-memory",
     "dist/blog/os/day-7-swap-space/index.html",
+    "dist/blog/os/day-7-swap-space",
     "dist/blog/os/day-6-memory-management/index.html",
-    "dist/blog/os/day-5-drives-and-raid/index.html",
-    "dist/blog/os/day-4-journaling-and-wal/index.html",
-    "dist/blog/os/day-30-wrapping-up/index.html",
-    "dist/blog/os/day-3-diskio-and-dma/index.html",
     "dist/_astro/yosemite-valley.CM0J0KIa.jpg",
     "dist/_astro/yosemite-cliff.DxBUw6dI.jpg",
     "dist/_astro/swiss-alps-chalet.Bod1BFKe.png",
@@ -190,9 +193,6 @@
     "src/content/posts/os/day-14-numa.md",
     "src/content/posts/os/day-13-cpu-cores.md",
     "src/content/posts/os/day-12-cache-coherence.md",
-    "src/content/posts/os/day-11-memory-hierarchy.md",
-    "src/content/posts/os/day-10-diskio.md",
-    "src/content/posts/os/day-9-buffer-cache.md",
-    "src/content/posts/os/day-8-virtual-memory.md"
+    "src/content/posts/os/day-11-memory-hierarchy.md"
   ]
 }

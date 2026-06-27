@@ -1,15 +1,14 @@
 ---
-title: 30 Days Of Operating Systems - Day 20
-excerpt: Stop Interrupting Me
-date: 2024-10-19
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 20"
+excerpt: "Signals and Interrupts"
+date: "2024-10-20"
+readTime: "3 min read"
 tags:
   - Operating-Systems
 ---
+How does the system coordinate asynchronous events? Today I looked at the difference between hardware interrupts and software signals.
 
-When a page fault occurs and RAM is full, the OS must choose an existing page to evict to make room. How does it choose?
+- **Hardware Interrupts**: Fired by physical components (keyboard key press, network packet arrival, or DMA transfer completion). The CPU immediately pauses its pipeline and jumps to the kernel's Interrupt Handler.
+- **Software Signals**: Sent by the kernel to user-space processes (like SIGINT when you hit `Ctrl+C`, or SIGKILL when you run `kill -9`).
 
-I reviewed three algorithms:
-1. **FIFO (First-In, First-Out)**: Evict the oldest page. Easy, but leads to Belady's Anomaly—adding more RAM can sometimes cause *more* page faults!
-2. **LRU (Least Recently Used)**: Evict the page that hasn't been accessed for the longest time. Generally optimal for real workloads, but tracking exact access times is too slow for hardware.
-3. **Clock (Second Chance)**: An approximation of LRU. It uses a single access bit in hardware. The OS rotates a pointer through pages. If the bit is 1, it sets it to 0 and gives it a second chance. If it is 0, it evicts it.
+A process can register custom handlers for most signals to clean up connections before shutting down, but SIGKILL and SIGSTOP bypass user space entirely—the kernel handles them directly to terminate the task.

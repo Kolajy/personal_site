@@ -1,15 +1,17 @@
 ---
-title: 30 Days Of Operating Systems - Day 23
-excerpt: Deadlocks and Spinlocks and stuff
-date: 2024-10-23
-readTime: 3 min read
+title: "30 Days Of Operating Systems - Day 23"
+excerpt: "Concurrency Edge Cases"
+date: "2024-10-23"
+readTime: "3 min read"
 tags:
   - Operating-Systems
 ---
+Today I looked at concurrency edge cases, specifically **Priority Inversion**.
 
-Since Unix directory entries map names to inode numbers, we can have multiple directory entries pointing to the exact same inode. This brings us to links:
+This happens when:
+1. Low-priority Thread L holds Lock A.
+2. High-priority Thread H requests Lock A and blocks, waiting for L to finish.
+3. Medium-priority Thread M starts running a long compute task. Since M has higher priority than L, the scheduler runs M, starving L.
+4. Because L is starved, it never releases Lock A. H is locked out indefinitely by a medium-priority thread!
 
-- **Hard Link**: A directory entry pointing directly to an inode. If you delete the original file name, the inode is still accessible via the hard link. The OS only deletes the file content when the inode's "link count" reaches zero.
-- **Soft Link (Symbolic Link / Symlink)**: A special file containing a text path pointing to another file name. If you delete the target file, the symlink breaks ("dangling link").
-
-Hard links cannot span different hard drives because inode numbers are only unique to their specific filesystem, whereas symlinks can point anywhere.
+Modern OSes solve this using **Priority Inheritance**: when Thread H blocks on a lock held by Thread L, the kernel temporarily boosts L's priority to match H's, ensuring L runs and releases the lock quickly.
