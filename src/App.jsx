@@ -79,6 +79,223 @@ function RenderMarkdown({ content }) {
   );
 }
 
+function VisitorGreeting() {
+  const [visitorInfo, setVisitorInfo] = useState({
+    ip: '',
+    city: '',
+    region: '',
+    country: '',
+    org: '',
+    timezone: '',
+    ping: null,
+    loading: true,
+  });
+
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const [gpu, setGpu] = useState('');
+
+  useEffect(() => {
+    const startFetch = performance.now();
+    fetch('https://ipapi.co/json/')
+      .then((res) => res.json())
+      .then((data) => {
+        const endFetch = performance.now();
+        const measuredPing = Math.round(endFetch - startFetch);
+        setVisitorInfo({
+          ip: data.ip || '',
+          city: data.city || '',
+          region: data.region || '',
+          country: data.country_name || '',
+          org: data.org || '',
+          timezone: data.timezone || '',
+          ping: measuredPing,
+          loading: false,
+        });
+      })
+      .catch(() => {
+        setVisitorInfo({
+          ip: '',
+          city: '',
+          region: '',
+          country: '',
+          org: '',
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
+          ping: null,
+          loading: false,
+        });
+      });
+
+    // Detect GPU
+    try {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      if (gl) {
+        const dbgRenderInfo = gl.getExtension('WEBGL_debug_renderer_info');
+        if (dbgRenderInfo) {
+          const renderer = gl.getParameter(dbgRenderInfo.UNMASKED_RENDERER_WEBGL);
+          if (renderer) {
+            const cleaned = renderer.replace(/ANGLE \((.*)\)/, '$1');
+            const parts = cleaned.split(',');
+            const gpuName = parts.length > 1 ? parts[1].trim() : parts[0].trim();
+            setGpu(gpuName);
+          }
+        }
+      }
+    } catch (e) {
+      // ignore
+    }
+
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const ua = typeof navigator !== 'undefined' ? navigator.userAgent : '';
+  
+  const getBrowserAndOS = () => {
+    let browser = 'a modern browser';
+    let os = 'your device';
+
+    if (ua.includes('Firefox/')) browser = 'Firefox';
+    else if (ua.includes('Edg/')) browser = 'Microsoft Edge';
+    else if (ua.includes('Chrome/')) browser = 'Google Chrome';
+    else if (ua.includes('Safari/')) browser = 'Safari';
+
+    if (ua.includes('Windows NT')) os = 'Windows';
+    else if (ua.includes('Mac OS X')) os = 'macOS';
+    else if (ua.includes('Linux')) os = 'Linux';
+    else if (ua.includes('Android')) os = 'Android';
+    else if (ua.includes('iPhone') || ua.includes('iPad')) os = 'iOS';
+
+    return { browser, os };
+  };
+
+  const getDeviceType = () => {
+    if (/Mobi|Android|iPhone|iPad|iPod/i.test(ua)) {
+      if (/iPad|tablet/i.test(ua)) return 'a tablet';
+      return 'a mobile device';
+    }
+    return 'a desktop computer';
+  };
+
+  const getReferrerText = () => {
+    if (typeof document === 'undefined' || !document.referrer) {
+      return 'directly';
+    }
+    try {
+      const url = new URL(document.referrer);
+      let hostname = url.hostname;
+      if (hostname.startsWith('www.')) {
+        hostname = hostname.substring(4);
+      }
+      if (hostname.includes('github.com')) return 'GitHub';
+      if (hostname.includes('google.com')) return 'Google';
+      if (hostname.includes('linkedin.com')) return 'LinkedIn';
+      if (hostname.includes('twitter.com') || hostname.includes('t.co')) return 'Twitter/X';
+      return hostname;
+    } catch (e) {
+      return 'another webpage';
+    }
+  };
+
+  const getMoonPhase = (date) => {
+    const referenceDate = new Date(Date.UTC(2000, 0, 6, 18, 14, 0));
+    const totalMs = date.getTime() - referenceDate.getTime();
+    const synodicMonth = 29.530588853 * 24 * 60 * 60 * 1000;
+    const cyclePosition = (totalMs / synodicMonth) % 1;
+    
+    if (cyclePosition < 0.03 || cyclePosition > 0.97) return { name: 'New Moon', emoji: '🌑' };
+    if (cyclePosition < 0.22) return { name: 'Waxing Crescent', emoji: '🌒' };
+    if (cyclePosition < 0.28) return { name: 'First Quarter', emoji: '🌓' };
+    if (cyclePosition < 0.47) return { name: 'Waxing Gibbous', emoji: '🌔' };
+    if (cyclePosition < 0.53) return { name: 'Full Moon', emoji: '🌕' };
+    if (cyclePosition < 0.72) return { name: 'Waning Gibbous', emoji: '🌖' };
+    if (cyclePosition < 0.78) return { name: 'Last Quarter', emoji: '🌗' };
+    return { name: 'Waning Crescent', emoji: '🌘' };
+  };
+
+  const { browser, os } = getBrowserAndOS();
+  const deviceType = getDeviceType();
+  const referrerText = getReferrerText();
+  const moonPhase = getMoonPhase(currentTime);
+  const resolution = typeof window !== 'undefined' ? `${window.screen.width}x${window.screen.height}` : null;
+  const cores = typeof navigator !== 'undefined' ? navigator.hardwareConcurrency : null;
+  const connection = typeof navigator !== 'undefined' ? navigator.connection : null;
+  const rawPing = connection ? connection.rtt : null;
+  const ping = rawPing !== null && rawPing !== undefined ? rawPing : visitorInfo.ping;
+  const bandwidth = connection ? connection.downlink : null;
+  const timezone = typeof Intl !== 'undefined' ? Intl.DateTimeFormat().resolvedOptions().timeZone : null;
+
+  // Determine morning, afternoon, evening
+  const getGreetingTimeOfDay = (date) => {
+    const hrs = date.getHours();
+    if (hrs < 12) return 'morning';
+    if (hrs < 17) return 'afternoon';
+    return 'evening';
+  };
+
+  const dayOfWeek = currentTime.toLocaleDateString([], { weekday: 'long' });
+  const timeOfDay = getGreetingTimeOfDay(currentTime);
+
+  const referrerPhrase = referrerText === 'directly'
+    ? 'arrived directly'
+    : `arrived here via ${referrerText}`;
+
+  const locationPhrase = visitorInfo.city
+    ? `currently in ${visitorInfo.city}`
+    : 'currently somewhere special on Earth';
+
+  return (
+    <div className="border-b border-[var(--border-color)] pb-8 mb-8 font-serif">
+      <div className="space-y-4">
+        {/* Warm Greeting Heading */}
+        <h1 className="text-3xl font-extrabold text-[var(--text-primary)] font-sans tracking-tight">
+          Hey there!
+        </h1>
+
+        {/* Narrative Flow */}
+        <div className="text-[16px] leading-relaxed text-[var(--text-secondary)] space-y-4">
+          <p>
+            Hope your {dayOfWeek} {timeOfDay} is going well. I'm Jay!
+          </p>
+          <p>
+            Welcome to my humble little corner of the internet. I notice that you {referrerPhrase} and that you're {locationPhrase} using{' '}
+            <span className="text-[var(--text-primary)] font-sans font-medium">{browser}</span> on{' '}
+            <span className="text-[var(--text-primary)] font-sans font-medium">{deviceType}</span>. It must have been quite a journey to end up here, but I'm glad to have you from such a long way away!
+          </p>
+          <p>
+            Don't worry, none of this is saved on a server or tracked; it's just rendered locally in your browser for fun. Feel free to take a look around or reach out to me at{' '}
+            <a 
+              href="mailto:hello@jaylok.com" 
+              className="text-[var(--accent-color)] hover:underline font-sans font-medium"
+            >
+              hello@jaylok.com
+            </a>{' '}
+            if you wanna chat!
+          </p>
+        </div>
+
+        {/* Subtle Tech Specs Footer Bar */}
+        {!visitorInfo.loading && (
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] font-mono text-[var(--text-secondary)]/70 pt-2 select-none border-t border-[var(--border-color)]/30 mt-4">
+            {visitorInfo.ip && <span>IP: {visitorInfo.ip}</span>}
+            {resolution && <span>• Screen: {resolution}</span>}
+            {cores && <span>• CPU: {cores} Cores</span>}
+            {gpu && <span>• GPU: {gpu}</span>}
+            {ping !== null && ping !== undefined && <span>• Ping: {ping}ms</span>}
+            {bandwidth !== null && bandwidth !== undefined && <span>• Bandwidth: {bandwidth} Mbps</span>}
+            {timezone && <span>• Timezone: {timezone}</span>}
+            <span>• Moon: {moonPhase.emoji} {moonPhase.name}</span>
+            <span>• Time: {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function App({ posts = [], projects = [], photos = [] }) {
   const [activeTab, setActiveTab] = useState('home'); // 'home', 'projects', 'blog'
   const [selectedPost, setSelectedPost] = useState(null);
@@ -202,6 +419,7 @@ export default function App({ posts = [], projects = [], photos = [] }) {
         ) : activeTab === 'home' ? (
           /* PAPERMOD PROFILE MODE (HOME) */
           <div className="space-y-12">
+            <VisitorGreeting />
             {/* Featured Posts list in Home */}
             <section className="space-y-6">
               <h2 className="text-xs uppercase tracking-wider text-[var(--text-secondary)] font-semibold mb-4">Recent Posts</h2>
@@ -352,7 +570,7 @@ export default function App({ posts = [], projects = [], photos = [] }) {
           /* ABOUT ME VIEW */
           <div className="space-y-6">
             <header className="flex justify-between items-center border-b border-[var(--border-color)] pb-3 mb-6">
-              <h1 className="text-2xl font-extrabold text-[var(--text-primary)]">Who Am I</h1>
+              <h1 className="text-2xl font-extrabold text-[var(--text-primary)]">About</h1>
               <div className="flex space-x-4">
                 <a href="https://github.com/kolajy" target="_blank" rel="noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-150" aria-label="GitHub">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
@@ -366,16 +584,62 @@ export default function App({ posts = [], projects = [], photos = [] }) {
                 </a>
               </div>
             </header>
-            <div className="prose text-[15px] text-[var(--text-secondary)] leading-relaxed max-w-xl space-y-4">
-              <p>
-                I'm an engineer who's worked across the stack — mostly backend, data infrastructure, and systems, with a recent focus on building products and services powered by AI.
-              </p>
-              <p>
-                I love building from 0 to 1, and I've got a real passion for breaking complex things down into something simple.
-              </p>
-              <p>
-                Outside of work, I'm usually bouldering, hiking, or biking. Lately I've also been spending a lot of time on the business side of things — digging into 10-Ks, studying fundamentals, and trying to understand what actually separates the businesses that win from the ones that don't.
-              </p>
+
+            {/* Terminal Window Mockup */}
+            <div className="w-full bg-[var(--bg-secondary)] rounded-lg border border-[var(--border-color)] overflow-hidden font-mono text-sm leading-relaxed text-[var(--text-primary)]">
+              {/* Window Header */}
+              <div className="flex items-center justify-between px-4 py-2 bg-[var(--code-bg)] border-b border-[var(--border-color)] select-none">
+                <div className="flex space-x-2">
+                  <span className="w-2.5 h-2.5 rounded-full border border-[var(--border-color)] bg-[var(--bg-primary)]" />
+                  <span className="w-2.5 h-2.5 rounded-full border border-[var(--border-color)] bg-[var(--bg-primary)]" />
+                  <span className="w-2.5 h-2.5 rounded-full border border-[var(--border-color)] bg-[var(--bg-primary)]" />
+                </div>
+                <span className="text-[11px] text-[var(--text-secondary)] font-sans font-medium">jay@space: ~</span>
+                <span className="w-12" /> {/* spacer */}
+              </div>
+
+              {/* Terminal Content */}
+              <div className="p-5 space-y-6">
+                <div>
+                  <div className="flex items-center text-[var(--text-primary)] font-semibold">
+                    <span className="text-emerald-600 dark:text-emerald-400 mr-2">jay@space:~$</span>
+                    <span>whoami</span>
+                  </div>
+                  <div className="text-[var(--text-secondary)] mt-1 pl-4 border-l border-[var(--border-color)]">
+                    jaylok
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex items-center text-[var(--text-primary)] font-semibold">
+                    <span className="text-emerald-600 dark:text-emerald-400 mr-2">jay@space:~$</span>
+                    <span>cat bio.md</span>
+                  </div>
+                  <div className="text-[var(--text-secondary)] mt-1 pl-4 border-l border-[var(--border-color)] font-serif leading-relaxed text-[15px] space-y-3">
+                    <p>
+                      I'm an engineer who's worked across the stack — mostly backend, data infrastructure, and systems, with a recent focus on building products and services powered by AI.
+                    </p>
+                    <p>
+                      I love building from 0 to 1, and I've got a real passion for breaking complex things down into something simple.
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex items-center text-[var(--text-primary)] font-semibold">
+                    <span className="text-emerald-600 dark:text-emerald-400 mr-2">jay@space:~$</span>
+                    <span>cat interests.txt</span>
+                  </div>
+                  <div className="text-[var(--text-secondary)] mt-1 pl-4 border-l border-[var(--border-color)] font-serif leading-relaxed text-[15px]">
+                    Outside of work, I'm usually bouldering, hiking, or biking. Lately I've also been spending a lot of time on the business side of things — digging into 10-Ks, studying fundamentals, and trying to understand what actually separates the businesses that win from the ones that don't.
+                  </div>
+                </div>
+                
+                <div className="flex items-center text-emerald-600 dark:text-emerald-400">
+                  <span>jay@space:~$</span>
+                  <span className="w-1.5 h-3.5 bg-emerald-500 dark:bg-emerald-400 ml-1 inline-block animate-pulse" />
+                </div>
+              </div>
             </div>
           </div>
         ) : (

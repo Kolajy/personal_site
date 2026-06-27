@@ -1,9 +1,9 @@
 ---
-title: "FinTools"
+title: "Finly"
 description: "A multi-agent fundamental analysis suite employing specialized LLM business agents to parse 10-Ks, analyze metrics, and run financial health checks."
 tags: ["Finance", "Multi-Agent", "React", "TypeScript", "Vercel"]
 links:
-  live: "https://fintools.jaylok.com"
+  live: "https://finly.jaylok.com"
 featured: true
 ---
 
