@@ -270,7 +270,7 @@ export function CurrentSpecs() {
       <div className="mt-4 pt-4 border-t border-[var(--border-color)]/30 text-left select-none">
         <span className="text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-semibold block mb-2">Current Specs</span>
         <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-[11px] font-mono text-[var(--text-secondary)]/40">
-          <span>IP: Scanning...</span>
+          <span>• IP: Scanning...</span>
           <span>• Client: Detecting...</span>
         </div>
       </div>
@@ -280,20 +280,25 @@ export function CurrentSpecs() {
   return (
     <div className="mt-4 pt-4 border-t border-[var(--border-color)]/30 text-left select-none">
       <span className="text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-semibold block mb-2">Current Specs</span>
-      <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-[11px] font-mono text-[var(--text-secondary)]/60">
+      <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-[11px] font-mono text-[var(--text-secondary)]/60 select-none">
+        {/* Network & Routing */}
         {visitorInfo.loading ? (
-          <span>IP: Scanning...</span>
+          <span>• IP: Scanning...</span>
         ) : (
-          visitorInfo.ip && <span>IP: {visitorInfo.ip}</span>
+          visitorInfo.ip && <span>• IP: {visitorInfo.ip}</span>
         )}
         {!visitorInfo.loading && visitorInfo.city && (
           <span>• Routing Hub: {visitorInfo.city}, {visitorInfo.country}</span>
         )}
+        {ping !== null && ping !== undefined && <span>• Ping: {ping}ms</span>}
+
+        {/* Client & Device */}
         <span>• Client: {browser} ({os}, {deviceType})</span>
         {resolution && <span>• Screen: {resolution}</span>}
         {cores && <span>• CPU: {cores} Cores</span>}
         {gpu && <span>• GPU: {gpu}</span>}
-        {ping !== null && ping !== undefined && <span>• Ping: {ping}ms</span>}
+
+        {/* Time & Environment */}
         {timezone && <span>• Timezone: {timezone}</span>}
         <span>• Moon: {moonPhase.emoji} {moonPhase.name}</span>
         <span>• Time: {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>
