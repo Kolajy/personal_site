@@ -81,7 +81,7 @@ function RenderMarkdown({ content }) {
 
 function VisitorGreeting() {
   return (
-    <div className="border-b border-[var(--border-color)] pb-8 mb-8 font-serif">
+    <div className="font-serif">
       <div className="space-y-4">
         {/* Warm Greeting Heading */}
         <h1 className="text-3xl font-extrabold text-[var(--text-primary)] font-sans tracking-tight">
@@ -267,7 +267,7 @@ export function CurrentSpecs() {
 
   if (!mounted) {
     return (
-      <div className="mt-4 pt-4 border-t border-[var(--border-color)]/30 text-left select-none">
+      <div className="mt-4 pt-4 border-t border-[var(--border-color)]/30 border-b border-[var(--border-color)] pb-8 mb-8 text-left select-none">
         <span className="text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-semibold block mb-2">Current Specs</span>
         <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-[11px] font-mono text-[var(--text-secondary)]/40">
           <span>• IP: Scanning...</span>
@@ -278,7 +278,7 @@ export function CurrentSpecs() {
   }
 
   return (
-    <div className="mt-4 pt-4 border-t border-[var(--border-color)]/30 text-left select-none">
+    <div className="mt-4 pt-4 border-t border-[var(--border-color)]/30 border-b border-[var(--border-color)] pb-8 mb-8 text-left select-none">
       <span className="text-[10px] uppercase tracking-wider text-[var(--text-secondary)] font-semibold block mb-2">Current Specs</span>
       <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-[11px] font-mono text-[var(--text-secondary)]/60 select-none">
         {/* Network & Routing */}
