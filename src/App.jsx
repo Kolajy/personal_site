@@ -542,7 +542,7 @@ export default function App({ posts = [], projects = [], photos = [] }) {
             {/* Featured Posts list in Home */}
             <section className="space-y-6">
               <h2 className="text-xs uppercase tracking-wider text-[var(--text-secondary)] font-semibold mb-4">Recent Posts</h2>
-              <div className="space-y-6">
+              <div className="space-y-6 min-h-[480px]">
                 {paginatedHomePosts.map(post => (
                   <article key={post.id} className="space-y-2">
                     <header>
@@ -807,7 +807,7 @@ export default function App({ posts = [], projects = [], photos = [] }) {
               </div>
             )}
 
-            <div className="space-y-6">
+            <div className="space-y-6 min-h-[480px]">
               {paginatedBlogPosts.map(post => (
                 <article key={post.id} className="space-y-1">
                   <header>
