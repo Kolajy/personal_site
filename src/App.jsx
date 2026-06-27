@@ -93,6 +93,7 @@ function VisitorGreeting() {
 
   const [currentTime, setCurrentTime] = useState(new Date());
   const [gpu, setGpu] = useState('');
+  const [localPing, setLocalPing] = useState(null);
 
   useEffect(() => {
     const startFetch = performance.now();
@@ -159,6 +160,21 @@ function VisitorGreeting() {
     } catch (e) {
       // ignore
     }
+
+    // Measure local ping to favicon (ignores cache to get accurate network latency)
+    const pingStart = performance.now();
+    fetch('/favicon.ico', { cache: 'no-store', method: 'HEAD' })
+      .then(() => {
+        setLocalPing(Math.round(performance.now() - pingStart));
+      })
+      .catch(() => {
+        const fallbackStart = performance.now();
+        fetch('/', { cache: 'no-store', method: 'HEAD' })
+          .then(() => {
+            setLocalPing(Math.round(performance.now() - fallbackStart));
+          })
+          .catch(() => {});
+      });
 
     const timer = setInterval(() => {
       setCurrentTime(new Date());
@@ -239,7 +255,7 @@ function VisitorGreeting() {
   const cores = typeof navigator !== 'undefined' ? navigator.hardwareConcurrency : null;
   const connection = typeof navigator !== 'undefined' ? navigator.connection : null;
   const rawPing = connection ? connection.rtt : null;
-  const ping = rawPing !== null && rawPing !== undefined ? rawPing : visitorInfo.ping;
+  const ping = localPing !== null ? localPing : (rawPing !== null && rawPing !== undefined ? rawPing : visitorInfo.ping);
   const bandwidth = connection ? connection.downlink : null;
   const timezone = typeof Intl !== 'undefined' ? Intl.DateTimeFormat().resolvedOptions().timeZone : null;
 
