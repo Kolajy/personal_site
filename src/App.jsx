@@ -314,8 +314,8 @@ export default function App({ posts = [], projects = [], photos = [] }) {
     ? projects.filter(p => p.tags.includes(selectedTag))
     : projects;
 
-  // Sort posts from earliest to latest (chronological order)
-  const sortedPosts = [...posts].sort((a, b) => new Date(a.date) - new Date(b.date));
+  // Sort posts from latest to earliest (newest first, earlier dates last)
+  const sortedPosts = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
 
   const allBlogTags = Array.from(new Set(sortedPosts.flatMap(p => p.tags || [])));
   const filteredPosts = selectedBlogTag
