@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 8
-excerpt: How does Virtual Memory Work?
+title: "How does Virtual Memory Work?"
+excerpt: "30 Days Of Operating Systems - Day 8"
 date: 2024-10-08
 readTime: 3 min read
 tags:

@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 12
-excerpt: Wtf is Cache Coherence?
+title: "Wtf is Cache Coherence?"
+excerpt: "30 Days Of Operating Systems - Day 12"
 date: 2024-10-12
 readTime: 3 min read
 tags:

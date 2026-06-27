@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 3
-excerpt: Understanding Disk I/O and Memory Interactions
+title: "Understanding Disk I/O and Memory Interactions"
+excerpt: "30 Days Of Operating Systems - Day 3"
 date: 2024-10-03
 readTime: 3 min read
 tags:

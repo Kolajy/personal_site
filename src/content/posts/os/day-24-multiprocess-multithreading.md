@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 24
-excerpt: When is multiprocessing faster than multithreading
+title: "When is multiprocessing faster than multithreading"
+excerpt: "30 Days Of Operating Systems - Day 24"
 date: 2024-10-24
 readTime: 3 min read
 tags:

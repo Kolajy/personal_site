@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 27
-excerpt: OSI Network Model
+title: "OSI Network Model"
+excerpt: "30 Days Of Operating Systems - Day 27"
 date: 2024-10-27
 readTime: 3 min read
 tags:

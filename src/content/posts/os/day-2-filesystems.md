@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 2
-excerpt: Breaking Down Filesystems
+title: "Breaking Down Filesystems"
+excerpt: "30 Days Of Operating Systems - Day 2"
 date: 2024-10-02
 readTime: 3 min read
 tags:

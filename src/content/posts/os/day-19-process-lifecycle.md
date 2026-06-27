@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 19
-excerpt: The life of a Process
+title: "The life of a Process"
+excerpt: "30 Days Of Operating Systems - Day 19"
 date: 2024-10-18
 readTime: 3 min read
 tags:

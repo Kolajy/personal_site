@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 6
-excerpt: Adventures with RAM
+title: "Adventures with RAM"
+excerpt: "30 Days Of Operating Systems - Day 6"
 date: 2024-10-06
 readTime: 3 min read
 tags:

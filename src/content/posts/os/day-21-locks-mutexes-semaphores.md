@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 21
-excerpt: Concurrency Primitives
+title: "Concurrency Primitives"
+excerpt: "30 Days Of Operating Systems - Day 21"
 date: 2024-10-20
 readTime: 3 min read
 tags:

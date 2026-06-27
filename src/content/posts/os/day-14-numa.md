@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 14
-excerpt: Numa Numa Numa
+title: "Numa Numa Numa"
+excerpt: "30 Days Of Operating Systems - Day 14"
 date: 2024-10-13
 readTime: 3 min read
 tags:

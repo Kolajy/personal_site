@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 13
-excerpt: How's a CPU work?
+title: "How's a CPU work?"
+excerpt: "30 Days Of Operating Systems - Day 13"
 date: 2024-10-21
 readTime: 3 min read
 tags:

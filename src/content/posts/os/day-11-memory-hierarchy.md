@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 11
-excerpt: Jeff Dean's numbers
+title: "Jeff Dean's numbers"
+excerpt: "30 Days Of Operating Systems - Day 11"
 date: 2024-10-11
 readTime: 3 min read
 tags:

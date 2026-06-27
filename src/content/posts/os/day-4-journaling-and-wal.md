@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 4
-excerpt: Digging into Filesystem Journaling
+title: "Digging into Filesystem Journaling"
+excerpt: "30 Days Of Operating Systems - Day 4"
 date: 2024-10-04
 readTime: 3 min read
 tags:

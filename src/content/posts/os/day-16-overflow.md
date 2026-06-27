@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 16
-excerpt: Stack Overflow
+title: "Stack Overflow"
+excerpt: "30 Days Of Operating Systems - Day 16"
 date: 2024-10-15
 readTime: 3 min read
 tags:

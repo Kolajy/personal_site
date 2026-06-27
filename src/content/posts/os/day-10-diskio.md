@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 10
-excerpt: How can I optimize disk IO
+title: "How can I optimize disk IO"
+excerpt: "30 Days Of Operating Systems - Day 10"
 date: 2024-10-10
 readTime: 3 min read
 tags:

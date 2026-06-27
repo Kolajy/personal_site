@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 23
-excerpt: Deadlocks and Spinlocks and stuff
+title: "Deadlocks and Spinlocks and stuff"
+excerpt: "30 Days Of Operating Systems - Day 23"
 date: 2024-10-23
 readTime: 3 min read
 tags:

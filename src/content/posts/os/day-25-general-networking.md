@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 25
-excerpt: Networking
+title: "Networking"
+excerpt: "30 Days Of Operating Systems - Day 25"
 date: 2024-10-25
 readTime: 3 min read
 tags:

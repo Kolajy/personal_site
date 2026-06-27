@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 20
-excerpt: Stop Interrupting Me
+title: "Stop Interrupting Me"
+excerpt: "30 Days Of Operating Systems - Day 20"
 date: 2024-10-19
 readTime: 3 min read
 tags:

@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 7
-excerpt: Is Swap Space Bad?
+title: "Is Swap Space Bad?"
+excerpt: "30 Days Of Operating Systems - Day 7"
 date: 2024-10-07
 readTime: 3 min read
 tags:

@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 22
-excerpt: Why is talking to other processes hard
+title: "Why is talking to other processes hard"
+excerpt: "30 Days Of Operating Systems - Day 22"
 date: 2024-10-22
 readTime: 3 min read
 tags:

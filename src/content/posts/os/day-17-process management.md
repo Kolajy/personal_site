@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 17
-excerpt: Processes and Threads
+title: "Processes and Threads"
+excerpt: "30 Days Of Operating Systems - Day 17"
 date: 2024-10-16
 readTime: 3 min read
 tags:

@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 1
-excerpt: Introduction and Roadmap Planning
+title: "Introduction and Roadmap Planning"
+excerpt: "30 Days Of Operating Systems - Day 1"
 date: 2024-10-01
 readTime: 3 min read
 tags:

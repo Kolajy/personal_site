@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 30
-excerpt: Wrapping Up Learnings
+title: "Wrapping Up Learnings"
+excerpt: "30 Days Of Operating Systems - Day 30"
 date: 2024-10-30
 readTime: 3 min read
 tags:

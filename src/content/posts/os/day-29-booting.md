@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 29
-excerpt: Computer Lifecycle Stuff
+title: "Computer Lifecycle Stuff"
+excerpt: "30 Days Of Operating Systems - Day 29"
 date: 2024-10-29
 readTime: 3 min read
 tags:

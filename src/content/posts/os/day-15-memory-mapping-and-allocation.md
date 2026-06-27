@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 15
-excerpt: Malloc and Mmap
+title: "Malloc and Mmap"
+excerpt: "30 Days Of Operating Systems - Day 15"
 date: 2024-10-14
 readTime: 3 min read
 tags:

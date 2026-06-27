@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 5
-excerpt: Drive types and RAID
+title: "Drive types and RAID"
+excerpt: "30 Days Of Operating Systems - Day 5"
 date: 2024-10-05
 readTime: 3 min read
 tags:

@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 9
-excerpt: Whats the Buffer Cache
+title: "Whats the Buffer Cache"
+excerpt: "30 Days Of Operating Systems - Day 9"
 date: 2024-10-09
 readTime: 3 min read
 tags:

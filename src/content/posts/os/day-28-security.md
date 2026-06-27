@@ -1,6 +1,6 @@
 ---
-title: 30 Days Of Operating Systems - Day 28
-excerpt: I should probably cover security
+title: "I should probably cover security"
+excerpt: "30 Days Of Operating Systems - Day 28"
 date: 2024-10-28
 readTime: 3 min read
 tags:
