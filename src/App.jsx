@@ -287,7 +287,7 @@ export function CurrentSpecs() {
           visitorInfo.ip && <span>IP: {visitorInfo.ip}</span>
         )}
         {!visitorInfo.loading && visitorInfo.city && (
-          <span>• Location: {visitorInfo.city}, {visitorInfo.country}</span>
+          <span>• Routing Hub: {visitorInfo.city}, {visitorInfo.country}</span>
         )}
         <span>• Client: {browser} ({os}, {deviceType})</span>
         {resolution && <span>• Screen: {resolution}</span>}
