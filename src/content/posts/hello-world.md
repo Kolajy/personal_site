@@ -15,10 +15,3 @@ I haven't settled on the topics or a clear cadence yet, but hopefully, whatever 
 
 Later!
 
-<pre style="font-family: monospace; line-height: 1.2; background: transparent; border: none; padding: 0; margin-top: 1rem; color: var(--text-primary);">
-    _._     _,-'""`-._
-   (,-.`._,'(       |\`-/|
-       `-.-' \ )-`( , o o)
-             `-    \`_`"'-
-</pre>
-
