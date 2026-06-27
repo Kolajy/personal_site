@@ -4,9 +4,7 @@ excerpt: Concurrency Primitives
 date: 2024-10-20
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Memory
+  - Operating-Systems
 ---
 
 While **Paging** divides memory into fixed physical blocks (like pages of a book), **Segmentation** divides memory into logical blocks of variable size based on how programmers view their code (e.g., Code Segment, Stack Segment, Heap, Libraries).

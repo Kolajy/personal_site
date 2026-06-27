@@ -4,9 +4,7 @@ excerpt: Numa Numa Numa
 date: 2024-10-13
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Deadlock
+  - Operating-Systems
 ---
 
 A **Deadlock** occurs when a set of processes are blocked because each process holds a resource and waits for another resource held by someone else in the set.

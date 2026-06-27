@@ -4,10 +4,7 @@ excerpt: Malloc and Mmap
 date: 2024-10-14
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Deadlock
-  - Algorithms
+  - Operating-Systems
 ---
 
 Today I reviewed the **Banker's Algorithm**, designed by Edsger Dijkstra. It is a deadlock avoidance algorithm.

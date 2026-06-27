@@ -4,10 +4,7 @@ excerpt: How does Virtual Memory Work?
 date: 2024-10-08
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - IPC
-  - Sockets
+  - Operating-Systems
 ---
 
 Pipes and shared memory are great for processes running on the same machine. But what if the processes are running on different servers across the world?

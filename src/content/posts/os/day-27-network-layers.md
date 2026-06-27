@@ -4,10 +4,7 @@ excerpt: OSI Network Model
 date: 2024-10-27
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Architecture
-  - Kernel
+  - Operating-Systems
 ---
 
 Today I read about kernel architectures, specifically the Monolithic vs. Microkernel designs.

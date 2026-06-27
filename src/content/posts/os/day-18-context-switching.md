@@ -4,10 +4,7 @@ excerpt: Context Switching
 date: 2024-10-17
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Memory
-  - CPU
+  - Operating-Systems
 ---
 
 If every memory access required looking up a page table stored in RAM, our systems would run at half speed. To speed things up, the CPU uses a dedicated hardware cache called the **Translation Lookaside Buffer (TLB)**.

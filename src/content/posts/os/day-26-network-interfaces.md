@@ -4,10 +4,7 @@ excerpt: Network Interfaces
 date: 2024-10-26
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Storage
-  - Algorithms
+  - Operating-Systems
 ---
 
 Even though SSDs are common now, mechanical hard drives still run heavily in data centers. To read blocks, a mechanical arm must physically seek across tracks.

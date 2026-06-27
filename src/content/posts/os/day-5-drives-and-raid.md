@@ -4,10 +4,7 @@ excerpt: Drive types and RAID
 date: 2024-10-05
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - CPU
-  - Scheduling
+  - Operating-Systems
 ---
 
 How does the CPU decide which Ready process to run next? I refreshed my memory on the basic scheduling algorithms:

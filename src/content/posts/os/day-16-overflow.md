@@ -4,9 +4,7 @@ excerpt: Stack Overflow
 date: 2024-10-15
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Memory
+  - Operating-Systems
 ---
 
 When a computer boots up, RAM is just a massive physical array of bytes. In early computers, programs wrote directly to these physical addresses. If two programs ran at the same time, they could overwrite each other's data.

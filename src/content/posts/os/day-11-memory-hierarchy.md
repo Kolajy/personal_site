@@ -4,9 +4,7 @@ excerpt: Jeff Dean's numbers
 date: 2024-10-11
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Concurrency
+  - Operating-Systems
 ---
 
 A **Semaphore** is an integer variable managed by the OS that is accessed only through two atomic operations: `wait()` (P) and `signal()` (V).

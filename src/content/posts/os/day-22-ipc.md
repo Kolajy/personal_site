@@ -4,10 +4,7 @@ excerpt: Why is talking to other processes hard
 date: 2024-10-22
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - File
-  - System
+  - Operating-Systems
 ---
 
 Today I reviewed the three main ways a file system can organize file blocks on a disk:

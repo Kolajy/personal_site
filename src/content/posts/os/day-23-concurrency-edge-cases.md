@@ -4,10 +4,7 @@ excerpt: Deadlocks and Spinlocks and stuff
 date: 2024-10-23
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - File
-  - System
+  - Operating-Systems
 ---
 
 Since Unix directory entries map names to inode numbers, we can have multiple directory entries pointing to the exact same inode. This brings us to links:

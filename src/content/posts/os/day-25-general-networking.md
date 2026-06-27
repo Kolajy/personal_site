@@ -4,10 +4,7 @@ excerpt: Networking
 date: 2024-10-25
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Hardware
-  - IO
+  - Operating-Systems
 ---
 
 How does the OS know when a device has finished a task?

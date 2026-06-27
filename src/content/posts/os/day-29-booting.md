@@ -4,10 +4,7 @@ excerpt: Computer Lifecycle Stuff
 date: 2024-10-29
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Virtualization
-  - Containers
+  - Operating-Systems
 ---
 
 Why are Docker containers so much lighter than Virtual Machines?

@@ -4,10 +4,7 @@ excerpt: Understanding Disk I/O and Memory Interactions
 date: 2024-10-03
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Kernel
-  - Syscalls
+  - Operating-Systems
 ---
 
 When a program wants to read a file or send a network packet, it can't just access the hardware directly. If it could, malicious code could easily hijack the system. Instead, the OS implements a strict boundary: User Mode vs. Kernel Mode.

@@ -4,10 +4,7 @@ excerpt: Introduction and Roadmap Planning
 date: 2024-10-01
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Relearning
-  - Intro
+  - Operating-Systems
 ---
 I never actually took an operating systems course. I did take a computer systems but quite honestly all I remember from that course was struggling with MIPS assembly doing who knows what. 
 

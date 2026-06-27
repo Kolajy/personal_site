@@ -4,10 +4,7 @@ excerpt: How's a CPU work?
 date: 2024-10-21
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - File
-  - System
+  - Operating-Systems
 ---
 
 How does a file system map a file name like `hello.txt` to blocks on a raw magnetic disk or SSD? In Unix systems, the core abstraction is the **Inode (Index Node)**.

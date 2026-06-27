@@ -4,9 +4,7 @@ excerpt: The life of a Process
 date: 2024-10-18
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Memory
+  - Operating-Systems
 ---
 
 What happens when you run out of physical RAM? The OS can write inactive memory pages to disk (swap space) to free up physical frames. 

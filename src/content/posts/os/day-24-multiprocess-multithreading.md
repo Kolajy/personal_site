@@ -4,10 +4,7 @@ excerpt: When is multiprocessing faster than multithreading
 date: 2024-10-24
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Hardware
-  - IO
+  - Operating-Systems
 ---
 
 An operating system communicates with hardware devices through **Device Controllers**. A controller acts as a bridge, translating high-level instructions into raw electrical signals.

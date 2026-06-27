@@ -4,10 +4,7 @@ excerpt: Breaking Down Filesystems
 date: 2024-10-02
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Processes
-  - Threads
+  - Operating-Systems
 ---
 
 Today I dove back into processes and threads. I used to think of a process as a running application, which is true at a high level. But structurally, what is it?

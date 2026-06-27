@@ -4,9 +4,7 @@ excerpt: Whats the Buffer Cache
 date: 2024-10-09
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Concurrency
+  - Operating-Systems
 ---
 
 Today we entered the territory of concurrency. The classic problem is the **Race Condition**.

@@ -4,9 +4,7 @@ excerpt: I should probably cover security
 date: 2024-10-28
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Virtualization
+  - Operating-Systems
 ---
 
 Virtualization lets us run multiple independent Operating Systems concurrently on a single physical machine. The core magic behind this is the **Hypervisor** (VMM).

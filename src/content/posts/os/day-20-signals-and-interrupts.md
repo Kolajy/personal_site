@@ -4,10 +4,7 @@ excerpt: Stop Interrupting Me
 date: 2024-10-19
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Memory
-  - Algorithms
+  - Operating-Systems
 ---
 
 When a page fault occurs and RAM is full, the OS must choose an existing page to evict to make room. How does it choose?

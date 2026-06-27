@@ -4,9 +4,7 @@ excerpt: Adventures with RAM
 date: 2024-10-06
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Scheduling
+  - Operating-Systems
 ---
 
 Yesterday we learned that we can't predict process runtimes. How do modern operating systems schedule tasks without knowing their futures?

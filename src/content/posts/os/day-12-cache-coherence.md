@@ -4,9 +4,7 @@ excerpt: Wtf is Cache Coherence?
 date: 2024-10-12
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Concurrency
+  - Operating-Systems
 ---
 
 A common source of confusion is whether a **Mutex** is just a binary semaphore. I had to look this up to set my mental model straight.

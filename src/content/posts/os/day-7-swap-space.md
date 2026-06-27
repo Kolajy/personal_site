@@ -4,10 +4,7 @@ excerpt: Is Swap Space Bad?
 date: 2024-10-07
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - IPC
-  - Pipes
+  - Operating-Systems
 ---
 
 Since processes have isolated memory address spaces, they cannot read or write to each other's memory directly. To coordinate, they must use **Inter-Process Communication (IPC)**.

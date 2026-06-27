@@ -4,9 +4,7 @@ excerpt: Digging into Filesystem Journaling
 date: 2024-10-04
 readTime: 3 min read
 tags:
-  - Operating
-  - Systems
-  - Processes
+  - Operating-Systems
 ---
 
 A process isn't just running or not running. It progresses through a strict state machine managed by the OS scheduler:
