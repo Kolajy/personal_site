@@ -571,7 +571,6 @@ export default function App({ posts = [], projects = [], photos = [] }) {
                 totalPages={totalHomePages} 
                 onPageChange={(page) => {
                   setCurrentHomePage(page);
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }} 
               />
             </section>
@@ -849,7 +848,6 @@ export default function App({ posts = [], projects = [], photos = [] }) {
               totalPages={totalBlogPages} 
               onPageChange={(page) => {
                 setCurrentBlogPage(page);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
               }} 
             />
           </div>
