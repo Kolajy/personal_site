@@ -453,15 +453,7 @@ export default function App({ posts = [], projects = [], photos = [] }) {
   const startHomeIndex = (currentHomePage - 1) * POSTS_PER_PAGE;
   const paginatedHomePosts = sortedPosts.slice(startHomeIndex, startHomeIndex + POSTS_PER_PAGE);
 
-  // Pagination for Blog page
-  const [currentBlogPage, setCurrentBlogPage] = useState(1);
-  const totalBlogPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
-  const startBlogIndex = (currentBlogPage - 1) * POSTS_PER_PAGE;
-  const paginatedBlogPosts = filteredPosts.slice(startBlogIndex, startBlogIndex + POSTS_PER_PAGE);
 
-  useEffect(() => {
-    setCurrentBlogPage(1);
-  }, [selectedBlogTag]);
 
   return (
     <div className="min-h-screen flex flex-col max-w-3xl mx-auto px-6 py-6 font-sans">
@@ -827,49 +819,48 @@ export default function App({ posts = [], projects = [], photos = [] }) {
               </div>
             )}
 
-            <div className="space-y-6 min-h-[480px]">
-              {paginatedBlogPosts.map(post => (
-                <article key={post.id} className="space-y-1">
-                  <header>
-                    <h2 
-                      onClick={() => navigateToPost(post)}
-                      className="text-lg font-bold hover:underline cursor-pointer text-[var(--text-primary)]"
-                    >
-                      {post.title}
+            <div className="space-y-12">
+              {(selectedBlogTag ? [selectedBlogTag] : allBlogTags).map(tag => {
+                const postsForTag = sortedPosts.filter(p => (p.tags || []).includes(tag));
+                if (postsForTag.length === 0) return null;
+
+                return (
+                  <div key={tag} className="space-y-4">
+                    <h2 className="text-xs uppercase tracking-wider text-[var(--text-secondary)] font-bold border-b border-[var(--border-color)]/30 pb-2 mb-4">
+                      {tag}
                     </h2>
-                    <div className="text-xs text-[var(--text-secondary)] space-x-2 mt-0.5 flex flex-wrap items-center gap-y-1">
-                      <span>{post.date}</span>
-                      <span>•</span>
-                      <span>{post.readTime}</span>
-                      {post.tags && post.tags.map(t => (
-                        <span 
-                          key={t} 
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedBlogTag(t);
-                          }}
-                          className="text-[10px] bg-[var(--code-bg)] border border-[var(--border-color)] px-1.5 py-0.5 rounded text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--text-secondary)] transition-colors duration-150 cursor-pointer ml-1"
+                    <div className="space-y-3">
+                      {postsForTag.map(post => (
+                        <article 
+                          key={post.id} 
+                          className="flex flex-col sm:flex-row sm:items-baseline justify-between py-1 hover:bg-[var(--code-bg)]/20 px-2 -mx-2 rounded transition-colors duration-150"
                         >
-                          {t}
-                        </span>
+                          <h3 
+                            onClick={() => navigateToPost(post)}
+                            className="text-[15px] font-bold hover:underline cursor-pointer text-[var(--text-primary)]"
+                          >
+                            {post.title}
+                          </h3>
+                          <div className="text-xs font-mono text-[var(--text-secondary)] flex items-center space-x-2 whitespace-nowrap mt-1 sm:mt-0 select-none">
+                            <span>{post.date}</span>
+                            <span>•</span>
+                            <span>{post.readTime}</span>
+                            {post.excerpt && post.excerpt.includes('Day') && (
+                              <>
+                                <span>•</span>
+                                <span className="text-[var(--accent-color)] font-semibold">
+                                  {post.excerpt.replace('30 Days Of Operating Systems - ', '')}
+                                </span>
+                              </>
+                            )}
+                          </div>
+                        </article>
                       ))}
                     </div>
-                  </header>
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed line-clamp-2 pt-1">
-                    {post.excerpt}
-                  </p>
-                </article>
-              ))}
+                  </div>
+                );
+              })}
             </div>
-
-            {/* Blog Pagination Controls */}
-            <Pagination 
-              currentPage={currentBlogPage} 
-              totalPages={totalBlogPages} 
-              onPageChange={(page) => {
-                setCurrentBlogPage(page);
-              }} 
-            />
           </div>
         )}
       </main>
