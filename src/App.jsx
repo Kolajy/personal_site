@@ -94,6 +94,9 @@ function VisitorGreeting() {
             Welcome to my humble little corner of the internet. I'm Jay!
           </p>
           <p>
+            I know, I know. You could probably just ask ChatGPT and get a better answer than anything I'd write here. But these are my thoughts, and no LLM can have those for me (yet!). So I write them down anyway. A little paper trail of me figuring life out.
+          </p>
+          <p>
             Feel free to take a look around or reach out to me at{' '}
             <a 
               href="mailto:hello@jaylok.com" 
