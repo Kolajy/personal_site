@@ -6,31 +6,35 @@ readTime: 3 min read
 tags:
   - Operating-Systems
 ---
-I never actually took an operating systems course. I did take a computer systems but quite honestly all I remember from that course was struggling with MIPS assembly doing who knows what. 
+I never actually took a formal Operating Systems course. I did take Computer Systems back in the day, but honestly, all I remember from that course was struggling with MIPS assembly.
 
-Over the past decade I've spent a lot of time debugging networks and systems issues and diving deep into areas as I came across them; learning what I needed to know to make some progress and just a little bit more to satisfy my curiosity. Sure, I know how to use files, threads and processes in high level languages and spent a lot of time in bash but it's hard to say what I don't know and I suspect my mental models are quite fuzzy. Hopefully I'll have more clarity and confidence by the end of the month.
+Over the past decade, I’ve spent a lot of time debugging networks and system issues. I’ve always dived deep into technical problems as I encountered them; learning what I needed to get unstuck, plus a little extra to satisfy my curiosity. While I'm comfortable using files, threads, and processes in high-level languages, and I’ve spent plenty of time in Bash and the command line, it’s hard to pinpoint my own blind spots. I suspect my underlying mental models are still pretty fuzzy. Hopefully, I'll have a lot more clarity and confidence by the end of the month.
 
-I'll be diving into learning operating systems from the top down starting at the higher level concepts such as Filesystems, Virtual Memory, Processes, IPC and Caching. Once I've covered a broad overview of the topic I'll spend some more time in areas I've always wanted to dig into like Cache line behavior, Memory compression / Swap, Resource Optimization and if I have time the whole concept of Data driven design. 
+My plan is to tackle OS concepts from the top down, starting with high-level topics like Filesystems, Virtual Memory, Processes, IPC, and Caching. Once I have a solid bird's-eye view, I want to dig into specific areas I've always been curious about: cache line behavior, memory compression/swap, resource optimization, and time permitting data-driven design.
 
-Here's my tentative road map for the next few days.
+Here is my tentative roadmap for the next few days:
 
-1. Introduction
-2. Filesystems
-3. Disk I/O
-4. Memory Management
-5. Process Management
-6. Scheduling
-7. Network Interfaces / Management
-8. Devices
-9. System calls
+- Introduction
+    
+- Filesystems
+    
+- Disk I/O
+    
+- Memory Management
+    
+- Process Management
+    
+- Scheduling
+    
+- Network Interfaces & Management
+    
+- Devices
+    
+- System Calls
+    
 
-Resources:
+**My Resources:** For this deep dive, I’ll be heavily utilizing AI alongside the classic textbook, _Operating Systems: Three Easy Pieces_ (OSTEP). I won't just be reading it cover-to-cover; instead, I'll use it as a reference. Because my optimal learning order is likely different from the book's layout, I’m taking a middle-out approach across the chapters.
 
-For this series I'll be heavily utilizing AI and Operating Systems Three Easy Pieces linked below. I won't just be reading back to back but rather using the book as a reference. I suspect the optimal order of learning for me might be slightly different than this book so I'll be taking more of a middle out approach across sections.
-
-AI is pretty powerful at synthesizing information and pointing us in the general correct direction these days so I will be heavily utilizing ChatGPT for a high level overview.
-
-The standard for Intro to OS courses:
-https://pages.cs.wisc.edu/~remzi/OSTEP/
+AI is incredibly powerful for synthesizing information and pointing us in the right direction, so I’ll be using ChatGPT to get fast, high level overviews before zooming in.
 
 Let's see where this road takes us.

@@ -13,10 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/posts/os/day-15-memory-mapping-and-allocation.md",
+                "file": "src/content/posts/os/day-28-security.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "day-28-security"
             }
           }
         ]
@@ -38,8 +40,11 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
-              }
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -54,7 +59,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -62,14 +69,16 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 298.5
+    "width": 289.5
   },
   "right": {
     "id": "bf512e7ee2dfd12b",
@@ -85,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "src/content/posts/os/day-15-memory-mapping-and-allocation.md",
+                "file": "src/content/posts/os/day-28-security.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -93,7 +102,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for day-28-security"
             }
           },
           {
@@ -102,10 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "src/content/posts/os/day-15-memory-mapping-and-allocation.md",
+                "file": "src/content/posts/os/day-28-security.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from day-28-security"
             }
           },
           {
@@ -115,8 +128,12 @@
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
-              }
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -125,8 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/content/posts/os/day-15-memory-mapping-and-allocation.md"
-              }
+                "file": "src/content/posts/os/day-28-security.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of day-28-security"
             }
           }
         ]
@@ -138,6 +160,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -148,6 +171,20 @@
   },
   "active": "38924ed8539a4331",
   "lastOpenFiles": [
+    "src/content/posts/os/day-29-booting.md",
+    "src/content/posts/os/day-26-network-interfaces.md",
+    "src/content/posts/os/day-27-schedulers.md",
+    "src/content/posts/os/day-25-Networks and Protocols.md",
+    "src/content/posts/os/day-30-wrapping-up.md",
+    "src/content/posts/os/day-10-diskio.md",
+    "src/content/posts/os/day-9-buffer-cache.md",
+    "src/content/posts/os/day-3-diskio-and-dma.md",
+    "src/content/posts/os/day-1-intro.md",
+    "src/content/posts/os/day-2-filesystems.md",
+    "src/content/posts/os/day-5-drives-and-raid.md",
+    "src/content/posts/os/day-4-journaling-and-wal.md",
+    "src/content/posts/os/day-28-security.md",
+    "src/content/posts/os/day-15-memory-mapping-and-allocation.md",
     "dist/sitemap-index.xml",
     "dist/sitemap-0.xml",
     "dist/index.html",
@@ -158,7 +195,6 @@
     "dist/blog/os/day-5-drives-and-raid/index.html",
     "dist/blog/os/day-4-journaling-and-wal/index.html",
     "dist/blog/os/day-30-wrapping-up/index.html",
-    "dist/blog/os/day-29-booting/index.html",
     "dist/_astro/yosemite-valley.CM0J0KIa.jpg",
     "dist/_astro/yosemite-cliff.DxBUw6dI.jpg",
     "dist/_astro/swiss-alps-chalet.Bod1BFKe.png",
@@ -175,24 +211,11 @@
     "src/content/posts/os/day-21-locks-mutexes-semaphores.md",
     "src/content/posts/os/day-22-ipc.md",
     "src/content/posts/os/day-23-concurrency-edge-cases.md",
-    "src/content/posts/os/day-2-filesystems.md",
-    "src/content/posts/os/day-1-intro.md",
     "src/content/posts/hello-world.md",
-    "src/content/posts/os/day-4-journaling-and-wal.md",
     "src/content/posts/os/day-6-memory-management.md",
     "src/content/posts/os/day-7-swap-space.md",
-    "src/content/posts/os/day-30-wrapping-up.md",
-    "src/content/posts/os/day-29-booting.md",
-    "src/content/posts/os/day-28-security.md",
-    "src/content/posts/os/day-27-network-layers.md",
-    "src/content/posts/os/day-26-network-interfaces.md",
-    "src/content/posts/os/day-25-general-networking.md",
     "src/content/posts/os/day-24-multiprocess-multithreading.md",
     "src/content/posts/os/day-20-signals-and-interrupts.md",
-    "src/content/posts/os/day-18-context-switching.md",
-    "src/content/posts/os/day-15-memory-mapping-and-allocation.md",
-    "src/content/posts/os/day-14-numa.md",
-    "src/content/posts/os/day-13-cpu-cores.md",
-    "src/content/posts/os/day-12-cache-coherence.md"
+    "src/content/posts/os/day-18-context-switching.md"
   ]
 }
