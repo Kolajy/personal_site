@@ -2,78 +2,183 @@ import { useState, useEffect } from 'react';
 
 // Markdown parsing for PaperMod post details
 function RenderMarkdown({ content }) {
-  const lines = content.split('\n');
-  let insideCodeBlock = false;
-  let codeContent = [];
+  if (!content) return null;
+  
+  const rawLines = content.split('\n');
+  const blocks = [];
+  let currentBlock = null;
+
+  for (let i = 0; i < rawLines.length; i++) {
+    const line = rawLines[i];
+    const trimmed = line.trim();
+
+    // 1. Code Blocks
+    if (trimmed.startsWith('```')) {
+      if (currentBlock && currentBlock.type === 'code') {
+        blocks.push(currentBlock);
+        currentBlock = null;
+      } else {
+        if (currentBlock) blocks.push(currentBlock);
+        currentBlock = { type: 'code', lines: [] };
+      }
+      continue;
+    }
+
+    if (currentBlock && currentBlock.type === 'code') {
+      currentBlock.lines.push(line);
+      continue;
+    }
+
+    // 2. Blockquotes
+    if (line.startsWith('>')) {
+      const quoteLine = line.slice(1).startsWith(' ') ? line.slice(2) : line.slice(1);
+      if (currentBlock && currentBlock.type === 'quote') {
+        currentBlock.lines.push(quoteLine);
+      } else {
+        if (currentBlock) blocks.push(currentBlock);
+        currentBlock = { type: 'quote', lines: [quoteLine] };
+      }
+      continue;
+    }
+
+    // 3. Bullet list items
+    if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+      const itemText = trimmed.slice(2);
+      if (currentBlock && currentBlock.type === 'list') {
+        currentBlock.items.push(itemText);
+      } else {
+        if (currentBlock) blocks.push(currentBlock);
+        currentBlock = { type: 'list', items: [itemText] };
+      }
+      continue;
+    }
+
+    // 4. Headings
+    if (trimmed.startsWith('#')) {
+      if (currentBlock) {
+        blocks.push(currentBlock);
+        currentBlock = null;
+      }
+      if (trimmed.startsWith('### ')) {
+        blocks.push({ type: 'h3', text: trimmed.slice(4) });
+      } else if (trimmed.startsWith('## ')) {
+        blocks.push({ type: 'h2', text: trimmed.slice(3) });
+      } else if (trimmed.startsWith('# ')) {
+        blocks.push({ type: 'h1', text: trimmed.slice(2) });
+      }
+      continue;
+    }
+
+    // 5. Empty lines
+    if (!trimmed) {
+      if (currentBlock) {
+        blocks.push(currentBlock);
+        currentBlock = null;
+      }
+      blocks.push({ type: 'empty' });
+      continue;
+    }
+
+    // 6. Paragraphs
+    if (currentBlock && currentBlock.type === 'paragraph') {
+      currentBlock.lines.push(line);
+    } else {
+      if (currentBlock) blocks.push(currentBlock);
+      currentBlock = { type: 'paragraph', lines: [line] };
+    }
+  }
+
+  if (currentBlock) {
+    blocks.push(currentBlock);
+  }
+
+  const parseInline = (text) => {
+    const codeParts = text.split('`');
+    return codeParts.map((part, i) => {
+      if (i % 2 === 1) {
+        return <code key={i} className="bg-[var(--code-bg)] px-1.5 py-0.5 rounded font-mono text-sm text-[var(--text-primary)]">{part}</code>;
+      }
+      
+      const boldParts = part.split('**');
+      return boldParts.map((subpart, j) => {
+        if (j % 2 === 1) {
+          return <strong key={j} className="font-semibold text-[var(--text-primary)]">{subpart}</strong>;
+        }
+        
+        const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+        const result = [];
+        let match;
+        let lastIndex = 0;
+        
+        while ((match = linkRegex.exec(subpart)) !== null) {
+          const index = match.index;
+          if (index > lastIndex) {
+            result.push(subpart.slice(lastIndex, index));
+          }
+          result.push(
+            <a 
+              key={index} 
+              href={match[2]} 
+              className="text-[var(--accent-color)] hover:underline font-medium"
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              {match[1]}
+            </a>
+          );
+          lastIndex = linkRegex.lastIndex;
+        }
+        if (lastIndex < subpart.length) {
+          result.push(subpart.slice(lastIndex));
+        }
+        return result;
+      });
+    });
+  };
 
   return (
     <div className="space-y-4 font-serif leading-relaxed text-[17px] text-[var(--text-primary)]">
-      {lines.map((line, idx) => {
-        // Code block checks
-        if (line.trim().startsWith('```')) {
-          if (insideCodeBlock) {
-            insideCodeBlock = false;
-            const codeText = codeContent.join('\n');
-            codeContent = [];
+      {blocks.map((block, idx) => {
+        switch (block.type) {
+          case 'code':
             return (
               <pre key={idx} className="bg-[var(--code-bg)] p-4 rounded-md overflow-x-auto font-mono text-sm border border-[var(--border-color)] my-4">
-                <code>{codeText}</code>
+                <code>{block.lines.join('\n')}</code>
               </pre>
             );
-          } else {
-            insideCodeBlock = true;
+          case 'quote':
+            return (
+              <blockquote key={idx} className="border-l-4 border-[var(--accent-color)] pl-4 py-1 my-4 italic text-[var(--text-secondary)] bg-[var(--code-bg)]/30 rounded-r-md">
+                {block.lines.map((line, lIdx) => (
+                  <p key={lIdx} className={lIdx > 0 ? "mt-2" : ""}>{parseInline(line)}</p>
+                ))}
+              </blockquote>
+            );
+          case 'list':
+            return (
+              <ul key={idx} className="list-disc pl-6 space-y-1.5 font-sans my-4 text-[16px] text-[var(--text-secondary)]">
+                {block.items.map((item, iIdx) => (
+                  <li key={iIdx}>{parseInline(item)}</li>
+                ))}
+              </ul>
+            );
+          case 'h1':
+            return <h1 key={idx} className="text-2xl font-bold font-sans text-[var(--text-primary)] pt-6 pb-2">{block.text}</h1>;
+          case 'h2':
+            return <h2 key={idx} className="text-xl font-bold font-sans text-[var(--text-primary)] pt-5 pb-1 border-b border-[var(--border-color)]">{block.text}</h2>;
+          case 'h3':
+            return <h3 key={idx} className="text-lg font-bold font-sans text-[var(--text-primary)] pt-3 pb-1">{block.text}</h3>;
+          case 'empty':
+            return <div key={idx} className="h-2"></div>;
+          case 'paragraph':
+            return (
+              <p key={idx} className="font-serif">
+                {parseInline(block.lines.join(' '))}
+              </p>
+            );
+          default:
             return null;
-          }
         }
-
-        if (insideCodeBlock) {
-          codeContent.push(line);
-          return null;
-        }
-
-        const trimmed = line.trim();
-
-        // Headings
-        if (trimmed.startsWith('### ')) {
-          return <h3 key={idx} className="text-lg font-bold font-sans text-[var(--text-primary)] pt-3 pb-1">{trimmed.slice(4)}</h3>;
-        }
-        if (trimmed.startsWith('## ')) {
-          return <h2 key={idx} className="text-xl font-bold font-sans text-[var(--text-primary)] pt-5 pb-1 border-b border-[var(--border-color)]">{trimmed.slice(3)}</h2>;
-        }
-        if (trimmed.startsWith('# ')) {
-          return <h1 key={idx} className="text-2xl font-bold font-sans text-[var(--text-primary)] pt-6 pb-2">{trimmed.slice(2)}</h1>;
-        }
-
-        // Bullet points
-        if (trimmed.startsWith('- ')) {
-          return (
-            <ul key={idx} className="list-disc pl-6 space-y-1.5 font-sans my-2 text-sm text-[var(--text-secondary)]">
-              <li>{trimmed.slice(2)}</li>
-            </ul>
-          );
-        }
-
-        // Space out empty lines
-        if (!trimmed) {
-          return <div key={idx} className="h-2"></div>;
-        }
-
-        // Paragraphs with inline style mapping
-        return (
-          <p key={idx} className="font-serif">
-            {trimmed.split('`').map((part, i) => {
-              if (i % 2 === 1) {
-                return <code key={i} className="bg-[var(--code-bg)] px-1.5 py-0.5 rounded font-mono text-sm text-[var(--text-primary)]">{part}</code>;
-              }
-              return part.split('**').map((subpart, j) => {
-                if (j % 2 === 1) {
-                  return <strong key={j} className="font-semibold text-[var(--text-primary)]">{subpart}</strong>;
-                }
-                return subpart;
-              });
-            })}
-          </p>
-        );
       })}
     </div>
   );
