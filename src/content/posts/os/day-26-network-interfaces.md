@@ -6,8 +6,11 @@ readTime: 3 min read
 tags:
   - Operating-Systems
 ---
-
 Today I started the Networking section. The operating system kernel is responsible for implementing the entire TCP/IP network stack.
+
+**What is a network interface?**
+
+A network interface is the point where an operating system connects to a network. It can be physical (an Ethernet card, a Wi-Fi adapter) or virtual (a loopback interface, a VPN tunnel, a bridge). The OS abstracts all of these under a unified model, so software doesn't need to care whether packets travel over copper, air, or software.
 
 When you call `socket.connect()`, the kernel triggers the TCP 3-way handshake (SYN, SYN-ACK, ACK) transparently. The kernel maintains buffers for incoming and outgoing network data.
 
